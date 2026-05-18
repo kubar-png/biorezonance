@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8" />
+<title>V05 · Bento Modular</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap&subset=latin,latin-ext" rel="stylesheet">
+<style>
+:root{
+  --rose:#f9e4df; --rose-2:#f3c5bd; --rose-deep:#a55a4f;
+  --sage:#dbe5c5; --sage-2:#bfd09b; --sage-deep:#4d5d34;
+  --bg:#f1ece5; --card:#fff; --ink:#1c1916; --muted:#615b54;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--ink);font-family:"Inter",sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.serif{font-family:"Instrument Serif",serif;font-weight:400}
+nav{display:flex;align-items:center;justify-content:space-between;padding:20px 32px;max-width:1480px;margin:0 auto}
+.logo{font-family:"Instrument Serif",serif;font-size:26px;letter-spacing:-.01em}
+.logo em{font-style:italic;color:var(--rose-deep)}
+nav ul{display:flex;gap:28px;list-style:none;font-size:14px;color:var(--muted)}
+nav .cta{background:var(--ink);color:#fff;padding:10px 20px;border-radius:999px;font-size:13.5px}
+
+.bento{max-width:1480px;margin:0 auto;padding:8px 32px 64px;display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:140px;gap:14px}
+.card{background:var(--card);border-radius:24px;padding:28px;position:relative;overflow:hidden;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.card:hover{transform:translateY(-3px)}
+.headline{grid-column:1 / 8;grid-row:1 / 4;background:linear-gradient(140deg,var(--rose) 0%,#f7d6cd 100%);display:flex;flex-direction:column;justify-content:space-between;padding:40px}
+.headline .tag{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.6);color:var(--rose-deep);padding:6px 12px;border-radius:999px;font-size:12px;font-weight:600;letter-spacing:.04em;width:fit-content}
+.headline .tag .dot{width:6px;height:6px;border-radius:50%;background:var(--rose-deep);animation:p 2s infinite}
+@keyframes p{50%{opacity:.4}}
+.headline h1{font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(56px,5.6vw,92px);line-height:.96;letter-spacing:-.02em;color:var(--ink)}
+.headline h1 em{font-style:italic;color:var(--rose-deep)}
+.headline .footer-row{display:flex;align-items:end;justify-content:space-between;gap:24px}
+.headline p{font-size:16.5px;line-height:1.55;color:#5d433d;max-width:380px}
+.headline .btn{background:var(--ink);color:#fff;padding:16px 26px;border-radius:999px;font-size:14.5px;display:inline-flex;align-items:center;gap:10px;align-self:end;flex-shrink:0}
+
+.photo{grid-column:8 / 13;grid-row:1 / 4;background:radial-gradient(60% 50% at 50% 40%,var(--sage-2) 0%,var(--sage) 50%,var(--sage-deep) 100%);padding:28px;color:#fff;display:flex;flex-direction:column;justify-content:space-between;position:relative}
+.photo::before{content:"";position:absolute;inset:24px;border:1px dashed rgba(255,255,255,.35);border-radius:18px;pointer-events:none}
+.photo .ribbon{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.18);backdrop-filter:blur(8px);padding:6px 12px;border-radius:999px;font-size:12px;color:#fff;width:fit-content}
+.photo .body{margin-top:auto}
+.photo .body p{font-family:"Instrument Serif",serif;font-style:italic;font-size:24px;line-height:1.3;max-width:360px}
+.photo .meta{margin-top:14px;font-size:13px;opacity:.85;display:flex;align-items:center;gap:10px}
+.photo .meta::before{content:"";width:24px;height:1px;background:#fff;opacity:.6}
+
+.stat{grid-column:span 3;grid-row:span 1;display:flex;flex-direction:column;justify-content:space-between}
+.stat .num{font-family:"Instrument Serif",serif;font-size:48px;line-height:1;color:var(--ink);letter-spacing:-.02em}
+.stat .num em{font-style:italic;color:var(--rose-deep);font-size:32px}
+.stat .label{font-size:13px;color:var(--muted)}
+
+.cta-card{grid-column:span 3;grid-row:span 2;background:var(--sage-deep);color:#fff;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.cta-card::after{content:"";position:absolute;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,var(--sage-2),transparent 70%);right:-60px;bottom:-60px;opacity:.5}
+.cta-card .badge{font-size:12px;letter-spacing:.04em;color:var(--sage);text-transform:uppercase;font-weight:600}
+.cta-card h3{font-family:"Instrument Serif",serif;font-size:36px;line-height:1.05;font-weight:400;margin-top:auto}
+.cta-card .arr{align-self:flex-end;width:44px;height:44px;border-radius:50%;background:#fff;color:var(--sage-deep);display:flex;align-items:center;justify-content:center;font-size:18px;margin-top:14px;transition:transform .25s}
+.cta-card:hover .arr{transform:translate(4px,-4px)}
+
+.review{grid-column:span 3;grid-row:span 2;background:var(--card)}
+.review .avatars{display:flex;margin-bottom:14px}
+.review .av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--sage));border:2px solid #fff;margin-left:-10px}
+.review .av:first-child{margin:0}
+.review b{display:block;font-size:14.5px;margin-bottom:4px}
+.review p{font-family:"Instrument Serif",serif;font-style:italic;font-size:18px;line-height:1.4;color:var(--ink);margin-top:6px}
+.review .who{margin-top:14px;font-size:12.5px;color:var(--muted)}
+.review .stars{color:#e0a060;font-size:13px;letter-spacing:.04em}
+
+.hours{grid-column:span 3;grid-row:span 1;display:flex;align-items:center;gap:14px;background:var(--card)}
+.hours .icon{width:46px;height:46px;border-radius:14px;background:var(--rose);display:flex;align-items:center;justify-content:center;color:var(--rose-deep);font-size:22px}
+.hours b{font-size:14.5px}
+.hours span{font-size:12.5px;color:var(--muted);display:block}
+
+.next{grid-column:span 3;grid-row:span 1;background:var(--rose-2);color:var(--rose-deep);display:flex;flex-direction:column;justify-content:center}
+.next b{font-size:18px;font-weight:600;letter-spacing:-.01em}
+.next em{font-style:normal;font-size:13px;font-weight:500;color:#7a3f37}
+</style>
+</head>
+<body>
+<nav>
+  <a href="#" class="logo">resonant<em>·</em>klinika</a>
+  <ul><li><a>Co děláme</a></li><li><a>Pro koho</a></li><li><a>Ceny</a></li><li><a>O nás</a></li><li><a>FAQ</a></li></ul>
+  <a href="#" class="cta">Zarezervovat termín →</a>
+</nav>
+
+<section class="bento">
+  <article class="card headline">
+    <span class="tag"><span class="dot"></span> Přijímáme nové klienty · Po–Pá</span>
+    <h1>Jemná cesta k&nbsp;tělu, které vám <em>opravdu</em> rozumí.</h1>
+    <div class="footer-row">
+      <p>Biorezonanční diagnostika a&nbsp;terapie v&nbsp;klidu pražského centra. Bez injekcí, bez chemie — jen tělo a&nbsp;vy.</p>
+      <a href="#" class="btn">Objednat se →</a>
+    </div>
+  </article>
+
+  <article class="card photo">
+    <span class="ribbon">▶ Krátké video · 0:48</span>
+    <div class="body">
+      <p>"Konečně někdo, kdo se zeptal proč — ne jen co mě bolí."</p>
+      <span class="meta">MUDr. Hana Novotná · vedoucí klinika</span>
+    </div>
+  </article>
+
+  <article class="card stat">
+    <div class="num">14&nbsp;<em>let</em></div>
+    <span class="label">specializované praxe v ČR</span>
+  </article>
+  <article class="card stat">
+    <div class="num">4&nbsp;200<em>+</em></div>
+    <span class="label">terapií ročně</span>
+  </article>
+  <article class="card stat">
+    <div class="num">92&nbsp;%</div>
+    <span class="label">klientů se vrací</span>
+  </article>
+
+  <article class="card cta-card">
+    <span class="badge">Začněte konzultací</span>
+    <h3>15 min<br>zdarma, online.</h3>
+    <a href="#" class="arr">→</a>
+  </article>
+
+  <article class="card review">
+    <div class="avatars"><span class="av"></span><span class="av"></span><span class="av"></span></div>
+    <b>312 recenzí · 4.94 ★</b>
+    <p>"Změnilo to způsob, jak vnímám svoje tělo."</p>
+    <span class="who">— Tereza V., klientka od 2022</span>
+  </article>
+
+  <article class="card hours">
+    <div class="icon">⏱</div>
+    <div>
+      <b>Po–Pá 8:00–18:00</b>
+      <span>So 9:00–13:00 (po dohodě)</span>
+    </div>
+  </article>
+
+  <article class="card next">
+    <em>Nejbližší volný termín</em>
+    <b>Čt 22. května · 14:30</b>
+  </article>
+</section>
+</body>
+</html>

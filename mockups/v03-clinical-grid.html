@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8" />
+<title>V03 · Clinical Grid</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500&family=Geist:wght@300;400;500;600;700&display=swap&subset=latin,latin-ext" rel="stylesheet">
+<style>
+:root{
+  --rose:#f4d8d2; --rose-2:#e9beb6; --rose-deep:#9c5b52;
+  --sage:#dde5cc; --sage-2:#b9c89c; --sage-deep:#3f4e2d;
+  --paper:#fafaf7; --line:#e6e3da; --ink:#0f0f0d; --muted:#666258;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--paper);color:var(--ink);font-family:"Geist",sans-serif;-webkit-font-smoothing:antialiased}
+.mono{font-family:"Geist Mono",monospace}
+a{color:inherit;text-decoration:none}
+.grid-bg{position:fixed;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:80px 80px;opacity:.35;pointer-events:none;z-index:0}
+.shell{position:relative;z-index:1;max-width:1440px;margin:0 auto;padding:20px 48px}
+nav{display:grid;grid-template-columns:auto 1fr auto;gap:48px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:600;font-size:15px;letter-spacing:-.01em}
+.logo-mark{width:28px;height:28px;border-radius:6px;background:linear-gradient(135deg,var(--rose) 0%,var(--sage) 100%);position:relative}
+.logo-mark::after{content:"";position:absolute;inset:6px;border-radius:4px;background:var(--paper)}
+nav ul{display:flex;gap:28px;list-style:none;font-size:13.5px;color:var(--muted);justify-self:start;margin-left:48px}
+nav .status{font-family:"Geist Mono",monospace;font-size:12px;letter-spacing:.04em;color:var(--sage-deep);display:flex;align-items:center;gap:8px}
+.status .pulse{width:8px;height:8px;border-radius:50%;background:var(--sage-2);box-shadow:0 0 0 0 var(--sage-2);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(185,200,156,.7)}70%{box-shadow:0 0 0 12px rgba(185,200,156,0)}100%{box-shadow:0 0 0 0 rgba(185,200,156,0)}}
+.hero{display:grid;grid-template-columns:84px 1fr 1fr 84px;grid-template-rows:auto auto auto auto;column-gap:32px;row-gap:0;padding:80px 0 40px;border-bottom:1px solid var(--line)}
+.tick{font-family:"Geist Mono",monospace;font-size:11px;color:var(--muted);letter-spacing:.04em;padding:8px 0;border-right:1px solid var(--line);position:relative}
+.tick::after{content:"";position:absolute;right:-4px;top:50%;width:8px;height:1px;background:var(--line)}
+.col-title{grid-column:2 / 4;display:flex;align-items:baseline;gap:16px;padding:12px 0}
+.col-title .num{font-family:"Geist Mono",monospace;font-size:12px;color:var(--rose-deep);letter-spacing:.04em}
+.col-title h3{font-size:13.5px;font-weight:500;color:var(--ink);text-transform:uppercase;letter-spacing:.18em}
+.title-area{grid-column:2 / 4;padding:24px 0 64px}
+h1{font-size:clamp(56px,7.4vw,118px);font-weight:500;line-height:.94;letter-spacing:-.045em}
+h1 .accent{color:var(--rose-deep);font-weight:400;font-style:italic;font-family:"Geist",sans-serif}
+h1 .underline{background:linear-gradient(180deg,transparent 70%,var(--sage) 70%,var(--sage) 96%,transparent 96%);padding:0 4px}
+.meta-row{grid-column:2 / 4;display:grid;grid-template-columns:1.4fr .8fr .8fr;gap:32px;padding:24px 0;border-top:1px solid var(--line)}
+.meta-cell .label{font-family:"Geist Mono",monospace;font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.meta-cell p{font-size:15px;line-height:1.55;color:var(--ink)}
+.meta-cell .big{font-size:32px;font-weight:500;letter-spacing:-.02em}
+.cta-row{grid-column:2 / 4;display:flex;gap:12px;padding:32px 0 8px;border-top:1px solid var(--line);align-items:center}
+.btn{background:var(--ink);color:var(--paper);padding:16px 24px;border-radius:6px;font-size:14.5px;font-weight:500;display:inline-flex;align-items:center;gap:10px;transition:background .25s}
+.btn:hover{background:#2a2a26}
+.btn .arrow{transition:transform .25s}.btn:hover .arrow{transform:translateX(4px)}
+.btn-2{background:transparent;border:1px solid var(--line);padding:15px 22px;border-radius:6px;font-size:14.5px;color:var(--ink);transition:border-color .2s,background .2s}
+.btn-2:hover{border-color:var(--ink);background:var(--rose)}
+.right-pane{grid-column:3 / 4;grid-row:2 / 5;position:relative;padding:0 0 0 32px;border-left:1px solid var(--line);margin-left:-32px}
+.scope{position:absolute;right:0;top:24px;width:100%;height:480px;background:linear-gradient(180deg,#fff 0%,var(--rose) 100%);border-radius:18px;overflow:hidden;border:1px solid var(--line)}
+.scope canvas, .wave{position:absolute;inset:0}
+.scope .label{position:absolute;top:20px;left:20px;font-family:"Geist Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--rose-deep)}
+.scope .stat{position:absolute;bottom:20px;left:20px;display:flex;gap:24px;font-family:"Geist Mono",monospace;font-size:12px}
+.scope .stat b{display:block;font-family:"Geist",sans-serif;font-size:22px;font-weight:500;color:var(--ink)}
+.scope .stat span{color:var(--muted)}
+.wave svg{position:absolute;left:0;width:200%;height:100%}
+.wave path{stroke:var(--sage-deep);stroke-width:1.2;fill:none}
+.wave.w2 path{stroke:var(--rose-deep);opacity:.6}
+.anim{animation:flow 18s linear infinite}
+@keyframes flow{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+<div class="shell">
+  <nav>
+    <a href="#" class="logo"><span class="logo-mark"></span> Bioresonance/CZ</a>
+    <ul><li><a>Diagnostika</a></li><li><a>Terapie</a></li><li><a>Ceník</a></li><li><a>Tým</a></li><li><a>FAQ</a></li><li><a>Kontakt</a></li></ul>
+    <span class="status mono"><span class="pulse"></span> Volné termíny tento týden · 3</span>
+  </nav>
+
+  <div class="hero">
+    <div class="tick mono">001</div>
+    <div class="col-title"><span class="num mono">01 / Úvod</span><h3>Klinika biorezonance — Praha 2</h3></div>
+    <div class="tick mono">002</div>
+
+    <div class="tick mono">002</div>
+    <div class="title-area">
+      <h1>Nemoc šeptá <span class="accent">dlouho</span> předtím, <br>než začne <span class="underline">křičet.</span></h1>
+    </div>
+
+    <div class="tick mono">003</div>
+    <div class="meta-row">
+      <div class="meta-cell">
+        <div class="label">// Co děláme</div>
+        <p>Funkční diagnostika a&nbsp;jemná terapie biorezonancí — přístroj, který naslouchá elektromagnetickým signálům těla a&nbsp;pomáhá obnovit jeho rovnováhu.</p>
+      </div>
+      <div class="meta-cell">
+        <div class="label">// Délka sezení</div>
+        <p class="big">60&nbsp;min</p>
+      </div>
+      <div class="meta-cell">
+        <div class="label">// Cena první návštěvy</div>
+        <p class="big">1&nbsp;490&nbsp;Kč</p>
+      </div>
+    </div>
+
+    <div class="tick mono">004</div>
+    <div class="cta-row">
+      <a href="#" class="btn">Objednat termín <span class="arrow">→</span></a>
+      <a href="#" class="btn-2">Stáhnout kompletní ceník (PDF)</a>
+      <span style="margin-left:auto;font-family:'Geist Mono',monospace;font-size:12px;color:var(--muted)">Praha 2 · Trojická 14 · +420 234 100 100</span>
+    </div>
+
+    <div class="right-pane">
+      <div class="scope">
+        <span class="label mono">// Live signal — example</span>
+        <div class="wave"><svg viewBox="0 0 1600 400" preserveAspectRatio="none"><path class="anim" d="M0 200 Q 100 80 200 200 T 400 200 T 600 200 T 800 200 T 1000 200 T 1200 200 T 1400 200 T 1600 200"/></svg></div>
+        <div class="wave w2"><svg viewBox="0 0 1600 400" preserveAspectRatio="none"><path class="anim" d="M0 220 Q 50 320 100 220 T 200 220 T 300 220 T 400 220 T 500 220 T 600 220 T 700 220 T 800 220 T 900 220 T 1000 220 T 1100 220 T 1200 220 T 1300 220 T 1400 220 T 1500 220 T 1600 220"/></svg></div>
+        <div class="stat">
+          <span><b>34&nbsp;Hz</b>Vlastní frekvence</span>
+          <span><b>14&nbsp;let</b>Praxe</span>
+          <span><b>4&nbsp;200+</b>Klientů</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

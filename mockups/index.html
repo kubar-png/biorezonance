@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8" />
+<title>Hero mockupy · Klinika biorezonance · Round 01</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@300;400;500;600&display=swap&subset=latin,latin-ext" rel="stylesheet">
+<style>
+:root{
+  --rose:#f6dcd3; --rose-deep:#a04b3e;
+  --sage:#cad6b0; --sage-deep:#43562a;
+  --bg:#f8f3eb; --ink:#0d0c08; --muted:#6b645b; --line:#ddd6c7;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--ink);font-family:"Inter",sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+
+header{padding:48px 56px 28px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:10}
+.head-row{display:flex;align-items:end;justify-content:space-between;gap:24px;flex-wrap:wrap;max-width:1500px;margin:0 auto}
+h1{font-family:"Fraunces",serif;font-weight:400;font-size:42px;letter-spacing:-.02em;line-height:1}
+h1 em{font-style:italic;color:var(--rose-deep)}
+.brief{font-size:14px;color:var(--muted);max-width:600px;margin-top:8px;line-height:1.55}
+.brief b{color:var(--ink)}
+.controls{display:flex;align-items:center;gap:14px;font-size:13.5px;color:var(--muted)}
+.controls label{display:flex;align-items:center;gap:8px;cursor:pointer}
+.controls select{font:inherit;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:#fff}
+.legend{margin-top:18px;display:flex;gap:24px;font-size:12.5px;color:var(--muted);max-width:1500px;margin:18px auto 0}
+.legend .swatch{display:inline-block;width:14px;height:14px;border-radius:4px;vertical-align:middle;margin-right:6px;border:1px solid rgba(0,0,0,.08)}
+
+main{padding:32px 56px 80px;max-width:1500px;margin:0 auto}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
+.card{background:#fff;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 8px 32px -16px rgba(60,40,30,.18);transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-3px);box-shadow:0 18px 48px -16px rgba(60,40,30,.25)}
+.card .meta{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid var(--line);gap:12px}
+.card .num{font-family:"Fraunces",serif;font-style:italic;font-size:22px;color:var(--rose-deep);font-weight:400;letter-spacing:-.01em;flex-shrink:0}
+.card .title{font-size:15px;font-weight:600;letter-spacing:-.01em}
+.card .tags{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.card .tag{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--bg);padding:4px 8px;border-radius:99px;font-weight:600;border:1px solid var(--line)}
+.card .tag.dark{background:var(--ink);color:#fff;border-color:var(--ink)}
+.card .tag.rose{background:var(--rose);color:var(--rose-deep);border-color:#eccfc6}
+.card .tag.sage{background:var(--sage);color:var(--sage-deep);border-color:#bdcc9e}
+.card .desc{padding:14px 22px;font-size:13px;color:var(--muted);line-height:1.55;background:#faf7f0;border-bottom:1px solid var(--line)}
+.card .desc b{color:var(--ink);font-weight:600}
+.frame{position:relative;width:100%;height:560px;background:#fff;overflow:hidden}
+.frame iframe{position:absolute;top:0;left:0;width:1440px;height:900px;transform:scale(.46);transform-origin:0 0;border:0;pointer-events:none}
+.card.tall .frame{height:680px}
+.card .actions{padding:14px 22px;display:flex;gap:10px;justify-content:flex-end;background:#fff;border-top:1px solid var(--line)}
+.card .actions a{padding:8px 14px;border-radius:99px;font-size:12.5px;border:1px solid var(--line);color:var(--ink);transition:background .2s}
+.card .actions a:hover{background:var(--bg)}
+.card .actions a.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
+.card .actions a.primary:hover{background:#2b2724}
+
+footer{padding:32px 56px 64px;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid var(--line);margin-top:48px}
+footer em{font-family:"Fraunces",serif;font-style:italic;color:var(--rose-deep)}
+</style>
+</head>
+<body>
+<header>
+  <div class="head-row">
+    <div>
+      <h1>Hero <em>mockupy</em> · Round 01</h1>
+      <p class="brief">10 výrazně odlišných směrů pro klinic biorezonance. Paleta: <b>lehká růžová</b> + <b>sage / lime</b>. Tón: profesionální, ale lidský — pacient by neměl dostat strach. Vyberte 1–3 favority, řekněte co se vám líbí / nelíbí a&nbsp;v&nbsp;dalším kole je zúžíme.</p>
+    </div>
+    <div class="controls">
+      <label><input type="checkbox" id="autoplay" checked> animace iframe</label>
+    </div>
+  </div>
+  <div class="legend">
+    <span><span class="swatch" style="background:#f6dcd3"></span>Růžová</span>
+    <span><span class="swatch" style="background:#cad6b0"></span>Sage / lime</span>
+    <span><span class="swatch" style="background:#f8f3eb"></span>Krémový základ</span>
+    <span style="margin-left:auto">Náhledy jsou škálované na 46 % · klikněte „Otevřít naplno" pro plnou velikost</span>
+  </div>
+</header>
+
+<main>
+  <article class="card tall" style="border-color:var(--rose-deep);grid-column:1 / -1;margin-bottom:48px">
+    <div class="meta">
+      <span class="num">FULL</span>
+      <span class="title">Kompletní web mockup ★</span>
+      <span class="tags"><span class="tag dark">vše-v-jednom</span><span class="tag rose">production-quality</span></span>
+    </div>
+    <div class="desc"><b>Všech 9 sekcí původního webu</b> přetavených do Petal Refined stylu — nav, hero, služby (5×), o&nbsp;mně, můj přístup, benefity, reference (6×), FAQ accordion, kontaktní formulář, footer. <b>Toto je nejdůležitější náhled.</b></div>
+    <div class="frame" style="height:880px"><iframe src="full-site.html"></iframe></div>
+    <div class="actions"><a href="full-site.html">Náhled</a><a href="full-site.html" target="_blank" class="primary">Otevřít naplno ↗</a></div>
+  </article>
+
+  <h2 style="font-family:'Fraunces',serif;font-weight:400;font-size:32px;letter-spacing:-.02em;margin-bottom:6px">Round 03 · <em style="color:var(--rose-deep)">Petal Refined</em> — zvolený směr</h2>
+  <p style="font-size:14px;color:var(--muted);margin-bottom:24px;max-width:760px">9b layout (orbital fan) + 9a font (Playfair Display) + 9a styl (žádné kurzivy, menší nadpis). Toto je směr pro celý web.</p>
+  <div class="grid">
+    <article class="card" style="border-color:var(--rose-deep)">
+      <div class="meta">
+        <span class="num">09f</span>
+        <span class="title">Petal Refined ★</span>
+        <span class="tags"><span class="tag rose">vybráno</span><span class="tag">Playfair</span></span>
+      </div>
+      <div class="desc"><b>9b struktura + 9a font, bez kurzivy, menší nadpis.</b> Playfair Display 500 + Albert Sans. Akcenty barvou (rose / sage), ne italikou. Toto je hlavní směr.</div>
+      <div class="frame"><iframe src="v09f-petal-refined.html"></iframe></div>
+      <div class="actions"><a href="v09f-petal-refined.html">Náhled</a><a href="v09f-petal-refined.html" target="_blank" class="primary">Otevřít naplno ↗</a></div>
+    </article>
+  </div>
+
+  <h2 style="font-family:'Fraunces',serif;font-weight:400;font-size:32px;letter-spacing:-.02em;margin:64px 0 6px">Round 02 · <em style="color:var(--rose-deep)">Glass Bloom evoluce</em></h2>
+  <p style="font-size:14px;color:var(--muted);margin-bottom:24px;max-width:760px">5 směrů založených na v09. Liší se fontem, palette temperature a&nbsp;rozložením glass karet.</p>
+  <div class="grid">
+    <article class="card">
+      <div class="meta">
+        <span class="num">09a</span>
+        <span class="title">Aurora Linear</span>
+        <span class="tags"><span class="tag">Playfair Display</span><span class="tag rose">centered</span></span>
+      </div>
+      <div class="desc"><b>Centrovaný nadpis + 4 horizontální glass karty pod ním.</b> Aurora-band wash místo bublin. Playfair Display + Manrope. Symetrické, classy, čtivé na první pohled.</div>
+      <div class="frame"><iframe src="v09a-aurora-linear.html"></iframe></div>
+      <div class="actions"><a href="v09a-aurora-linear.html">Náhled</a><a href="v09a-aurora-linear.html" target="_blank" class="primary">Otevřít naplno ↗</a></div>
+    </article>
+
+    <article class="card">
+      <div class="meta">
+        <span class="num">09b</span>
+        <span class="title">Petal Fan</span>
+        <span class="tags"><span class="tag sage">organické</span><span class="tag">orbital</span></span>
+      </div>
+      <div class="desc"><b>Karty rozmístěné jako okvětní lístky kolem orbitálního kruhu.</b> Cormorant Garamond + Albert Sans. Sage-leaning palette. Hravější, „kvetoucí".</div>
+      <div class="frame"><iframe src="v09b-petal-fan.html"></iframe></div>
+      <div class="actions"><a href="v09b-petal-fan.html">Náhled</a><a href="v09b-petal-fan.html" target="_blank" class="primary">Otevřít naplno ↗</a></div>
+    </article>
+
+    <article class="card">
+      <div class="meta">
+        <span class="num">09c</span>
+        <span class="title">Diptych</span>
+        <span class="tags"><span class="tag dark">precision</span><span class="tag">editorial</span></span>
+      </div>
+      <div class="desc"><b>Dva panely v dialogu — vlevo hero + meta tabulka, vpravo bigcard s&nbsp;citátem lékařky.</b> Newsreader + IBM Plex. Chladnější, refined, "Apotheke vibe".</div>
+      <div class="frame"><iframe src="v09c-diptych.html"></iframe></div>
+      <div class="actions"><a href="v09c-diptych.html">Náhled</a><a href="v09c-diptych.html" target="_blank" class="primary">Otevřít naplno ↗</a></div>
+    </article>
+
+    <article class="card">
+      <div class="meta">
+        <span class="num">09d</span>
+        <span class="title">Liquid Capsule</span>
+        <span class="tags"><span class="tag rose">sunset</span><span class="tag">contained</span></span>
+      </div>
+      <div class="desc"><b>Celý hero žije uvnitř obří frosted „kapsle".</b> Bodoni Moda + Inter Tight. Teplejší peach+rose palette, watermark "slyšet" v pozadí. Jako šperk.</div>
+      <div class="frame"><iframe src="v09d-liquid-capsule.html"></iframe></div>
+      <div class="actions"><a href="v09d-liquid-capsule.html">Náhled</a><a href="v09d-liquid-capsule.html" target="_blank" class="primary">Otevřít naplno ↗</a></div>
+    </article>
+
+    <article class="card">
+      <div class="meta">
+        <span class="num">09e</span>
+        <span class="title">Vertical Ribbon</span>
+        <span class="tags"><span class="tag dark">asymmetric</span><span class="tag sage">poster</span></span>
+      </div>
+      <div class="desc"><b>Vertikální stuha glass karet vlevo, obří „poster" wash s&nbsp;all-caps Italiana titulkem vpravo.</b> Geist + Italiana. Nejodvážnější, vypadá jako galerie / módní brand.</div>
+      <div class="frame"><iframe src="v09e-vertical-ribbon.html"></iframe></div>
+      <div class="actions"><a href="v09e-vertical-ribbon.html">Náhled</a><a href="v09e-vertical-ribbon.html" target="_blank" class="primary">Otevřít naplno ↗</a></div>
+    </article>
+  </div>
+
+  <h2 style="font-family:'Fraunces',serif;font-weight:400;font-size:32px;letter-spacing:-.02em;margin:64px 0 6px">Round 01 · <span style="color:var(--muted)">archiv</span></h2>
+  <p style="font-size:14px;color:var(--muted);margin-bottom:24px">Původní 10 směrů pro porovnání.</p>
+  <div class="grid">
+
+    <article class="card">
+      <div class="meta">
+        <span class="num">01</span>
+        <span class="title">Editorial Stillness</span>
+        <span class="tags"><span class="tag rose">elegantní</span><span class="tag">serif-led</span></span>
+      </div>
+      <div class="desc"><b>Magazin-styl, ztišený.</b> Fraunces serif s italikou v akcentu, fotka v pill-shape, KPI lišta. Pro klientelu, která čte Forbes Zdraví & poslouchá ČRo.</div>
+      <div class="frame"><iframe src="v01-editorial-stillness.html"></iframe></div>
+      <div class="actions"><a href="v01-editorial-stillness.html">Náhled</a><a href="v01-editorial-stillness.html" target="_blank" class="primary">Otevřít naplno ↗</a></div>
+    </article>
+
+    <article class="card">
+      <div class="meta">
+        <span class="num">02</span>
+        <span class="title">Botanical Soft</span>
+        <span class="tags"><span class="tag sage">organické</span><span class="tag">ilustrace</span></span>
+      </div>
+      <div class="desc"><b>Organické, klidné, "spa".</b> Cormorant Garamond + organické listové ilustrace plovoucí kolem nadpisu. Maximum přátelskosti, jemný insider feel.</div>
+      <div class="frame"><iframe src="v02-botanical-soft.html"></iframe></div>
+      <div class="actions"><a href="v02-botanical-soft.html">Náhled</a><a href="v02-botanical-soft.html" target="_blank" class="primary">Otevřít naplno ↗</a></div>
+    </article>
+
+    <article class="card">
+      <div class="meta">
+        <span class="num">03</span>
+        <span class="title">Clinical Grid</span>
+        <span class="tags"><span class="tag dark">strukturální</span><span class="tag">data-vis</span></span>
+      </div>
+      <div class="desc"><b>Technické, ale lidsky podané.</b> Grid se značkami strany, mono detaily, živá signal-wave. Maximální důvěryhodnost, pro pacienty, kterým chybí precision.</div>
+      <div class="frame"><iframe src="v03-clinical-grid.html"></iframe></div>
+      <div class="actions"><a href="v03-clinical-grid.html">Náhled</a><a href="v03-clinical-grid.html" target="_blank" class="primary">Otevřít naplno ↗</a></div>
+    </article>
+
+    <article class="card">
+      <div class="meta">
+        <span class="num">04</span>
+        <span class="title">Clay Warmth</span>
+        <span class="tags"><span class="tag rose">teplé</span><span class="tag">blob</span></span>
+      </div>
+      <div class="desc"><b>Teplé, hřejivé, "Headspace meets klinika".</b> Měkké morfující blob shapes v terakotě + sage, plovoucí citace karta. Pro klientelu, která má strach z bílých chodeb.</div>
+      <div class="frame"><iframe src="v04-clay-warmth.html"></iframe></div>
+      <div class="actions"><a href="v04-clay-warmth.html">Náhled</a><a href="v04-clay-warmth.html" target="_blank" class="primary">Otevřít naplno ↗</a></div>
+    </article>
+
+    <article class="card">
+      <div class="meta">
+        <span class="num">05</span>
+        <span class="title">Bento Modular</span>
+        <span class="tags"><span class="tag">moderní</span><span class="tag rose">grid</span></span>
+      </div>
+      <div class="desc"><b>Modulární karty à la Apple, ale měkce.</b> Vše důležité (KPI, citace, hodiny, nejbližší termín) v jednom screenu. Hodně informací bez chaosu.</div>
+      <div class="frame"><iframe src="v05-bento-modular.html"></iframe></div>
+      <div class="actions"><a href="v05-bento-modular.html">Náhled</a><a href="v05-bento-modular.html" target="_blank" class="primary">Otevřít naplno ↗</a></div>
+    </article>
+
+    <article class="card">
+      <div class="meta">
+        <span class="num">06</span>
+        <span class="title">Bauhaus Soft</span>
+        <span class="tags"><span class="tag dark">geometrické</span><span class="tag sage">manifest</span></span>
+      </div>
+      <div class="desc"><b>Designově nejodvážnější.</b> Geometrické tvary, contrast color blocking, ticker dole. Manifest klinika – odlišíte se od konkurence na sto honů. Risk: trochu „studio" pocit.</div>
+      <div class="frame"><iframe src="v06-bauhaus-soft.html"></iframe></div>
+      <div class="actions"><a href="v06-bauhaus-soft.html">Náhled</a><a href="v06-bauhaus-soft.html" target="_blank" class="primary">Otevřít naplno ↗</a></div>
+    </article>
+
+    <article class="card">
+      <div class="meta">
+        <span class="num">07</span>
+        <span class="title">Overlap Warmth</span>
+        <span class="tags"><span class="tag sage">hřejivé</span><span class="tag">cards</span></span>
+      </div>
+      <div class="desc"><b>Klasický hero s fotkou a překrývajícími se kartami.</b> Citace, hodiny, konzultace – vše „obtéká" hlavní fotku. Důvěryhodné & lidské. Bezpečná, ale silná volba.</div>
+      <div class="frame"><iframe src="v07-overlap-warmth.html"></iframe></div>
+      <div class="actions"><a href="v07-overlap-warmth.html">Náhled</a><a href="v07-overlap-warmth.html" target="_blank" class="primary">Otevřít naplno ↗</a></div>
+    </article>
+
+    <article class="card">
+      <div class="meta">
+        <span class="num">08</span>
+        <span class="title">Diagonal Split</span>
+        <span class="tags"><span class="tag rose">dynamické</span><span class="tag">color-block</span></span>
+      </div>
+      <div class="desc"><b>Smělá diagonála růžová / sage, nadpis přes řez.</b> Vizuálně zapamatovatelné, "okamžik". Funguje pro brand, který chce být osobností. Trochu dramatičtější.</div>
+      <div class="frame"><iframe src="v08-diagonal-split.html"></iframe></div>
+      <div class="actions"><a href="v08-diagonal-split.html">Náhled</a><a href="v08-diagonal-split.html" target="_blank" class="primary">Otevřít naplno ↗</a></div>
+    </article>
+
+    <article class="card">
+      <div class="meta">
+        <span class="num">09</span>
+        <span class="title">Glass Bloom</span>
+        <span class="tags"><span class="tag">soft</span><span class="tag rose">glass</span></span>
+      </div>
+      <div class="desc"><b>Soft glassmorphism, atmosféra prvních ranních paprsků.</b> Rozmazané gradient washe, plovoucí frosted karty, grain texture. Premium & moderní, „wellness lab".</div>
+      <div class="frame"><iframe src="v09-glass-bloom.html"></iframe></div>
+      <div class="actions"><a href="v09-glass-bloom.html">Náhled</a><a href="v09-glass-bloom.html" target="_blank" class="primary">Otevřít naplno ↗</a></div>
+    </article>
+
+    <article class="card">
+      <div class="meta">
+        <span class="num">10</span>
+        <span class="title">Typographic Statement</span>
+        <span class="tags"><span class="tag dark">editoriální</span><span class="tag">type-led</span></span>
+      </div>
+      <div class="desc"><b>Hero = obří typografie. Téměř novinový.</b> Crimson Pro displej, anotace na boku jako poznámkový aparát. Pro brand, který má co říct a chce být citován.</div>
+      <div class="frame"><iframe src="v10-typographic.html"></iframe></div>
+      <div class="actions"><a href="v10-typographic.html">Náhled</a><a href="v10-typographic.html" target="_blank" class="primary">Otevřít naplno ↗</a></div>
+    </article>
+
+  </div>
+</main>
+
+<footer>
+  <p>Round 01 · 10 hero variant · <em>vyberte favority a&nbsp;ve druhém kole je zkombinujeme</em></p>
+</footer>
+
+<script>
+// pause all iframes when not in view to save CPU
+const ifrs = document.querySelectorAll('iframe');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) {
+      // detach src to pause animations
+      const f = e.target;
+      if (f.dataset.src) return;
+      f.dataset.src = f.src;
+      f.src = 'about:blank';
+    } else if (e.target.dataset.src) {
+      e.target.src = e.target.dataset.src;
+      delete e.target.dataset.src;
+    }
+  });
+}, {rootMargin:'600px'});
+ifrs.forEach(f => io.observe(f));
+</script>
+</body>
+</html>

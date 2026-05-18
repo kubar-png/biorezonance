@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8" />
+<title>V08 · Diagonal Split</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap&subset=latin,latin-ext" rel="stylesheet">
+<style>
+:root{
+  --rose:#f6d5cb; --rose-deep:#a3493d;
+  --sage:#cdd9b3; --sage-deep:#445830;
+  --paper:#f7f2e9; --ink:#13130e; --muted:#5b554d;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--paper);color:var(--ink);font-family:"Schibsted Grotesk",sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.serif{font-family:"Fraunces",serif}
+
+.wrap{position:relative;min-height:100vh;overflow:hidden}
+.split{position:absolute;inset:0}
+.split .top{position:absolute;inset:0;background:var(--rose);clip-path:polygon(0 0,100% 0,100% 64%,0 36%)}
+.split .bot{position:absolute;inset:0;background:var(--sage);clip-path:polygon(0 36%,100% 64%,100% 100%,0 100%)}
+.split .mid{position:absolute;left:0;right:0;height:1px;background:var(--ink);top:50%;transform:translateY(-50%) rotate(-3.5deg);transform-origin:center}
+
+nav{position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:24px 56px;max-width:1500px;margin:0 auto;color:var(--ink)}
+.logo{font-family:"Fraunces",serif;font-size:24px;letter-spacing:-.02em;font-weight:500;display:flex;align-items:center;gap:10px}
+.logo .dot{width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fff 0%,var(--rose-deep) 70%,#5f2820 100%);box-shadow:0 4px 12px rgba(0,0,0,.12)}
+nav ul{display:flex;gap:32px;list-style:none;font-size:14.5px;color:var(--ink);font-weight:500}
+nav .cta{background:var(--ink);color:var(--paper);padding:12px 22px;border-radius:999px;font-size:13.5px;font-weight:500}
+
+.hero{position:relative;z-index:5;max-width:1500px;margin:0 auto;padding:88px 56px 56px;display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:start}
+.left .eyebrow{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.7);padding:7px 14px;border-radius:999px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--rose-deep);margin-bottom:28px;backdrop-filter:blur(8px)}
+.left .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--rose-deep);animation:p 2s infinite}
+@keyframes p{50%{opacity:.4}}
+h1{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(72px,9vw,156px);line-height:.88;letter-spacing:-.038em;color:var(--ink)}
+h1 em{font-style:italic;color:var(--rose-deep);font-weight:300}
+h1 .lo{display:block;color:var(--sage-deep)}
+.lede{margin-top:36px;font-size:18.5px;line-height:1.6;color:var(--ink);max-width:520px;opacity:.85}
+.ctas{margin-top:48px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.btn{background:var(--ink);color:var(--paper);padding:18px 32px;border-radius:999px;font-size:15px;display:inline-flex;align-items:center;gap:10px;transition:transform .25s}
+.btn:hover{transform:translateY(-2px)}
+.minor{font-size:14px;color:var(--ink);opacity:.7;display:inline-flex;align-items:center;gap:8px}
+.minor::before{content:"";width:24px;height:1px;background:currentColor}
+
+.right{position:relative}
+.card{background:rgba(255,255,255,.62);backdrop-filter:blur(20px);border-radius:20px;padding:22px;border:1px solid rgba(255,255,255,.6)}
+.cards{display:grid;gap:16px}
+.featured{padding:28px}
+.featured .row{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.featured .av{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--sage-deep));flex-shrink:0;border:2px solid #fff}
+.featured b{display:block;font-size:14.5px}
+.featured span{font-size:12.5px;color:var(--muted)}
+.featured blockquote{font-family:"Fraunces",serif;font-style:italic;font-weight:300;font-size:24px;line-height:1.35;color:var(--ink)}
+.featured cite{margin-top:14px;font-style:normal;font-size:12.5px;color:var(--muted);display:block}
+
+.dual{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.dual .card{padding:18px}
+.dual .card .label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--rose-deep);font-weight:600;margin-bottom:8px}
+.dual .card .big{font-family:"Fraunces",serif;font-weight:400;font-size:34px;letter-spacing:-.02em;line-height:1}
+.dual .card .small{font-size:12.5px;color:var(--muted);margin-top:6px}
+
+.stripe{margin-top:18px;background:var(--ink);color:var(--paper);border-radius:20px;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.stripe b{font-family:"Fraunces",serif;font-style:italic;font-weight:300;font-size:22px}
+.stripe a{display:inline-flex;align-items:center;gap:8px;color:var(--paper);font-size:14px}
+.stripe a::after{content:"→";transition:transform .2s}
+.stripe a:hover::after{transform:translateX(4px)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="split">
+  <div class="top"></div>
+  <div class="bot"></div>
+  <div class="mid"></div>
+</div>
+
+<nav>
+  <a href="#" class="logo"><span class="dot"></span> Symetria</a>
+  <ul><li><a>Metoda</a></li><li><a>Pro koho</a></li><li><a>Ceník</a></li><li><a>Tým</a></li><li><a>Reference</a></li></ul>
+  <a href="#" class="cta">Objednat se →</a>
+</nav>
+
+<section class="hero">
+  <div class="left">
+    <span class="eyebrow"><span class="dot"></span> Klinika biorezonance · Praha · od 2011</span>
+    <h1>Tělo&nbsp;a&nbsp;duše,<em>v&nbsp;jedné</em><span class="lo">rovině.</span></h1>
+    <p class="lede">Klinika postavená kolem zdánlivého protikladu — vědecké precision a&nbsp;lidské&nbsp;laskavosti. Sedm let jsme hledali rovnováhu mezi nimi. Vy si u&nbsp;nás hledáte tu svou.</p>
+    <div class="ctas">
+      <a href="#" class="btn">Objednat nezávaznou konzultaci →</a>
+      <span class="minor">15 min · online · zdarma</span>
+    </div>
+  </div>
+
+  <aside class="right">
+    <div class="cards">
+      <div class="card featured">
+        <div class="row">
+          <span class="av"></span>
+          <div><b>MUDr. Hana Novotná</b><span>vedoucí lékařka kliniky</span></div>
+        </div>
+        <blockquote>"Biorezonance není zázrak. Je to dialog. Tělo říká, kde to drhne — my překládáme."</blockquote>
+        <cite>— rozhovor pro Forbes Zdraví, 03/2024</cite>
+      </div>
+
+      <div class="dual">
+        <div class="card">
+          <div class="label">Cena první návštěvy</div>
+          <div class="big">1&nbsp;490&nbsp;Kč</div>
+          <div class="small">60 min · diagnostika + plán</div>
+        </div>
+        <div class="card">
+          <div class="label">Spokojenost</div>
+          <div class="big">4.94&nbsp;★</div>
+          <div class="small">312 ověřených recenzí</div>
+        </div>
+      </div>
+
+      <div class="stripe">
+        <b>"Zavolejte. Posloucháme."</b>
+        <a href="tel:+420777234100">+420 777 234 100</a>
+      </div>
+    </div>
+  </aside>
+</section>
+</div>
+</body>
+</html>

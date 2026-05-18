@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8" />
+<title>V09 · Glass Bloom</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Outfit:wght@200;300;400;500;600;700&display=swap&subset=latin,latin-ext" rel="stylesheet">
+<style>
+:root{
+  --rose:#fadfd9; --rose-2:#f1bdb2; --rose-deep:#a8554a;
+  --sage:#d7e0bf; --sage-2:#b6c98c; --sage-deep:#4c5f30;
+  --paper:#f7f1e9; --ink:#1d1b18; --muted:#615a51;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--paper);color:var(--ink);font-family:"Outfit",sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+a{color:inherit;text-decoration:none}
+
+.wash{position:fixed;inset:-10%;z-index:0;filter:blur(80px) saturate(1.1);pointer-events:none}
+.wash::before,.wash::after{content:"";position:absolute;border-radius:50%}
+.wash::before{width:60vw;height:60vw;background:radial-gradient(circle,var(--rose-2) 0%,transparent 65%);left:-15%;top:-15%;animation:drift1 18s ease-in-out infinite}
+.wash::after{width:55vw;height:55vw;background:radial-gradient(circle,var(--sage-2) 0%,transparent 65%);right:-12%;bottom:-12%;animation:drift2 22s ease-in-out infinite}
+.wash .c3{position:absolute;width:35vw;height:35vw;background:radial-gradient(circle,var(--rose) 0%,transparent 70%);left:30%;bottom:10%;border-radius:50%;animation:drift1 16s ease-in-out -3s infinite}
+@keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-30px) scale(1.05)}}
+@keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-30px,40px) scale(1.1)}}
+.grain{position:fixed;inset:0;z-index:1;opacity:.06;pointer-events:none;mix-blend-mode:multiply;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence baseFrequency='.95' numOctaves='3' /></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='.7'/></svg>")}
+
+.shell{position:relative;z-index:5;max-width:1440px;margin:0 auto;padding:24px 48px 64px}
+nav{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:rgba(255,255,255,.55);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.55);border-radius:999px;box-shadow:0 8px 32px rgba(80,40,30,.06)}
+.logo{display:flex;align-items:center;gap:10px;font-family:"Tenor Sans",serif;font-size:18px;letter-spacing:.04em;text-transform:uppercase;padding-left:8px}
+.logo .dot{width:24px;height:24px;border-radius:50%;background:conic-gradient(from 90deg,var(--rose-deep),var(--sage-deep),var(--rose-deep))}
+nav ul{display:flex;gap:30px;list-style:none;font-size:13.5px;color:var(--ink)}
+.pill{background:var(--ink);color:var(--paper);padding:10px 20px;border-radius:999px;font-size:13.5px}
+
+.hero{margin-top:72px;display:grid;grid-template-columns:1.2fr .8fr;gap:64px;align-items:center;min-height:72vh}
+.eyebrow{font-family:"Tenor Sans",serif;font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:var(--rose-deep);margin-bottom:28px;display:inline-flex;align-items:center;gap:14px}
+.eyebrow::before{content:"";width:40px;height:1px;background:var(--rose-deep)}
+h1{font-family:"Tenor Sans",serif;font-weight:400;font-size:clamp(64px,8vw,124px);line-height:.99;letter-spacing:-.02em}
+h1 .lo{display:block;font-family:"Outfit",sans-serif;font-style:italic;font-weight:300;color:var(--rose-deep);font-size:0.78em;letter-spacing:-.018em;line-height:1.05;margin-top:8px}
+.lede{margin-top:36px;font-size:18px;line-height:1.65;color:var(--ink);opacity:.8;max-width:520px}
+.ctas{margin-top:48px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.btn{background:var(--ink);color:var(--paper);padding:18px 30px;border-radius:999px;font-size:15px;display:inline-flex;align-items:center;gap:10px;transition:transform .25s}
+.btn:hover{transform:translateY(-2px)}
+.btn-2{background:rgba(255,255,255,.6);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.55);padding:18px 26px;border-radius:999px;font-size:15px;display:inline-flex;align-items:center;gap:10px;color:var(--ink)}
+
+/* right side stacked glass cards */
+.stack{position:relative;display:flex;flex-direction:column;gap:18px;perspective:1200px}
+.glass{background:rgba(255,255,255,.6);backdrop-filter:blur(28px);border-radius:24px;padding:22px 24px;border:1px solid rgba(255,255,255,.55);box-shadow:0 24px 60px -16px rgba(80,40,30,.18);position:relative;overflow:hidden}
+.glass::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.4),transparent 40%);pointer-events:none;border-radius:24px}
+.glass .label{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--rose-deep);font-weight:600;margin-bottom:10px}
+.glass h4{font-family:"Tenor Sans",serif;font-size:22px;font-weight:400;line-height:1.15;letter-spacing:-.005em;margin-bottom:8px}
+.glass p{font-size:13.5px;line-height:1.55;color:var(--muted)}
+.glass a{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-size:13.5px;color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:3px}
+.glass .row{display:flex;align-items:center;gap:10px}
+.glass .av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--sage-deep))}
+
+.spark{position:absolute;width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 14px 2px #fff;animation:twinkle 3s ease-in-out infinite}
+.spark.s1{top:18%;left:42%;animation-delay:-1s}
+.spark.s2{top:45%;left:38%;animation-delay:-2s}
+.spark.s3{top:70%;left:48%}
+@keyframes twinkle{0%,100%{opacity:0;transform:scale(.5)}50%{opacity:.95;transform:scale(1.2)}}
+
+.foot{margin-top:72px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 24px;background:rgba(255,255,255,.45);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.55);border-radius:999px;color:var(--muted);font-size:13px}
+.foot b{color:var(--ink);font-weight:500}
+.foot svg{width:14px;height:14px;color:var(--sage-deep);vertical-align:middle}
+</style>
+</head>
+<body>
+<div class="wash"><div class="c3"></div></div>
+<div class="grain"></div>
+
+<div class="shell">
+<nav>
+  <a href="#" class="logo"><span class="dot"></span> Lumen</a>
+  <ul><li><a>Metoda</a></li><li><a>Pro koho</a></li><li><a>Tým</a></li><li><a>Ceník</a></li><li><a>FAQ</a></li></ul>
+  <a href="#" class="pill">Termíny tento týden →</a>
+</nav>
+
+<section class="hero">
+  <div>
+    <span class="eyebrow">Klinika biorezonance · Praha 7</span>
+    <h1>Klid mezi&nbsp;buňkami.<span class="lo">A&nbsp;klid v&nbsp;hlavě.</span></h1>
+    <p class="lede">Bezbolestná hodina, ve které tělu věnujeme veškerou pozornost. Žádné jehly, žádné předepisování — jen poslouchání toho, co se v&nbsp;nás dávno&nbsp;děje.</p>
+    <div class="ctas">
+      <a href="#" class="btn">Rezervovat termín →</a>
+      <a href="#" class="btn-2">▶ Jak to u nás vypadá</a>
+    </div>
+  </div>
+
+  <div class="stack">
+    <span class="spark s1"></span>
+    <span class="spark s2"></span>
+    <span class="spark s3"></span>
+
+    <article class="glass" style="transform:translateX(-12px)">
+      <div class="label">Začněte tady</div>
+      <h4>15 minut zdarma, online</h4>
+      <p>Krátké volání, abychom zjistili, jestli má biorezonance v&nbsp;vašem případě smysl. Žádné prodejní triky.</p>
+      <a href="#">Vybrat termín konzultace</a>
+    </article>
+
+    <article class="glass">
+      <div class="row" style="margin-bottom:14px">
+        <span class="av"></span>
+        <div><b style="font-size:13.5px">Tereza V., 38</b><div style="font-size:11.5px;color:var(--muted)">klientka od 2022</div></div>
+      </div>
+      <p style="font-family:'Tenor Sans';font-size:17px;line-height:1.4;color:var(--ink);font-style:italic">"Po deseti letech migrén jsem konečně&nbsp;klidná. Bez tabletek."</p>
+      <div style="margin-top:12px;color:#dc985c;font-size:13px">★★★★★ <span style="color:var(--muted);font-size:12px">na Heuréce</span></div>
+    </article>
+
+    <article class="glass" style="transform:translateX(20px);background:rgba(70,89,49,.85);color:#fff;border-color:rgba(255,255,255,.2)">
+      <div class="label" style="color:var(--sage)">Otevřeno teď</div>
+      <h4 style="color:#fff">+420 777 234 100</h4>
+      <p style="color:rgba(255,255,255,.7)">Pondělí–pátek 8:00–18:00. Recepce zvedá osobně.</p>
+    </article>
+  </div>
+</section>
+
+<div class="foot">
+  <span><b>14 let</b> praxe</span>
+  <span><b>4 200+</b> klientů</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg> Certifikovaní terapeuti SBT</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l4 4 14-14"/></svg> Bez vedlejších účinků</span>
+  <span style="margin-left:auto"><b>Praha 7</b> · Veletržní 36</span>
+</div>
+</div>
+</body>
+</html>

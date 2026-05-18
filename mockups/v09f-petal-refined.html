@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8" />
+<title>V09f · Petal Refined</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Albert+Sans:wght@300;400;500;600;700&display=swap&subset=latin,latin-ext" rel="stylesheet">
+<style>
+:root{
+  --rose:#f7d8d0; --rose-deep:#a14f42;
+  --sage:#c8d9a3; --sage-2:#a5be78; --sage-deep:#3f5524;
+  --paper:#f5f0e7; --ink:#16140f; --muted:#5e574e;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--paper);color:var(--ink);font-family:"Albert Sans",sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+a{color:inherit;text-decoration:none}
+.display{font-family:"Playfair Display",serif}
+
+/* sage-dominant wash with rose accents */
+.wash{position:fixed;inset:-10%;z-index:0;filter:blur(90px) saturate(1.1);pointer-events:none}
+.wash::before,.wash::after{content:"";position:absolute;border-radius:50%}
+.wash::before{width:75vw;height:75vw;background:radial-gradient(circle,var(--sage-2) 0%,transparent 60%);left:-25%;top:-10%;animation:drift 24s ease-in-out infinite}
+.wash::after{width:55vw;height:55vw;background:radial-gradient(circle,var(--rose) 0%,transparent 65%);right:-10%;top:30%;animation:drift 28s ease-in-out -5s infinite reverse}
+.wash .c3{position:absolute;width:42vw;height:42vw;background:radial-gradient(circle,var(--sage) 0%,transparent 65%);left:15%;bottom:-15%;border-radius:50%;animation:drift 20s ease-in-out infinite}
+@keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,-30px)}}
+.grain{position:fixed;inset:0;z-index:1;opacity:.05;pointer-events:none;mix-blend-mode:multiply;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence baseFrequency='.9' numOctaves='3'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+
+/* orbital ring */
+.orbit{position:absolute;right:-120px;top:80px;width:780px;height:780px;border-radius:50%;border:1px dashed rgba(0,0,0,.08);z-index:2;pointer-events:none;animation:spin 90s linear infinite}
+.orbit::before,.orbit::after{content:"";position:absolute;border-radius:50%;border:1px dashed rgba(0,0,0,.08)}
+.orbit::before{inset:80px}
+.orbit::after{inset:160px}
+.orbit .satellite{position:absolute;top:-6px;left:50%;width:12px;height:12px;border-radius:50%;background:var(--rose-deep);transform:translateX(-50%);box-shadow:0 0 14px var(--rose)}
+.orbit .satellite.s2{top:auto;bottom:-6px;background:var(--sage-deep)}
+.orbit .satellite.s3{left:-6px;top:50%;transform:translateY(-50%);background:#fff;border:2px solid var(--rose-deep)}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+
+.shell{position:relative;z-index:5;max-width:1500px;margin:0 auto;padding:24px 56px 64px}
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;background:rgba(255,255,255,.55);backdrop-filter:blur(22px);border:1px solid rgba(255,255,255,.55);border-radius:18px}
+.logo{display:flex;align-items:center;gap:12px;font-family:"Playfair Display",serif;font-size:24px;font-weight:600;letter-spacing:-.01em}
+.logo .dot-sep{color:var(--rose-deep);font-weight:400}
+.logo .icon{width:28px;height:28px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fff,var(--rose-deep) 70%);box-shadow:0 4px 10px rgba(0,0,0,.1)}
+nav ul{display:flex;gap:30px;list-style:none;font-size:14px;font-weight:500}
+.pill{background:var(--ink);color:var(--paper);padding:11px 22px;border-radius:999px;font-size:13.5px;font-weight:500}
+
+.hero{margin-top:72px;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;min-height:74vh;position:relative}
+.left{position:relative;z-index:5}
+.eyebrow{font-family:"Albert Sans",sans-serif;font-size:12px;color:var(--rose-deep);margin-bottom:28px;display:inline-flex;align-items:center;gap:12px;text-transform:uppercase;letter-spacing:.22em;font-weight:600}
+.eyebrow::before{content:"";width:24px;height:1px;background:var(--rose-deep)}
+
+h1{font-family:"Playfair Display",serif;font-weight:500;font-size:clamp(48px,6vw,92px);line-height:1;letter-spacing:-.018em}
+h1 .rose{color:var(--rose-deep);font-weight:500}
+h1 .sage{color:var(--sage-deep);font-weight:500}
+
+.lede{margin-top:32px;font-size:18px;line-height:1.65;color:var(--ink);opacity:.78;max-width:480px}
+.ctas{margin-top:44px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.btn{background:var(--ink);color:var(--paper);padding:18px 32px;border-radius:999px;font-size:15px;font-weight:500;display:inline-flex;align-items:center;gap:10px;transition:transform .25s}
+.btn:hover{transform:translateY(-2px)}
+.btn-2{background:rgba(255,255,255,.65);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.6);padding:18px 26px;border-radius:999px;font-size:15px;font-weight:500;display:inline-flex;align-items:center;gap:10px;color:var(--ink)}
+
+/* fan/petal arrangement of cards on right */
+.fan{position:relative;height:600px}
+.petal{position:absolute;background:rgba(255,255,255,.7);backdrop-filter:blur(28px);border:1px solid rgba(255,255,255,.6);box-shadow:0 28px 60px -20px rgba(80,40,30,.18);padding:22px;border-radius:24px;width:280px;transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.petal:hover{transform:rotate(0) scale(1.05) !important;z-index:10}
+.petal::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.4),transparent 40%);pointer-events:none;border-radius:24px}
+.petal h4{font-family:"Playfair Display",serif;font-weight:600;font-size:22px;line-height:1.2;letter-spacing:-.005em;margin-bottom:8px}
+.petal h4 .accent{color:var(--rose-deep)}
+.petal .label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--rose-deep);font-weight:700;margin-bottom:10px}
+.petal p{font-size:13.5px;line-height:1.55;color:var(--muted)}
+
+.p1{top:30px;right:140px;transform:rotate(-6deg);z-index:1}
+.p2{top:120px;right:-30px;transform:rotate(8deg);z-index:2}
+.p3{top:310px;right:200px;transform:rotate(-4deg);z-index:3}
+.p4{top:380px;right:0;transform:rotate(6deg);z-index:2;background:rgba(63,85,36,.88);color:#fff;border-color:rgba(255,255,255,.2)}
+.p4 .label,.p4 h4 .accent{color:var(--sage)}
+.p4 h4{color:#fff}
+.p4 p{color:rgba(255,255,255,.75)}
+.p4::before{background:linear-gradient(180deg,rgba(255,255,255,.15),transparent 40%)}
+
+/* center "moment" tag — no italic */
+.moment{position:absolute;left:50%;top:50%;transform:translate(-30%,-50%) rotate(-8deg);font-family:"Playfair Display",serif;font-weight:500;font-size:38px;line-height:1.05;color:var(--rose-deep);text-shadow:0 4px 30px rgba(255,255,255,.6);z-index:6;pointer-events:none;letter-spacing:-.015em}
+.moment span{display:block;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-family:"Albert Sans";margin-top:8px;font-weight:600}
+
+.foot{margin-top:48px;padding-top:24px;border-top:1px solid rgba(0,0,0,.08);display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:13px;gap:24px;flex-wrap:wrap}
+.foot b{color:var(--ink);font-weight:500}
+.foot .left-bits{display:flex;gap:28px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<div class="wash"><div class="c3"></div></div>
+<div class="grain"></div>
+
+<div class="shell">
+<nav>
+  <a href="#" class="logo"><span class="icon"></span> Květina <span class="dot-sep">·</span> klinika</a>
+  <ul><li><a>Metoda</a></li><li><a>Pro koho</a></li><li><a>Tým</a></li><li><a>Ceník</a></li><li><a>Blog</a></li></ul>
+  <a href="#" class="pill">Termíny tento týden →</a>
+</nav>
+
+<section class="hero">
+  <div class="left">
+    <span class="eyebrow">Klinika biorezonance · Praha 2 · od 2011</span>
+    <h1>Když tělo <span class="rose">šeptá,</span><br>my <span class="sage">posloucháme.</span></h1>
+    <p class="lede">Hodina ticha s&nbsp;přístrojem, který rozumí elektromagnetickým signálům těla. A&nbsp;terapeut, který umí přeložit, co bylo slyšet.</p>
+    <div class="ctas">
+      <a href="#" class="btn">Objednat se →</a>
+      <a href="#" class="btn-2">▶ 90s o nás</a>
+    </div>
+  </div>
+
+  <div class="fan">
+    <div class="orbit">
+      <span class="satellite"></span>
+      <span class="satellite s2"></span>
+      <span class="satellite s3"></span>
+    </div>
+
+    <span class="moment">Tady &amp; teď.<span>← váš následující krok</span></span>
+
+    <article class="petal p1">
+      <div class="label">i. Konzultace</div>
+      <h4>15 min, <span class="accent">zdarma.</span></h4>
+      <p>Online hovor. Bez prodejních triků — řekneme rovnou, jestli to má smysl.</p>
+    </article>
+
+    <article class="petal p2">
+      <div class="label">ii. Klientka</div>
+      <h4>"Po deseti letech <span class="accent">klidná.</span>"</h4>
+      <p>Tereza V., 38. Migrény z denních na měsíční po šesti sezeních.</p>
+    </article>
+
+    <article class="petal p3">
+      <div class="label">iii. Co řešíme</div>
+      <h4>Únava · alergie · <span class="accent">mlha</span></h4>
+      <p>Funkční potíže, kterým klasická vyšetření říkají „nic vám není". A&nbsp;vy víte své.</p>
+    </article>
+
+    <article class="petal p4">
+      <div class="label">iv. Otevřeno</div>
+      <h4>+420 777 234 100</h4>
+      <p>Po–Pá 8–18, So po dohodě. Recepce zvedá osobně.</p>
+    </article>
+  </div>
+</section>
+
+<div class="foot">
+  <div class="left-bits">
+    <span><b>14 let</b> praxe</span>
+    <span><b>4 200+</b> klientů</span>
+    <span><b>★ 4.94 / 5</b> · 312 recenzí</span>
+    <span>Certifikovaní terapeuti SBT</span>
+  </div>
+  <span><b>Praha 2</b> · Trojická 14</span>
+</div>
+</div>
+</body>
+</html>

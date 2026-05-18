@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8" />
+<title>V02 · Botanical Soft</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Manrope:wght@300;400;500;600&display=swap&subset=latin,latin-ext" rel="stylesheet">
+<style>
+:root{
+  --rose:#fbe6e1; --rose-2:#f3c8c0; --rose-deep:#b6685c;
+  --sage:#d2dec0; --sage-2:#b6c79a; --sage-deep:#4d5c34;
+  --bg:#f8f3ec; --ink:#26241f; --muted:#6b665e;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--ink);font-family:"Manrope",sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+nav{position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:28px 56px;max-width:1500px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:10px;font-family:"Cormorant Garamond",serif;font-size:22px}
+.logo .dot{width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff 0%,var(--rose-2) 55%,var(--rose-deep) 100%)}
+nav ul{display:flex;gap:32px;list-style:none;font-size:14px;color:var(--muted)}
+nav ul a:hover{color:var(--ink)}
+.cta-sm{background:var(--ink);color:var(--bg);padding:12px 22px;border-radius:999px;font-size:13.5px}
+.hero{position:relative;padding:24px 56px 120px;max-width:1500px;margin:0 auto;min-height:88vh}
+.hero h1{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:clamp(58px,8.4vw,128px);line-height:.96;letter-spacing:-.02em;max-width:14ch;position:relative;z-index:5}
+.hero h1 em{font-style:italic;color:var(--sage-deep)}
+.eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:11.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--rose-deep);margin:64px 0 28px;font-weight:600}
+.eyebrow::before{content:"❀";font-size:14px;letter-spacing:0;color:var(--rose-deep)}
+.lede{margin-top:36px;font-size:18px;line-height:1.65;color:var(--muted);max-width:520px;position:relative;z-index:5}
+.ctas{display:flex;gap:14px;margin-top:40px;position:relative;z-index:5}
+.btn{background:var(--ink);color:var(--bg);padding:18px 30px;border-radius:999px;font-size:15px;transition:transform .25s,background .25s}
+.btn:hover{transform:translateY(-2px);background:#000}
+.btn-ghost{background:#fff;color:var(--ink);border:1px solid #e6dfd2;padding:18px 26px;border-radius:999px;font-size:15px;display:inline-flex;align-items:center;gap:10px}
+.bot{position:absolute;pointer-events:none}
+.leaf{filter:drop-shadow(0 8px 24px rgba(120,80,60,.08))}
+.b1{top:80px;right:6%;width:280px;animation:sway 11s ease-in-out infinite}
+.b2{top:200px;right:18%;width:160px;animation:sway 13s ease-in-out -3s infinite reverse}
+.b3{bottom:80px;right:28%;width:200px;animation:sway 10s ease-in-out -2s infinite}
+.b4{bottom:140px;right:4%;width:240px;animation:sway 12s ease-in-out infinite}
+.b5{top:260px;right:42%;width:90px;opacity:.85;animation:sway 9s ease-in-out infinite}
+@keyframes sway{0%,100%{transform:rotate(-3deg) translateY(0)}50%{transform:rotate(3deg) translateY(-12px)}}
+.trust{margin-top:88px;display:flex;align-items:center;gap:40px;color:var(--muted);font-size:13px;border-top:1px dashed #d8d0c2;padding-top:24px;max-width:680px}
+.trust b{color:var(--ink);font-weight:600}
+.cert{display:flex;align-items:center;gap:8px}
+.cert svg{width:18px;height:18px;color:var(--sage-deep)}
+</style>
+</head>
+<body>
+<nav>
+  <a href="#" class="logo"><span class="dot"></span> Klinika Kořen</a>
+  <ul>
+    <li><a href="#">Terapie</a></li>
+    <li><a href="#">Pro koho</a></li>
+    <li><a href="#">Cena & čas</a></li>
+    <li><a href="#">Tým</a></li>
+    <li><a href="#">Blog</a></li>
+  </ul>
+  <a href="#" class="cta-sm">Rezervovat</a>
+</nav>
+
+<section class="hero">
+  <span class="eyebrow">Biorezonanční klinika · Brno</span>
+  <h1>Cesta zpátky <em>do&nbsp;rovnováhy</em> začíná v&nbsp;tichu.</h1>
+  <p class="lede">Naslouchat tělu místo přebíjet jeho signály. Biorezonance je jemná, neinvazivní metoda — žádné jehly, žádná medikace, jen 60&nbsp;minut, kdy se vaše tělo a&nbsp;náš přístroj domluví.</p>
+  <div class="ctas">
+    <a href="#" class="btn">Objednat se →</a>
+    <a href="#" class="btn-ghost">▶ Podívat se, jak to vypadá</a>
+  </div>
+  <div class="trust">
+    <span class="cert"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.6 6.4L21 9l-5 4.6 1.4 7L12 17l-5.4 3.6L8 13.6 3 9l6.4-.6L12 2z"/></svg> <b>Certifikovaní terapeuti</b></span>
+    <span class="cert"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg> Bez bolesti & vedlejších účinků</span>
+    <span class="cert">★ 4.94 / 5 ze 312 recenzí</span>
+  </div>
+
+  <!-- decorative botanicals -->
+  <svg class="bot leaf b1" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg">
+    <path d="M100 10 C 30 60 30 200 100 250 C 170 200 170 60 100 10 Z" fill="var(--sage)"/>
+    <path d="M100 10 L100 250" stroke="var(--sage-deep)" stroke-width="1.2" opacity=".6"/>
+    <path d="M100 60 Q60 80 50 130 M100 100 Q60 120 55 170 M100 140 Q60 160 60 210 M100 60 Q140 80 150 130 M100 100 Q140 120 145 170 M100 140 Q140 160 140 210" stroke="var(--sage-deep)" stroke-width="1" opacity=".4" fill="none"/>
+  </svg>
+  <svg class="bot leaf b2" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg">
+    <path d="M100 10 C 40 70 50 200 100 250 C 150 200 160 70 100 10 Z" fill="var(--rose-2)"/>
+  </svg>
+  <svg class="bot leaf b3" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="100" cy="110" rx="85" ry="100" fill="var(--sage-2)"/>
+    <path d="M100 12 L100 208" stroke="#3e4a2a" stroke-width="1.2" opacity=".5"/>
+  </svg>
+  <svg class="bot leaf b4" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="110" cy="110" r="100" fill="var(--rose)"/>
+    <circle cx="110" cy="110" r="60" fill="none" stroke="var(--rose-deep)" stroke-width="1" opacity=".3"/>
+    <circle cx="110" cy="110" r="30" fill="var(--rose-2)"/>
+  </svg>
+  <svg class="bot leaf b5" viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
+    <path d="M50 5 C 10 40 10 110 50 135 C 90 110 90 40 50 5 Z" fill="var(--sage)"/>
+  </svg>
+</section>
+</body>
+</html>

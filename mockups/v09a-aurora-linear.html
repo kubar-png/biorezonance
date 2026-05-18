@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8" />
+<title>V09a · Aurora Linear</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600;700&display=swap&subset=latin,latin-ext" rel="stylesheet">
+<style>
+:root{
+  --rose:#fadcd4; --rose-2:#f1baad; --rose-deep:#a3473a;
+  --sage:#dee4c1; --sage-2:#b5c989; --sage-deep:#4f5f30;
+  --paper:#f9f3e9; --ink:#1a1814; --muted:#615a51;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--paper);color:var(--ink);font-family:"Manrope",sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+a{color:inherit;text-decoration:none}
+
+/* aurora bands — flowing diagonal stripes instead of round blobs */
+.aurora{position:fixed;inset:-20%;z-index:0;pointer-events:none;filter:blur(60px) saturate(1.15)}
+.aurora::before,.aurora::after,.aurora .c3{content:"";position:absolute;left:-10%;right:-10%;height:38vh;border-radius:50%;transform-origin:center}
+.aurora::before{top:-5%;background:linear-gradient(95deg,transparent 0%,var(--rose-2) 35%,var(--rose) 55%,transparent 90%);transform:rotate(-8deg);animation:slow 22s ease-in-out infinite}
+.aurora::after{top:38%;background:linear-gradient(95deg,transparent 0%,var(--sage-2) 30%,var(--sage) 55%,transparent 90%);transform:rotate(6deg);animation:slow 26s ease-in-out -4s infinite reverse}
+.aurora .c3{top:72%;background:linear-gradient(95deg,transparent 0%,var(--rose) 30%,#f7d1c7 50%,transparent 90%);transform:rotate(-4deg);animation:slow 30s ease-in-out infinite}
+@keyframes slow{0%,100%{transform:rotate(var(--r,-8deg)) translateY(0)}50%{transform:rotate(var(--r,-8deg)) translateY(-30px)}}
+.grain{position:fixed;inset:0;z-index:1;opacity:.05;pointer-events:none;mix-blend-mode:multiply;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence baseFrequency='.92' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+
+.shell{position:relative;z-index:5;max-width:1440px;margin:0 auto;padding:24px 48px 64px}
+nav{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;background:rgba(255,255,255,.55);backdrop-filter:blur(22px);border:1px solid rgba(255,255,255,.6);border-radius:999px;box-shadow:0 8px 28px -10px rgba(80,40,30,.08)}
+.logo{display:flex;align-items:center;gap:12px;font-family:"Playfair Display",serif;font-style:italic;font-size:24px;font-weight:500;letter-spacing:-.01em;padding-left:4px}
+.logo .dot{width:26px;height:26px;border-radius:50%;background:conic-gradient(from 60deg,var(--rose-deep),var(--sage-deep),var(--rose-2),var(--rose-deep))}
+nav ul{display:flex;gap:30px;list-style:none;font-size:14px;color:var(--ink);font-weight:500}
+.pill{background:var(--ink);color:var(--paper);padding:11px 22px;border-radius:999px;font-size:13.5px;font-weight:500}
+
+.hero{margin-top:80px;text-align:center;padding:0 24px}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;background:rgba(255,255,255,.55);backdrop-filter:blur(14px);padding:8px 18px;border-radius:999px;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--rose-deep);margin-bottom:36px;border:1px solid rgba(255,255,255,.6)}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--rose-deep);animation:p 2s infinite}
+@keyframes p{50%{opacity:.4}}
+h1{font-family:"Playfair Display",serif;font-weight:400;font-size:clamp(72px,9vw,148px);line-height:.95;letter-spacing:-.025em;max-width:18ch;margin:0 auto}
+h1 em{font-style:italic;color:var(--rose-deep);font-weight:400}
+h1 .sage{color:var(--sage-deep);font-style:italic}
+.lede{margin:36px auto 0;font-size:19px;line-height:1.6;color:var(--ink);opacity:.78;max-width:580px}
+.ctas{margin-top:44px;display:flex;gap:14px;justify-content:center;align-items:center;flex-wrap:wrap}
+.btn{background:var(--ink);color:var(--paper);padding:18px 32px;border-radius:999px;font-size:15px;display:inline-flex;align-items:center;gap:10px;transition:transform .25s}
+.btn:hover{transform:translateY(-2px)}
+.btn-2{background:rgba(255,255,255,.7);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.6);padding:18px 26px;border-radius:999px;font-size:15px;display:inline-flex;align-items:center;gap:10px;color:var(--ink)}
+
+/* HORIZONTAL strip of glass cards — primary layout change */
+.strip{margin-top:80px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.glass{background:rgba(255,255,255,.55);backdrop-filter:blur(28px);border-radius:24px;padding:24px;border:1px solid rgba(255,255,255,.6);box-shadow:0 28px 60px -24px rgba(80,40,30,.18);position:relative;overflow:hidden;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.glass:hover{transform:translateY(-4px)}
+.glass::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.4),transparent 35%);pointer-events:none;border-radius:24px}
+.glass .label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--rose-deep);font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.glass .label .num{font-family:"Playfair Display";font-style:italic;font-size:18px;font-weight:400;color:var(--rose-deep);letter-spacing:0;text-transform:none}
+.glass h4{font-family:"Playfair Display",serif;font-weight:400;font-size:22px;line-height:1.2;letter-spacing:-.01em;margin-bottom:10px}
+.glass h4 em{font-style:italic;color:var(--rose-deep)}
+.glass p{font-size:13px;line-height:1.55;color:var(--muted)}
+.glass .foot{margin-top:18px;padding-top:14px;border-top:1px dashed rgba(0,0,0,.08);display:flex;align-items:center;justify-content:space-between;font-size:12.5px}
+.glass .foot b{color:var(--ink);font-weight:500}
+.glass.dark{background:rgba(78,95,48,.85);color:#fff;border-color:rgba(255,255,255,.2)}
+.glass.dark::before{background:linear-gradient(180deg,rgba(255,255,255,.15),transparent 35%)}
+.glass.dark .label,.glass.dark h4 em{color:var(--sage)}
+.glass.dark h4{color:#fff}
+.glass.dark p{color:rgba(255,255,255,.7)}
+.glass.dark .foot{border-color:rgba(255,255,255,.15)}
+.glass.dark .foot b{color:#fff}
+
+.metaline{margin-top:36px;display:flex;justify-content:center;gap:32px;color:var(--muted);font-size:13px;flex-wrap:wrap}
+.metaline b{color:var(--ink);font-weight:500}
+.metaline span{display:inline-flex;align-items:center;gap:8px}
+.metaline .v{width:1px;height:14px;background:rgba(0,0,0,.15)}
+</style>
+</head>
+<body>
+<div class="aurora"><div class="c3"></div></div>
+<div class="grain"></div>
+
+<div class="shell">
+<nav>
+  <a href="#" class="logo"><span class="dot"></span> Lumen</a>
+  <ul><li><a>Metoda</a></li><li><a>Pro koho</a></li><li><a>Tým</a></li><li><a>Ceník</a></li><li><a>FAQ</a></li></ul>
+  <a href="#" class="pill">Termíny tento týden →</a>
+</nav>
+
+<section class="hero">
+  <span class="eyebrow"><span class="dot"></span> Klinika biorezonance · Praha 7</span>
+  <h1>Hodina, ve které vás tělo <em>poslouchá zpátky.</em></h1>
+  <p class="lede">Bezbolestná, neinvazivní diagnostika a&nbsp;jemná terapie. Žádné jehly, žádné předepisování — jen jeden přístroj, jeden terapeut a&nbsp;čas, který má váš nervový systém už dlouho nárok.</p>
+  <div class="ctas">
+    <a href="#" class="btn">Rezervovat termín →</a>
+    <a href="#" class="btn-2">▶ Jak to u nás vypadá (90 s)</a>
+  </div>
+</section>
+
+<section class="strip">
+  <article class="glass">
+    <div class="label"><span class="num">i.</span> Začněte tady</div>
+    <h4>15 min <em>zdarma</em>, online.</h4>
+    <p>Krátké volání. Řekneme přímo, jestli má biorezonance v&nbsp;vašem případě smysl. Nebo nemá.</p>
+    <div class="foot"><b>+420 777 234 100</b><span>Po–Pá 8–18</span></div>
+  </article>
+
+  <article class="glass">
+    <div class="label"><span class="num">ii.</span> Co řešíme</div>
+    <h4>Únava, alergie, <em>mlha</em>, migrény.</h4>
+    <p>Funkční potíže, na které klasická vyšetření říkají „nic vám není". A&nbsp;přesto víte své.</p>
+    <div class="foot"><b>17 indikací</b><span>viz seznam →</span></div>
+  </article>
+
+  <article class="glass">
+    <div class="label"><span class="num">iii.</span> Klientka</div>
+    <h4>"Po deseti letech&nbsp;<em>klidná.</em>"</h4>
+    <p>Tereza V., 38. Migrény z denních na měsíční po 6 sezeních.</p>
+    <div class="foot"><b>★ 4.94 / 5</b><span>312 recenzí</span></div>
+  </article>
+
+  <article class="glass dark">
+    <div class="label"><span class="num">iv.</span> Nejbližší termín</div>
+    <h4>Čt 22. května<br><em>14:30</em></h4>
+    <p>3 volné termíny tento týden v&nbsp;Praze 7. Konzultace zdarma kdykoli.</p>
+    <div class="foot"><b>Veletržní 36</b><span>Praha 7</span></div>
+  </article>
+</section>
+
+<div class="metaline">
+  <span><b>14 let</b> praxe</span><span class="v"></span>
+  <span><b>4 200+</b> klientů</span><span class="v"></span>
+  <span>Certifikovaní terapeuti SBT</span><span class="v"></span>
+  <span>Bez vedlejších účinků</span><span class="v"></span>
+  <span><b>Praha 7</b> · Veletržní 36</span>
+</div>
+</div>
+</body>
+</html>

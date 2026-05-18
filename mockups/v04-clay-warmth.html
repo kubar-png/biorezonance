@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8" />
+<title>V04 · Clay Warmth</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap&subset=latin,latin-ext" rel="stylesheet">
+<style>
+:root{
+  --rose:#f0c5b8; --rose-2:#e0a497; --rose-3:#c47a6c; --rose-deep:#824338;
+  --sage:#cdd9b3; --sage-2:#a6b888; --sage-3:#7c8c5e; --sage-deep:#43522f;
+  --clay:#efe2d2; --cream:#fbf3e8; --ink:#2d2622; --muted:#766c63;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--cream);color:var(--ink);font-family:"Plus Jakarta Sans",sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.hero{position:relative;min-height:100vh;padding:32px 56px 64px;max-width:1480px;margin:0 auto}
+nav{display:flex;align-items:center;justify-content:space-between;position:relative;z-index:5}
+.logo{font-family:"Fraunces",serif;font-weight:500;font-size:24px;letter-spacing:-.02em;display:flex;align-items:center;gap:12px}
+.logo .glyph{width:36px;height:36px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fff,var(--rose-2) 40%,var(--rose-3) 100%);box-shadow:0 4px 16px rgba(196,122,108,.3)}
+nav ul{display:flex;gap:32px;list-style:none;font-size:14.5px;color:var(--ink)}
+nav .right{display:flex;gap:14px;align-items:center}
+.tel{font-size:13.5px;color:var(--muted)}
+.cta-sm{background:var(--rose-3);color:#fff;padding:12px 22px;border-radius:999px;font-size:13.5px;font-weight:500;transition:background .2s}
+.cta-sm:hover{background:var(--rose-deep)}
+.grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center;padding:72px 0 0;position:relative;z-index:4}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;background:var(--clay);padding:8px 16px;border-radius:999px;font-size:12.5px;font-weight:600;color:var(--sage-deep);letter-spacing:.04em;margin-bottom:32px}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--sage-3);animation:pulse 2.5s infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:.6}}
+h1{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(56px,7vw,104px);line-height:.97;letter-spacing:-.025em;color:var(--ink)}
+h1 em{font-style:italic;color:var(--rose-3);font-weight:400}
+.lede{margin-top:32px;font-size:18px;line-height:1.65;color:var(--muted);max-width:480px}
+.ctas{margin-top:44px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--cream);padding:18px 30px;border-radius:999px;font-size:15px;font-weight:500;transition:transform .25s}
+.btn:hover{transform:translateY(-2px)}
+.btn .arr{transition:transform .25s}.btn:hover .arr{transform:translateX(4px)}
+.tx{display:flex;align-items:center;gap:10px;color:var(--ink);font-size:14px;padding:10px 0}
+.tx svg{width:16px;height:16px;color:var(--sage-3)}
+.review{margin-top:48px;display:flex;align-items:center;gap:14px;background:#fff;padding:14px 16px;border-radius:18px;width:fit-content;box-shadow:0 8px 32px rgba(120,80,60,.06)}
+.avatars{display:flex}
+.av{width:34px;height:34px;border-radius:50%;border:2px solid #fff;margin-left:-8px;background:linear-gradient(135deg,var(--rose),var(--sage))}
+.av:nth-child(1){margin-left:0;background:linear-gradient(135deg,#e0a497,#824338)}
+.av:nth-child(2){background:linear-gradient(135deg,#cdd9b3,#43522f)}
+.av:nth-child(3){background:linear-gradient(135deg,#efe2d2,#c47a6c)}
+.review b{display:block;font-size:13.5px}
+.review span{font-size:12px;color:var(--muted)}
+.stars{color:#e0a060;font-size:12px}
+
+.scene{position:relative;height:640px}
+.blob{position:absolute;border-radius:50%}
+.blob.b1{width:380px;height:380px;left:8%;top:10%;background:radial-gradient(circle at 30% 30%,#fff 0%,var(--rose) 40%,var(--rose-2) 100%);filter:blur(.2px);animation:morph1 14s ease-in-out infinite}
+.blob.b2{width:280px;height:280px;right:5%;top:5%;background:radial-gradient(circle at 30% 30%,var(--sage) 0%,var(--sage-2) 100%);animation:morph2 16s ease-in-out infinite -2s}
+.blob.b3{width:200px;height:200px;left:42%;bottom:6%;background:radial-gradient(circle at 30% 30%,#fff 0%,var(--clay) 60%,var(--rose-2) 100%);animation:morph1 12s ease-in-out infinite -4s}
+.blob.b4{width:110px;height:110px;right:18%;bottom:18%;background:var(--rose-3);opacity:.85;animation:morph2 10s ease-in-out infinite}
+@keyframes morph1{0%,100%{border-radius:50% 50% 50% 50%;transform:translateY(0) rotate(0)}50%{border-radius:62% 38% 52% 48% / 56% 60% 40% 44%;transform:translateY(-10px) rotate(8deg)}}
+@keyframes morph2{0%,100%{border-radius:50%;transform:translateY(0)}50%{border-radius:38% 62% 48% 52% / 60% 56% 44% 40%;transform:translateY(12px)}}
+.card-quote{position:absolute;right:0;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.7);backdrop-filter:blur(20px);padding:28px 28px;border-radius:24px;max-width:280px;box-shadow:0 24px 48px rgba(120,80,60,.1);border:1px solid #fff}
+.card-quote p{font-family:"Fraunces",serif;font-style:italic;font-size:18px;line-height:1.45;color:var(--ink)}
+.card-quote .author{margin-top:14px;font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px}
+.card-quote .author::before{content:"";width:30px;height:1px;background:var(--rose-3)}
+
+.featured{margin-top:80px;display:flex;align-items:center;gap:24px;padding:0 0 16px;border-top:1px solid #e8ddcc;padding-top:32px;flex-wrap:wrap;color:var(--muted);font-size:12.5px;letter-spacing:.04em;text-transform:uppercase}
+.featured span{opacity:.6}
+.featured b{color:var(--ink);font-weight:500}
+</style>
+</head>
+<body>
+<section class="hero">
+<nav>
+  <a href="#" class="logo"><span class="glyph"></span> Atelier Hojení</a>
+  <ul><li><a>Filozofie</a></li><li><a>Terapie</a></li><li><a>Konzultace</a></li><li><a>Ceník</a></li><li><a>Kontakt</a></li></ul>
+  <div class="right">
+    <span class="tel">+420&nbsp;777&nbsp;234&nbsp;100</span>
+    <a href="#" class="cta-sm">Rezervovat</a>
+  </div>
+</nav>
+
+<div class="grid">
+  <div>
+    <span class="eyebrow"><span class="dot"></span> Volné termíny tento týden</span>
+    <h1>Nový začátek pro&nbsp;tělo, které&nbsp;<em>všechno už zkusilo.</em></h1>
+    <p class="lede">Když klasická medicína odpoví "vy jste v&nbsp;pořádku" a&nbsp;vy víte, že nejste. Biorezonance hledá tam, kam standardní vyšetření nedosáhne — laskavě a&nbsp;v&nbsp;klidu.</p>
+    <div class="ctas">
+      <a href="#" class="btn">Objednat první návštěvu <span class="arr">→</span></a>
+      <span class="tx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg> 60&nbsp;min · 1&nbsp;490 Kč</span>
+    </div>
+    <div class="review">
+      <div class="avatars"><span class="av"></span><span class="av"></span><span class="av"></span></div>
+      <div>
+        <b>312 spokojených klientů</b>
+        <span class="stars">★★★★★</span> <span>· 4.94 / 5 na Heuréce</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="scene">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+    <div class="blob b4"></div>
+    <div class="card-quote">
+      <p>"Po půl roce úzkostí mi konečně někdo vysvětlil, co se v&nbsp;těle děje. A&nbsp;pomohl."</p>
+      <span class="author">Markéta H., 41</span>
+    </div>
+  </div>
+</div>
+
+<div class="featured">
+  <b>Doporučují nás:</b>
+  <span>★ Forbes Zdraví</span>
+  <span>★ Žena & Život</span>
+  <span>★ Reflex</span>
+  <span>★ ČRo Plus</span>
+  <span>★ Akademie věd ČR · partner výzkumu</span>
+</div>
+</section>
+</body>
+</html>

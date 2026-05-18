@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8" />
+<title>V09d · Liquid Capsule</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Inter+Tight:wght@300;400;500;600&display=swap&subset=latin,latin-ext" rel="stylesheet">
+<style>
+:root{
+  --rose:#fbd8cc; --rose-2:#f3b8a8; --rose-deep:#a44830;
+  --peach:#fce0c6; --peach-2:#f5c098;
+  --sage:#cfdfb1; --sage-2:#aac484; --sage-deep:#4d6128;
+  --paper:#faf3e8; --ink:#15110d; --muted:#5c544a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--paper);color:var(--ink);font-family:"Inter Tight",sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+a{color:inherit;text-decoration:none}
+
+/* SUNSET wash — peach + rose + sage, warmer palette */
+.bg{position:fixed;inset:-10%;z-index:0;filter:blur(80px) saturate(1.2);pointer-events:none}
+.bg .l{position:absolute;border-radius:50%}
+.bg .l1{width:70vw;height:70vw;left:-20%;top:-20%;background:radial-gradient(circle,var(--peach-2) 0%,transparent 60%);animation:drift 20s ease-in-out infinite}
+.bg .l2{width:60vw;height:60vw;right:-15%;top:5%;background:radial-gradient(circle,var(--rose-2) 0%,transparent 65%);animation:drift 24s ease-in-out -3s infinite reverse}
+.bg .l3{width:55vw;height:55vw;left:25%;bottom:-25%;background:radial-gradient(circle,var(--sage-2) 0%,transparent 65%);animation:drift 28s ease-in-out -5s infinite}
+@keyframes drift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-40px) scale(1.05)}}
+.grain{position:fixed;inset:0;z-index:1;opacity:.05;pointer-events:none;mix-blend-mode:multiply;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence baseFrequency='.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+
+.shell{position:relative;z-index:5;max-width:1500px;margin:0 auto;padding:24px 56px 64px}
+nav{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;background:rgba(255,255,255,.5);backdrop-filter:blur(22px);border:1px solid rgba(255,255,255,.55);border-radius:999px}
+.logo{display:flex;align-items:center;gap:12px;font-family:"Bodoni Moda",serif;font-size:24px;font-weight:500;letter-spacing:.01em}
+.logo em{font-style:italic;color:var(--rose-deep)}
+.logo .icon{width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fff 0%,var(--peach) 40%,var(--rose-deep) 100%)}
+nav ul{display:flex;gap:30px;list-style:none;font-size:13.5px;color:var(--ink);font-weight:500}
+.pill{background:var(--ink);color:var(--paper);padding:11px 22px;border-radius:999px;font-size:13.5px}
+
+/* THE BIG CAPSULE — entire hero lives inside one giant glass pill */
+.capsule{margin-top:48px;background:rgba(255,255,255,.45);backdrop-filter:blur(38px);border-radius:48px;border:1px solid rgba(255,255,255,.55);box-shadow:0 50px 120px -40px rgba(80,40,30,.25),inset 0 1px 0 rgba(255,255,255,.6);padding:64px 72px;position:relative;overflow:hidden;min-height:74vh}
+.capsule::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.45),transparent 30%);pointer-events:none;border-radius:48px}
+.capsule::after{content:"";position:absolute;top:24px;left:24px;right:24px;bottom:24px;border:1px dashed rgba(255,255,255,.4);border-radius:32px;pointer-events:none}
+
+.cap-head{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:48px;position:relative;z-index:3}
+.cap-head .eyebrow{font-family:"Bodoni Moda",serif;font-style:italic;font-size:18px;color:var(--rose-deep);font-weight:500;display:inline-flex;align-items:center;gap:14px}
+.cap-head .eyebrow::before{content:"";width:36px;height:1px;background:var(--rose-deep)}
+.cap-head .right-meta{font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600;display:inline-flex;align-items:center;gap:10px}
+.cap-head .right-meta .dot{width:7px;height:7px;border-radius:50%;background:var(--sage-deep);animation:p 2s infinite}
+@keyframes p{50%{opacity:.4}}
+
+.cap-body{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:center;position:relative;z-index:3}
+h1{font-family:"Bodoni Moda",serif;font-weight:500;font-size:clamp(64px,8.2vw,134px);line-height:.95;letter-spacing:-.022em}
+h1 em{font-style:italic;color:var(--rose-deep);font-weight:400}
+h1 .sage{color:var(--sage-deep);font-style:italic;font-weight:400}
+.lede{margin-top:32px;font-size:18px;line-height:1.6;color:var(--ink);opacity:.8;max-width:500px}
+.ctas{margin-top:40px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.btn{background:var(--ink);color:var(--paper);padding:18px 30px;border-radius:999px;font-size:15px;display:inline-flex;align-items:center;gap:10px;transition:transform .25s}
+.btn:hover{transform:translateY(-2px)}
+.btn-2{background:rgba(255,255,255,.6);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.6);padding:18px 26px;border-radius:999px;font-size:15px;display:inline-flex;align-items:center;gap:10px;color:var(--ink)}
+
+/* right column inside capsule: stacked frosted mini-cards */
+.cards{display:flex;flex-direction:column;gap:14px}
+.minicard{background:rgba(255,255,255,.55);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.6);border-radius:20px;padding:20px 22px;display:flex;align-items:center;gap:16px;transition:transform .3s}
+.minicard:hover{transform:translateX(-4px)}
+.minicard .ico{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,var(--rose),var(--peach));display:flex;align-items:center;justify-content:center;color:var(--rose-deep);font-family:"Bodoni Moda";font-style:italic;font-size:24px;flex-shrink:0;font-weight:500}
+.minicard .ico.sage{background:linear-gradient(135deg,var(--sage),var(--sage-2));color:var(--sage-deep)}
+.minicard .ico.dark{background:var(--ink);color:#fff}
+.minicard .body{flex:1}
+.minicard .title{font-family:"Bodoni Moda",serif;font-size:18px;font-weight:500;letter-spacing:-.005em;line-height:1.2}
+.minicard .title em{font-style:italic;color:var(--rose-deep)}
+.minicard .sub{font-size:12.5px;color:var(--muted);margin-top:3px}
+.minicard .arr{margin-left:auto;color:var(--muted);transition:transform .25s}
+.minicard:hover .arr{color:var(--ink);transform:translateX(4px)}
+
+/* "watermark" inside the capsule */
+.watermark{position:absolute;bottom:-30px;right:-20px;font-family:"Bodoni Moda",serif;font-style:italic;font-weight:400;font-size:220px;line-height:.85;color:rgba(164,72,48,.06);pointer-events:none;z-index:1;letter-spacing:-.03em}
+
+/* below capsule: tiny trust strip */
+.trust{margin-top:32px;display:flex;justify-content:space-between;align-items:center;padding:0 12px;color:var(--muted);font-size:13px;flex-wrap:wrap;gap:20px}
+.trust b{color:var(--ink);font-weight:500}
+.trust .left-bits{display:flex;gap:32px}
+</style>
+</head>
+<body>
+<div class="bg"><div class="l l1"></div><div class="l l2"></div><div class="l l3"></div></div>
+<div class="grain"></div>
+
+<div class="shell">
+<nav>
+  <a href="#" class="logo"><span class="icon"></span> Resonáta <em>·</em> klinika</a>
+  <ul><li><a>Metoda</a></li><li><a>Pro koho</a></li><li><a>Tým</a></li><li><a>Ceník</a></li><li><a>FAQ</a></li></ul>
+  <a href="#" class="pill">Termíny tento týden →</a>
+</nav>
+
+<section class="capsule">
+  <div class="cap-head">
+    <span class="eyebrow">Klinika biorezonance · Praha 7 · od 2011</span>
+    <span class="right-meta"><span class="dot"></span> Volné termíny · 3 tento týden</span>
+  </div>
+
+  <div class="cap-body">
+    <div>
+      <h1>Tělo má&nbsp;svůj <em>rytmus.</em><br>My <span class="sage">slyšíme.</span></h1>
+      <p class="lede">Hodina ticha s&nbsp;přístrojem, který umí naslouchat. Nepřebíjíme tělo medikamenty — překládáme, co dávno říká samo.</p>
+      <div class="ctas">
+        <a href="#" class="btn">Objednat termín →</a>
+        <a href="#" class="btn-2">▶ Jak to u nás vypadá</a>
+      </div>
+    </div>
+
+    <div class="cards">
+      <a href="#" class="minicard">
+        <span class="ico">i.</span>
+        <div class="body">
+          <div class="title">15 min, <em>zdarma</em></div>
+          <div class="sub">Online konzultace — bez prodejních triků</div>
+        </div>
+        <span class="arr">→</span>
+      </a>
+      <a href="#" class="minicard">
+        <span class="ico sage">ii.</span>
+        <div class="body">
+          <div class="title">★ 4.94 · <em>312 recenzí</em></div>
+          <div class="sub">"Po deseti letech klidná." — Tereza V., 38</div>
+        </div>
+        <span class="arr">→</span>
+      </a>
+      <a href="#" class="minicard">
+        <span class="ico dark">iii.</span>
+        <div class="body">
+          <div class="title">+420 777 234 100</div>
+          <div class="sub">Po–Pá 8–18 · recepce zvedá osobně</div>
+        </div>
+        <span class="arr">→</span>
+      </a>
+    </div>
+  </div>
+
+  <span class="watermark">slyšet</span>
+</section>
+
+<div class="trust">
+  <div class="left-bits">
+    <span><b>14 let</b> praxe</span>
+    <span><b>4 200+</b> klientů</span>
+    <span>Certifikovaní terapeuti SBT</span>
+    <span>Bez vedlejších účinků</span>
+  </div>
+  <span><b>Praha 7</b> · Veletržní 36</span>
+</div>
+</div>
+</body>
+</html>

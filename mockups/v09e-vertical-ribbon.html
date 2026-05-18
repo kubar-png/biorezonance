@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8" />
+<title>V09e · Vertical Ribbon</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400&display=swap&subset=latin,latin-ext" rel="stylesheet">
+<style>
+:root{
+  --rose:#f7d8d2; --rose-2:#efb8ab; --rose-deep:#a64f43;
+  --sage:#d4e0b9; --sage-2:#b3c889; --sage-deep:#4a5d2b;
+  --paper:#f7f1e8; --ink:#13110d; --muted:#5b5650;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--paper);color:var(--ink);font-family:"Geist",sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+a{color:inherit;text-decoration:none}
+.mono{font-family:"Geist Mono",monospace}
+
+.shell{position:relative;z-index:5;max-width:1500px;margin:0 auto;padding:24px 48px}
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;background:rgba(255,255,255,.55);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.55);border-radius:16px}
+.logo{display:flex;align-items:center;gap:12px;font-family:"Italiana",serif;font-size:26px;letter-spacing:.03em;text-transform:uppercase}
+.logo .icon{width:26px;height:26px;border-radius:50%;background:conic-gradient(from 60deg,var(--rose-deep) 0%,var(--sage-deep) 50%,var(--rose-deep) 100%)}
+nav ul{display:flex;gap:30px;list-style:none;font-size:13.5px;font-weight:500}
+.pill{background:var(--ink);color:var(--paper);padding:11px 22px;border-radius:999px;font-size:13.5px}
+
+/* MAIN LAYOUT: narrow vertical card strip LEFT, big wash RIGHT */
+.hero{margin-top:32px;display:grid;grid-template-columns:380px 1fr;gap:24px;min-height:78vh}
+
+/* LEFT: vertical column of glass cards */
+.ribbon{display:flex;flex-direction:column;gap:14px}
+.glass{background:rgba(255,255,255,.55);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.55);border-radius:22px;padding:24px;box-shadow:0 20px 50px -20px rgba(80,40,30,.18);position:relative;overflow:hidden;flex:1;display:flex;flex-direction:column;justify-content:space-between}
+.glass::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.4),transparent 40%);pointer-events:none;border-radius:22px}
+.glass .label{font-family:"Geist Mono",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--rose-deep);font-weight:500;margin-bottom:10px}
+.glass h4{font-family:"Italiana",serif;font-size:30px;letter-spacing:.01em;line-height:1.05;text-transform:uppercase;color:var(--ink);font-weight:400}
+.glass p{font-size:13.5px;line-height:1.55;color:var(--muted);margin-top:12px}
+.glass .foot{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;color:var(--muted);margin-top:18px;padding-top:14px;border-top:1px dashed rgba(0,0,0,.08)}
+.glass .foot b{color:var(--ink);font-weight:500}
+.glass.dark{background:rgba(74,93,43,.92);color:#fff;border-color:rgba(255,255,255,.15)}
+.glass.dark::before{background:linear-gradient(180deg,rgba(255,255,255,.1),transparent 35%)}
+.glass.dark .label{color:var(--sage)}
+.glass.dark h4{color:#fff}
+.glass.dark p,.glass.dark .foot{color:rgba(255,255,255,.7)}
+.glass.dark .foot{border-color:rgba(255,255,255,.15)}
+.glass.dark .foot b{color:#fff}
+.glass.dark .arr{margin-top:auto;width:42px;height:42px;border-radius:50%;background:#fff;color:var(--sage-deep);display:flex;align-items:center;justify-content:center;font-size:20px;align-self:flex-end;transition:transform .25s}
+.glass.dark:hover .arr{transform:translate(4px,-4px)}
+
+/* RIGHT: huge wash panel with embedded headline */
+.stage{position:relative;border-radius:32px;overflow:hidden;background:linear-gradient(135deg,var(--rose) 0%,#f4c8bd 30%,#ead9c0 55%,var(--sage) 100%);border:1px solid rgba(255,255,255,.6);box-shadow:0 32px 80px -30px rgba(80,40,30,.22)}
+.stage::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(40% 40% at 75% 20%,rgba(255,255,255,.5),transparent 65%),
+  radial-gradient(50% 50% at 20% 80%,rgba(180,200,140,.4),transparent 65%);pointer-events:none}
+.stage::after{content:"";position:absolute;inset:0;opacity:.08;mix-blend-mode:multiply;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence baseFrequency='.88' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");pointer-events:none}
+
+.stage-inner{position:relative;z-index:2;padding:56px 56px 48px;display:flex;flex-direction:column;height:100%;min-height:78vh;justify-content:space-between}
+.eyebrow{font-family:"Geist Mono",monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);opacity:.7;display:inline-flex;align-items:center;gap:14px}
+.eyebrow .sep{width:36px;height:1px;background:currentColor}
+
+h1{font-family:"Italiana",serif;font-weight:400;font-size:clamp(80px,10vw,170px);line-height:.95;letter-spacing:.005em;color:var(--ink);text-transform:uppercase;margin-top:80px}
+h1 .lo{display:block;font-family:"Italiana",serif;color:var(--rose-deep);text-transform:none;letter-spacing:-.005em}
+h1 .it{font-family:"Italiana",serif;font-style:italic;text-transform:none;letter-spacing:-.005em;color:var(--sage-deep)}
+
+.below{display:flex;align-items:end;justify-content:space-between;gap:32px;margin-top:24px}
+.lede{font-size:18px;line-height:1.6;color:var(--ink);opacity:.78;max-width:480px}
+.ctas{display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+.btn{background:var(--ink);color:var(--paper);padding:18px 32px;border-radius:999px;font-size:15px;display:inline-flex;align-items:center;gap:10px;transition:transform .25s}
+.btn:hover{transform:translateY(-2px)}
+.btn-2{font-size:13px;color:var(--ink);opacity:.7;display:inline-flex;align-items:center;gap:8px}
+.btn-2::before{content:"";width:18px;height:1px;background:currentColor}
+
+/* tag pinned at top-right of stage */
+.tag{position:absolute;top:24px;right:24px;background:rgba(255,255,255,.6);backdrop-filter:blur(14px);padding:10px 18px;border-radius:999px;font-size:12.5px;font-weight:500;color:var(--ink);border:1px solid rgba(255,255,255,.6);display:inline-flex;align-items:center;gap:10px;z-index:3}
+.tag .pulse{width:7px;height:7px;border-radius:50%;background:var(--sage-deep);animation:p 2s infinite}
+@keyframes p{50%{opacity:.4}}
+
+/* horizontal trust strip */
+.foot-strip{margin-top:24px;display:flex;justify-content:space-between;align-items:center;padding:14px 24px;background:rgba(255,255,255,.5);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.6);border-radius:18px;font-size:13px;color:var(--muted);flex-wrap:wrap;gap:20px}
+.foot-strip b{color:var(--ink);font-weight:500}
+.foot-strip .row{display:flex;gap:28px}
+</style>
+</head>
+<body>
+
+<div class="shell">
+<nav>
+  <a href="#" class="logo"><span class="icon"></span> Caelum</a>
+  <ul><li><a>Metoda</a></li><li><a>Pro koho</a></li><li><a>Tým</a></li><li><a>Ceník</a></li><li><a>FAQ</a></li></ul>
+  <a href="#" class="pill">Termíny tento týden →</a>
+</nav>
+
+<section class="hero">
+  <aside class="ribbon">
+    <article class="glass">
+      <div>
+        <div class="label">i. — Začít</div>
+        <h4>15 minut zdarma</h4>
+        <p>Online konzultace. Řekneme rovnou, jestli má v&nbsp;vašem případě smysl.</p>
+      </div>
+      <div class="foot"><b>Vybrat termín</b><span>→</span></div>
+    </article>
+
+    <article class="glass">
+      <div>
+        <div class="label">ii. — Klientka</div>
+        <h4>"Klidná po deseti letech."</h4>
+        <p>Tereza V., 38. Migrény z denních na měsíční po šesti sezeních.</p>
+      </div>
+      <div class="foot"><b>★ 4.94 / 5</b><span>312 recenzí</span></div>
+    </article>
+
+    <article class="glass dark">
+      <div>
+        <div class="label">iii. — Telefon</div>
+        <h4>+420 777 234 100</h4>
+        <p>Po–Pá 8–18 · recepce zvedá osobně, ne robot.</p>
+      </div>
+      <span class="arr">→</span>
+    </article>
+  </aside>
+
+  <div class="stage">
+    <span class="tag"><span class="pulse"></span> Otevřeno teď · 3 termíny tento týden</span>
+
+    <div class="stage-inner">
+      <span class="eyebrow">Klinika biorezonance<span class="sep"></span>Praha 7 · 2011 →</span>
+
+      <h1>RYCHLÝ POHYB<span class="lo">stojí tělo víc,</span><span class="it">než jemný.</span></h1>
+
+      <div class="below">
+        <p class="lede">Nepospícháme. Jedno sezení, jeden přístroj, jeden terapeut — a&nbsp;dost času, aby tělo stihlo říct, co nahlas říkat&nbsp;nemůže.</p>
+        <div class="ctas">
+          <a href="#" class="btn">Objednat termín →</a>
+          <a href="#" class="btn-2">Nebo zavolat: +420 777 234 100</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="foot-strip">
+  <div class="row">
+    <span><b>14 let</b> praxe</span>
+    <span><b>4 200+</b> klientů</span>
+    <span>Certifikovaní terapeuti SBT</span>
+    <span>Bez vedlejších účinků</span>
+  </div>
+  <span><b>Praha 7</b> · Veletržní 36 · po dohodě i&nbsp;v&nbsp;sobotu</span>
+</div>
+
+</div>
+</body>
+</html>

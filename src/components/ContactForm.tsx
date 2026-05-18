@@ -1,78 +1,46 @@
 "use client";
 
+import { useState } from "react";
+
 export default function ContactForm() {
+  const [sent, setSent] = useState(false);
+
   return (
     <form
-      onSubmit={(e) => e.preventDefault()}
-      className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-8"
+      className="form"
+      onSubmit={(e) => {
+        e.preventDefault();
+        setSent(true);
+      }}
     >
-      <Field label="First name *" name="firstName" />
-      <Field label="Last name *" name="lastName" />
-      <Field label="Email *" name="email" type="email" />
-      <PhoneField label="Phone" />
-
-      <div className="sm:col-span-2">
-        <Field label="Company / Organization" name="company" />
+      <div className="field"><label htmlFor="fn">Jméno *</label><input id="fn" name="firstName" required /></div>
+      <div className="field"><label htmlFor="ln">Příjmení *</label><input id="ln" name="lastName" required /></div>
+      <div className="field"><label htmlFor="em">E-mail *</label><input id="em" name="email" type="email" required /></div>
+      <div className="field"><label htmlFor="ph">Telefon</label><input id="ph" name="phone" type="tel" placeholder="+420" /></div>
+      <div className="field full">
+        <label htmlFor="topic">Co vás trápí?</label>
+        <select id="topic" name="topic" defaultValue="Nevím přesně">
+          <option>Nevím přesně, chci si o tom popovídat</option>
+          <option>Únava, mlha, nespavost</option>
+          <option>Alergie a intolerance</option>
+          <option>Trávení, GIT</option>
+          <option>Migrény a bolesti hlavy</option>
+          <option>Chronické bolesti</option>
+          <option>Něco jiného</option>
+        </select>
       </div>
-
-      <div className="sm:col-span-2">
-        <label className="field-label">How can we help?</label>
-        <textarea
-          rows={5}
-          className="field-line resize-none"
-          name="message"
-        />
+      <div className="field full">
+        <label htmlFor="msg">Napište nám pár vět</label>
+        <textarea id="msg" name="message" placeholder="Jak dlouho to trvá, co jste už zkusili, kdy se vám hodí přijít…" />
       </div>
-
-      <div className="sm:col-span-2 mt-2">
-        <button
-          type="submit"
-          className="w-full btn-pill py-5 text-[16px]"
-        >
-          Get a quote
+      <div className="submit">
+        <p className="note">
+          Odesláním souhlasíte se <a href="#">zpracováním osobních údajů</a>. Vaše data nikomu nepředáváme.
+        </p>
+        <button className="btn" type="submit" disabled={sent}>
+          {sent ? "✓ Děkujeme, ozveme se" : "Odeslat zprávu →"}
         </button>
       </div>
     </form>
-  );
-}
-
-function Field({
-  label,
-  name,
-  type = "text",
-}: {
-  label: string;
-  name: string;
-  type?: string;
-}) {
-  return (
-    <label className="block">
-      <span className="field-label">{label}</span>
-      <input type={type} name={name} className="field-line" />
-    </label>
-  );
-}
-
-function PhoneField({ label }: { label: string }) {
-  return (
-    <label className="block">
-      <span className="field-label">{label}</span>
-      <div className="flex items-center gap-3 border-b border-[#b9b5b0] pt-3 pb-2">
-        <span className="inline-flex items-center gap-1 text-[var(--muted)]">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.6">
-            <circle cx="12" cy="12" r="9" />
-            <path d="M3 12h18" />
-            <path d="M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18" />
-          </svg>
-          <svg viewBox="0 0 12 12" width="10" height="10" fill="currentColor">
-            <path d="M2 4l4 4 4-4" />
-          </svg>
-        </span>
-        <input
-          type="tel"
-          className="flex-1 bg-transparent outline-none py-1 text-[15px]"
-        />
-      </div>
-    </label>
   );
 }

@@ -1,0 +1,698 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8" />
+<title>Klinika Květina · Biorezonance — full site mockup</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Albert+Sans:wght@300;400;500;600;700&display=swap&subset=latin,latin-ext" rel="stylesheet">
+<style>
+/* ===== Design tokens ===== */
+:root{
+  --rose:#f7d8d0; --rose-2:#efbcb0; --rose-deep:#a14f42; --rose-deeper:#7b3a30;
+  --sage:#c8d9a3; --sage-2:#a5be78; --sage-deep:#3f5524; --sage-deeper:#2b3a18;
+  --paper:#f5f0e7; --paper-2:#fbf7ef; --ink:#16140f; --ink-2:#1f1d18; --muted:#5e574e;
+  --line:rgba(0,0,0,.08); --line-2:rgba(0,0,0,.14);
+  --shadow-1:0 12px 32px -16px rgba(80,40,30,.18);
+  --shadow-2:0 28px 60px -22px rgba(80,40,30,.22);
+  --shadow-3:0 40px 100px -40px rgba(80,40,30,.25);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+*:focus-visible{outline:2px solid var(--rose-deep);outline-offset:3px;border-radius:6px}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{background:var(--paper);color:var(--ink);font-family:"Albert Sans",sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.55}
+a{color:inherit;text-decoration:none}
+.display{font-family:"Playfair Display",serif}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none !important;transition:none !important}}
+
+/* ===== Atmosphere ===== */
+.wash{position:fixed;inset:-10%;z-index:0;filter:blur(100px) saturate(1.05);pointer-events:none}
+.wash .l{position:absolute;border-radius:50%}
+.wash .l1{width:75vw;height:75vw;background:radial-gradient(circle,var(--sage-2) 0%,transparent 60%);left:-25%;top:-10%;animation:drift 28s ease-in-out infinite}
+.wash .l2{width:55vw;height:55vw;background:radial-gradient(circle,var(--rose) 0%,transparent 65%);right:-10%;top:30%;animation:drift 32s ease-in-out -5s infinite reverse}
+.wash .l3{width:42vw;height:42vw;background:radial-gradient(circle,var(--sage) 0%,transparent 65%);left:15%;bottom:30%;animation:drift 24s ease-in-out infinite}
+@keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,-30px)}}
+.grain{position:fixed;inset:0;z-index:1;opacity:.06;pointer-events:none;mix-blend-mode:multiply;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence baseFrequency='.88' numOctaves='3'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+
+/* ===== Reusable primitives ===== */
+.shell{position:relative;z-index:5;max-width:1440px;margin:0 auto;padding:0 56px}
+.tag-pill{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--rose-deep);padding:7px 14px;background:rgba(255,255,255,.55);backdrop-filter:blur(14px);border-radius:999px;border:1px solid rgba(255,255,255,.6)}
+.tag-pill .num{font-family:"Playfair Display";font-weight:600;font-size:14px;letter-spacing:0;text-transform:none;color:var(--rose-deep)}
+.tag-pill .dot{width:7px;height:7px;border-radius:50%;background:var(--rose-deep);animation:p 2s infinite}
+@keyframes p{50%{opacity:.4}}
+.eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--rose-deep);display:inline-flex;align-items:center;gap:12px;margin-bottom:24px}
+.eyebrow::before{content:"";width:24px;height:1px;background:var(--rose-deep)}
+.h-section{font-family:"Playfair Display",serif;font-weight:500;font-size:clamp(34px,3.6vw,54px);line-height:1.05;letter-spacing:-.018em;color:var(--ink)}
+.h-section .rose{color:var(--rose-deep)}
+.h-section .sage{color:var(--sage-deep)}
+.lede{font-size:18px;line-height:1.65;color:var(--ink);opacity:.78;max-width:560px}
+
+.btn{background:var(--ink);color:var(--paper);padding:18px 30px;border-radius:999px;font-size:15px;font-weight:500;display:inline-flex;align-items:center;gap:10px;transition:transform .25s,background .25s;cursor:pointer;border:0}
+.btn:hover{transform:translateY(-2px);background:var(--ink-2)}
+.btn-2{background:rgba(255,255,255,.65);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.6);padding:18px 26px;border-radius:999px;font-size:15px;font-weight:500;display:inline-flex;align-items:center;gap:10px;color:var(--ink);cursor:pointer;transition:background .2s}
+.btn-2:hover{background:rgba(255,255,255,.85)}
+
+.glass{background:rgba(255,255,255,.65);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.6);border-radius:24px;box-shadow:var(--shadow-2);position:relative;overflow:hidden}
+.glass::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.4),transparent 35%);pointer-events:none;border-radius:24px}
+.glass-dark{background:rgba(63,85,36,.92);color:#fff;border-color:rgba(255,255,255,.18)}
+.glass-dark::before{background:linear-gradient(180deg,rgba(255,255,255,.12),transparent 35%)}
+
+/* ===== Top nav ===== */
+nav.top{position:sticky;top:16px;z-index:50;margin:16px auto 0;max-width:1440px;padding:0 56px}
+nav.top .inner{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;background:rgba(255,255,255,.7);backdrop-filter:blur(22px);border:1px solid rgba(255,255,255,.6);border-radius:18px;box-shadow:var(--shadow-1)}
+.logo{display:flex;align-items:center;gap:12px;font-family:"Playfair Display",serif;font-size:22px;font-weight:600;letter-spacing:-.01em}
+.logo .sep{color:var(--rose-deep);font-weight:400}
+.logo .mark{width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fff 0%,var(--rose-deep) 75%);box-shadow:0 4px 12px rgba(0,0,0,.12)}
+nav.top ul{display:flex;gap:32px;list-style:none;font-size:14px;font-weight:500;color:var(--ink)}
+nav.top ul a{transition:color .2s}
+nav.top ul a:hover{color:var(--rose-deep)}
+.pill-cta{background:var(--ink);color:var(--paper);padding:11px 22px;border-radius:999px;font-size:13.5px;font-weight:500}
+
+/* ===== HERO (Petal Refined) ===== */
+section.hero{position:relative;padding:48px 0 72px}
+.orbit{position:absolute;right:-120px;top:80px;width:780px;height:780px;border-radius:50%;border:1px dashed rgba(0,0,0,.08);z-index:2;pointer-events:none;animation:spin 90s linear infinite}
+.orbit::before,.orbit::after{content:"";position:absolute;border-radius:50%;border:1px dashed rgba(0,0,0,.08)}
+.orbit::before{inset:80px}
+.orbit::after{inset:160px}
+.orbit .satellite{position:absolute;top:-6px;left:50%;width:12px;height:12px;border-radius:50%;background:var(--rose-deep);transform:translateX(-50%);box-shadow:0 0 14px var(--rose)}
+.orbit .satellite.s2{top:auto;bottom:-6px;background:var(--sage-deep)}
+.orbit .satellite.s3{left:-6px;top:50%;transform:translateY(-50%);background:#fff;border:2px solid var(--rose-deep)}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;min-height:74vh;position:relative}
+.hero h1{font-family:"Playfair Display",serif;font-weight:500;font-size:clamp(42px,4.6vw,72px);line-height:1.04;letter-spacing:-.018em}
+.hero h1 .rose{color:var(--rose-deep);font-weight:500}
+.hero h1 .sage{color:var(--sage-deep);font-weight:500}
+.hero .lede{margin-top:32px;max-width:480px}
+.hero .ctas{margin-top:44px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+
+.fan{position:relative;height:600px}
+.petal{position:absolute;background:rgba(255,255,255,.72);backdrop-filter:blur(28px);border:1px solid rgba(255,255,255,.6);box-shadow:var(--shadow-2);padding:22px;border-radius:24px;width:280px;transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.petal:hover{transform:rotate(0) scale(1.05) !important;z-index:10}
+.petal::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.4),transparent 40%);pointer-events:none;border-radius:24px}
+.petal h4{font-family:"Playfair Display",serif;font-weight:600;font-size:22px;line-height:1.2;letter-spacing:-.005em;margin-bottom:8px}
+.petal h4 .accent{color:var(--rose-deep)}
+.petal .label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--rose-deep);font-weight:700;margin-bottom:10px}
+.petal p{font-size:13.5px;line-height:1.55;color:var(--muted)}
+.p1{top:30px;right:140px;transform:rotate(-6deg);z-index:1}
+.p2{top:120px;right:-30px;transform:rotate(8deg);z-index:2}
+.p3{top:310px;right:200px;transform:rotate(-4deg);z-index:3}
+.p4{top:380px;right:0;transform:rotate(6deg);z-index:2;background:rgba(63,85,36,.92);color:#fff;border-color:rgba(255,255,255,.2)}
+.p4 .label,.p4 h4 .accent{color:var(--sage)}
+.p4 h4{color:#fff}
+.p4 p{color:rgba(255,255,255,.78)}
+.p4::before{background:linear-gradient(180deg,rgba(255,255,255,.15),transparent 40%)}
+
+.moment{position:absolute;left:50%;top:50%;transform:translate(-30%,-50%) rotate(-8deg);font-family:"Playfair Display",serif;font-weight:500;font-size:38px;line-height:1.05;color:var(--rose-deep);text-shadow:0 4px 30px rgba(255,255,255,.6);z-index:6;pointer-events:none;letter-spacing:-.015em}
+.moment span{display:block;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-family:"Albert Sans";margin-top:8px;font-weight:600}
+
+.hero-foot{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:13px;gap:24px;flex-wrap:wrap}
+.hero-foot b{color:var(--ink);font-weight:500}
+.hero-foot .row{display:flex;gap:28px;flex-wrap:wrap}
+
+/* ===== SERVICES ===== */
+section.services{padding:96px 0;position:relative}
+.services-head{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:64px}
+.services-head .right p{font-size:16px;color:var(--muted);max-width:440px;margin-left:auto;text-align:right}
+.svc-list{display:flex;flex-direction:column;gap:18px}
+.svc{display:grid;grid-template-columns:120px 1.3fr 1fr auto;gap:32px;align-items:center;padding:32px;border-radius:22px;background:rgba(255,255,255,.55);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.55);transition:transform .3s,background .3s;cursor:pointer;position:relative;overflow:hidden}
+.svc::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.35),transparent 40%);pointer-events:none;border-radius:22px}
+.svc:hover{transform:translateX(6px);background:rgba(255,255,255,.78)}
+.svc .num-big{font-family:"Playfair Display",serif;font-weight:500;font-size:52px;line-height:1;letter-spacing:-.02em;color:var(--rose-deep)}
+.svc .name{font-family:"Playfair Display",serif;font-weight:600;font-size:22px;letter-spacing:-.008em}
+.svc .desc{font-size:14.5px;line-height:1.6;color:var(--muted)}
+.svc .arr{width:48px;height:48px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;transition:transform .3s,background .3s}
+.svc:hover .arr{background:var(--rose-deep);transform:translate(4px,-4px)}
+
+/* ===== ABOUT ===== */
+section.about{padding:96px 0;position:relative}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.about-text{padding-right:24px}
+.about-text .h-section{margin-top:20px}
+.about-text .body{margin-top:32px;display:flex;flex-direction:column;gap:18px}
+.about-text .body p{font-size:15.5px;line-height:1.75;color:var(--muted)}
+.about-text .body p:first-child{font-family:"Playfair Display",serif;font-weight:400;font-size:22px;line-height:1.45;color:var(--ink);opacity:.88}
+.about-side{position:relative}
+.portrait{position:relative;aspect-ratio:4/5;border-radius:32px;overflow:hidden;background:linear-gradient(160deg,var(--rose) 0%,#f3c6bb 35%,#e3d8c2 60%,var(--sage) 100%);border:1px solid rgba(255,255,255,.6);box-shadow:var(--shadow-3)}
+.portrait::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 40% at 50% 30%,rgba(255,255,255,.55),transparent 70%);pointer-events:none}
+.portrait .badge{position:absolute;left:20px;top:20px;background:rgba(255,255,255,.7);backdrop-filter:blur(14px);padding:8px 14px;border-radius:999px;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);font-weight:600}
+.portrait .caption{position:absolute;left:24px;bottom:24px;color:var(--ink);font-family:"Playfair Display";font-weight:500;font-size:24px;line-height:1.2;max-width:280px;text-shadow:0 2px 14px rgba(255,255,255,.7)}
+.portrait .caption span{display:block;font-family:"Albert Sans";font-size:12.5px;font-weight:500;letter-spacing:.06em;color:var(--muted);margin-top:8px;text-transform:uppercase}
+.about-stats{margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.about-stats .card{background:rgba(255,255,255,.65);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.6);border-radius:18px;padding:20px;text-align:left}
+.about-stats .big{font-family:"Playfair Display";font-weight:500;font-size:36px;letter-spacing:-.02em;line-height:1;color:var(--ink)}
+.about-stats .big .accent{color:var(--rose-deep)}
+.about-stats .lbl{font-size:12px;color:var(--muted);margin-top:6px}
+
+/* ===== PŘÍSTUP (quote band) ===== */
+section.pristup{padding:96px 0;position:relative}
+.pristup-card{position:relative;background:linear-gradient(135deg,var(--sage-deeper) 0%,var(--sage-deep) 100%);color:#fff;border-radius:36px;padding:72px 80px;overflow:hidden;box-shadow:var(--shadow-3)}
+.pristup-card::before{content:"";position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,var(--sage-2) 0%,transparent 70%);right:-180px;top:-180px;opacity:.4;animation:drift 24s ease-in-out infinite}
+.pristup-card::after{content:"";position:absolute;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,var(--rose) 0%,transparent 70%);left:-100px;bottom:-100px;opacity:.18}
+.pristup-card .inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1.6fr;gap:48px;align-items:center}
+.pristup-card .tag-pill{background:rgba(255,255,255,.15);color:#fff;border-color:rgba(255,255,255,.2)}
+.pristup-card .tag-pill .num,.pristup-card .tag-pill .dot{color:#fff;background:#fff}
+.pristup-card h2{font-family:"Playfair Display";font-weight:500;font-size:clamp(30px,3vw,42px);line-height:1.08;letter-spacing:-.015em;margin-top:18px}
+.pristup-card blockquote{font-family:"Playfair Display";font-weight:400;font-size:clamp(19px,1.9vw,25px);line-height:1.5;letter-spacing:-.003em}
+.pristup-card blockquote .accent{color:#dde9c2}
+.pristup-card cite{margin-top:32px;display:flex;align-items:center;gap:14px;font-style:normal;font-size:14px}
+.pristup-card cite .av{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#fff,var(--rose));border:2px solid rgba(255,255,255,.5)}
+.pristup-card cite b{display:block;font-weight:600}
+.pristup-card cite span{opacity:.7;font-size:12.5px}
+
+/* ===== BENEFITY ===== */
+section.benefity{padding:96px 0;position:relative}
+.ben-head{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:56px}
+.ben-head .right p{font-size:16px;color:var(--muted);max-width:480px;margin-left:auto;text-align:right}
+.ben-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.ben{background:rgba(255,255,255,.65);backdrop-filter:blur(22px);border:1px solid rgba(255,255,255,.6);border-radius:28px;padding:36px;position:relative;overflow:hidden;transition:transform .35s}
+.ben:hover{transform:translateY(-4px)}
+.ben::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.4),transparent 35%);pointer-events:none;border-radius:28px}
+.ben .ico{width:64px;height:64px;border-radius:20px;background:linear-gradient(135deg,var(--rose) 0%,#f3b8a8 100%);display:flex;align-items:center;justify-content:center;color:var(--rose-deep);font-family:"Playfair Display";font-weight:500;font-size:28px;margin-bottom:24px;position:relative;z-index:2}
+.ben:nth-child(2) .ico{background:linear-gradient(135deg,var(--sage) 0%,var(--sage-2) 100%);color:var(--sage-deep)}
+.ben:nth-child(3) .ico{background:linear-gradient(135deg,var(--ink) 0%,var(--ink-2) 100%);color:#fff}
+.ben h3{font-family:"Playfair Display";font-weight:600;font-size:22px;letter-spacing:-.008em;line-height:1.2;margin-bottom:14px;position:relative;z-index:2}
+.ben h3 .accent{color:var(--rose-deep)}
+.ben p{font-size:14.5px;line-height:1.65;color:var(--muted);position:relative;z-index:2}
+.ben .pin{margin-top:20px;padding-top:16px;border-top:1px dashed var(--line-2);font-size:12.5px;font-weight:600;color:var(--rose-deep);text-transform:uppercase;letter-spacing:.14em;position:relative;z-index:2;display:flex;align-items:center;gap:8px}
+
+/* ===== REFERENCE ===== */
+section.reference{padding:96px 0;position:relative}
+.ref-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:48px;gap:32px;flex-wrap:wrap}
+.ref-meta{font-size:13.5px;color:var(--muted);display:flex;align-items:center;gap:14px}
+.ref-meta .stars{color:#dd9c5a;letter-spacing:.05em}
+.ref-meta b{color:var(--ink);font-weight:600}
+.ref-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.ref{background:rgba(255,255,255,.62);backdrop-filter:blur(22px);border:1px solid rgba(255,255,255,.6);border-radius:24px;padding:28px;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:18px;min-height:340px}
+.ref::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.4),transparent 35%);pointer-events:none;border-radius:24px}
+.ref .top{display:flex;align-items:center;gap:14px;position:relative;z-index:2}
+.ref .av{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--sage-deep));border:2px solid #fff;flex-shrink:0}
+.ref .av.b{background:linear-gradient(135deg,var(--sage),var(--rose-deep))}
+.ref .av.c{background:linear-gradient(135deg,#ead8c2,var(--sage-deep))}
+.ref .av.d{background:linear-gradient(135deg,var(--rose-2),var(--ink))}
+.ref .av.e{background:linear-gradient(135deg,var(--sage-2),var(--rose-deep))}
+.ref .av.f{background:linear-gradient(135deg,var(--rose),#7a3f37)}
+.ref .who b{display:block;font-size:14.5px;font-weight:600}
+.ref .who span{font-size:12px;color:var(--muted)}
+.ref blockquote{font-family:"Playfair Display";font-weight:500;font-size:17px;line-height:1.45;letter-spacing:-.003em;color:var(--ink);position:relative;z-index:2}
+.ref blockquote .accent{color:var(--rose-deep)}
+.ref .bottom{margin-top:auto;padding-top:14px;border-top:1px dashed var(--line);display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);position:relative;z-index:2}
+.ref .bottom .stars{color:#dd9c5a;letter-spacing:.04em}
+.ref.dark{background:rgba(63,85,36,.92);color:#fff;border-color:rgba(255,255,255,.18)}
+.ref.dark .who b{color:#fff}
+.ref.dark .who span,.ref.dark .bottom{color:rgba(255,255,255,.7)}
+.ref.dark blockquote{color:#fff}
+.ref.dark blockquote .accent{color:var(--sage)}
+.ref.dark .bottom{border-color:rgba(255,255,255,.2)}
+
+/* ===== FAQ ===== */
+section.faq{padding:96px 0;position:relative}
+.faq-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+.faq-side .tabs{margin-top:32px;display:flex;gap:8px;padding:5px;background:rgba(255,255,255,.6);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.6);border-radius:999px;width:fit-content}
+.faq-side .tabs button{background:transparent;border:0;padding:10px 18px;border-radius:999px;font:inherit;font-size:13.5px;color:var(--muted);cursor:pointer;transition:background .2s,color .2s}
+.faq-side .tabs button.active{background:var(--ink);color:#fff}
+.faq-side .search{margin-top:24px;display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.6);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.6);padding:12px 18px;border-radius:14px}
+.faq-side .search input{flex:1;border:0;background:transparent;font:inherit;font-size:14px;outline:none}
+.faq-side .pic{margin-top:32px;border-radius:24px;overflow:hidden;aspect-ratio:1/1.05;background:linear-gradient(160deg,var(--sage) 0%,#dee6c2 35%,#f0d9cc 60%,var(--rose) 100%);position:relative;border:1px solid rgba(255,255,255,.6);box-shadow:var(--shadow-2)}
+.faq-side .pic::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 50% at 30% 30%,rgba(255,255,255,.45),transparent 70%);pointer-events:none}
+.faq-side .pic .annot{position:absolute;left:24px;bottom:24px;font-family:"Playfair Display";font-weight:500;font-size:24px;line-height:1.2;color:var(--ink);max-width:240px;text-shadow:0 2px 12px rgba(255,255,255,.7)}
+.faq-side .pic .annot span{display:block;font-family:"Albert Sans";font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:8px;font-weight:600}
+.faq-items{display:flex;flex-direction:column;gap:12px}
+.faq-item{background:rgba(255,255,255,.6);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.6);border-radius:18px;overflow:hidden;transition:background .25s}
+.faq-item summary{list-style:none;cursor:pointer;padding:22px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary .q{font-family:"Playfair Display";font-weight:500;font-size:18px;letter-spacing:-.005em;line-height:1.3}
+.faq-item summary .ico{width:32px;height:32px;border-radius:50%;background:var(--paper);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--ink);transition:transform .3s,background .3s}
+.faq-item[open] summary .ico{background:var(--rose-deep);color:#fff;transform:rotate(45deg)}
+.faq-item .a{padding:0 24px 24px;font-size:14.5px;line-height:1.7;color:var(--muted);max-width:520px}
+.faq-item .a a{color:var(--rose-deep);font-weight:500;border-bottom:1px solid var(--rose-deep);padding-bottom:1px}
+
+/* ===== CONTACT ===== */
+section.contact{padding:96px 0 64px;position:relative}
+.contact-card{background:rgba(255,255,255,.68);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.6);border-radius:36px;padding:64px;box-shadow:var(--shadow-3);display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:start}
+.contact-head{display:flex;flex-direction:column;gap:24px}
+.contact-head .h-section{margin-top:8px}
+.contact-head .info{margin-top:14px;display:flex;flex-direction:column;gap:14px;font-size:14.5px;color:var(--ink)}
+.contact-head .info .row{display:flex;align-items:center;gap:14px;padding:14px 16px;background:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.6);border-radius:14px;transition:background .2s}
+.contact-head .info .row:hover{background:rgba(255,255,255,.8)}
+.contact-head .info .row .ic{width:38px;height:38px;border-radius:12px;background:var(--rose);color:var(--rose-deep);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-head .info .row b{display:block;font-weight:600}
+.contact-head .info .row span{font-size:12.5px;color:var(--muted);display:block;margin-top:2px}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:24px 20px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1 / -1}
+.field label{font-size:12px;letter-spacing:.04em;color:var(--muted);font-weight:500}
+.field input,.field textarea,.field select{background:rgba(255,255,255,.55);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.65);border-radius:12px;padding:14px 16px;font:inherit;font-size:14.5px;color:var(--ink);outline:none;transition:border-color .2s,background .2s}
+.field input:focus,.field textarea:focus{border-color:var(--rose-deep);background:rgba(255,255,255,.85)}
+.field textarea{min-height:120px;resize:vertical}
+.form .submit{grid-column:1 / -1;display:flex;justify-content:space-between;align-items:center;gap:24px;margin-top:8px;flex-wrap:wrap}
+.form .submit .note{font-size:12.5px;color:var(--muted);max-width:340px;line-height:1.5}
+
+/* ===== FOOTER ===== */
+footer{margin-top:48px;background:linear-gradient(180deg,var(--sage-deep) 0%,var(--sage-deeper) 100%);color:#f3efe5;position:relative;overflow:hidden}
+footer::before{content:"";position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,var(--sage-2) 0%,transparent 70%);right:-100px;top:-200px;opacity:.18}
+footer::after{content:"";position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,var(--rose) 0%,transparent 70%);left:-100px;bottom:-100px;opacity:.12}
+footer .shell{padding:80px 56px 32px;position:relative;z-index:2}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;gap:48px;align-items:start}
+.foot-brand{padding-right:32px}
+.foot-brand .logo{color:#fff}
+.foot-brand .logo .mark{background:#fff}
+.foot-brand .logo .sep{color:var(--rose)}
+.foot-brand p{margin-top:16px;font-size:14px;line-height:1.65;color:rgba(255,255,255,.75);max-width:280px}
+.foot-brand .nl{margin-top:24px;display:flex;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:5px 5px 5px 18px;align-items:center;gap:10px}
+.foot-brand .nl input{flex:1;background:transparent;border:0;font:inherit;font-size:13.5px;color:#fff;outline:none}
+.foot-brand .nl input::placeholder{color:rgba(255,255,255,.55)}
+.foot-brand .nl button{background:#fff;color:var(--sage-deep);border:0;padding:10px 16px;border-radius:999px;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.foot-col h5{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.55);font-weight:600;margin-bottom:18px}
+.foot-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:14px}
+.foot-col ul a{color:rgba(255,255,255,.85);transition:color .2s}
+.foot-col ul a:hover{color:#fff}
+.foot-strip{margin-top:64px;padding-top:24px;border-top:1px solid rgba(255,255,255,.15);display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;font-size:12.5px;color:rgba(255,255,255,.6)}
+.foot-strip .socials{display:flex;gap:8px}
+.foot-strip .socials a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;color:#fff;transition:background .2s}
+.foot-strip .socials a:hover{background:rgba(255,255,255,.22)}
+</style>
+</head>
+<body>
+<div class="wash"><div class="l l1"></div><div class="l l2"></div><div class="l l3"></div></div>
+<div class="grain"></div>
+
+<!-- ===== NAV ===== -->
+<nav class="top">
+  <div class="inner">
+    <a href="#" class="logo"><span class="mark"></span> Květina <span class="sep">·</span> klinika</a>
+    <ul>
+      <li><a href="#sluzby">Co nabízím</a></li>
+      <li><a href="#o-mne">O&nbsp;biorezonanci</a></li>
+      <li><a href="#benefity">Proč si mě vybrat</a></li>
+      <li><a href="#reference">Reference</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="#kontakt" class="pill-cta">Objednat se →</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="shell">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">Klinika biorezonance · Praha 2 · od 2011</span>
+        <h1>Když tělo <span class="rose">šeptá,</span><br>my <span class="sage">posloucháme.</span></h1>
+        <p class="lede">Hodina ticha s&nbsp;přístrojem, který rozumí elektromagnetickým signálům těla. A&nbsp;terapeut, který umí přeložit, co bylo slyšet.</p>
+        <div class="ctas">
+          <a href="#kontakt" class="btn">Objednat se →</a>
+          <a href="#" class="btn-2">▶ 90s o nás</a>
+        </div>
+      </div>
+
+      <div class="fan" aria-hidden="true">
+        <div class="orbit">
+          <span class="satellite"></span>
+          <span class="satellite s2"></span>
+          <span class="satellite s3"></span>
+        </div>
+        <span class="moment">Tady &amp; teď.<span>← váš následující krok</span></span>
+
+        <article class="petal p1">
+          <div class="label">i. Konzultace</div>
+          <h4>15 min, <span class="accent">zdarma.</span></h4>
+          <p>Online hovor. Bez prodejních triků — řekneme rovnou, jestli to má smysl.</p>
+        </article>
+        <article class="petal p2">
+          <div class="label">ii. Klientka</div>
+          <h4>"Po deseti letech <span class="accent">klidná.</span>"</h4>
+          <p>Tereza V., 38. Migrény z denních na měsíční po šesti sezeních.</p>
+        </article>
+        <article class="petal p3">
+          <div class="label">iii. Co řešíme</div>
+          <h4>Únava · alergie · <span class="accent">mlha</span></h4>
+          <p>Funkční potíže, kterým klasická vyšetření říkají „nic vám není". A&nbsp;vy víte své.</p>
+        </article>
+        <article class="petal p4">
+          <div class="label">iv. Otevřeno</div>
+          <h4>+420 777 234 100</h4>
+          <p>Po–Pá 8–18, So po dohodě. Recepce zvedá osobně.</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="hero-foot">
+      <div class="row">
+        <span><b>14 let</b> praxe</span>
+        <span><b>4 200+</b> klientů</span>
+        <span><b>★ 4.94 / 5</b> · 312 recenzí</span>
+        <span>Certifikovaní terapeuti SBT</span>
+      </div>
+      <span><b>Praha 2</b> · Trojická 14</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="services" id="sluzby">
+  <div class="shell">
+    <div class="services-head">
+      <div>
+        <span class="tag-pill"><span class="num">01</span> Co nabízím</span>
+        <h2 class="h-section" style="margin-top:18px">Pět <span class="rose">jemných cest</span><br>k&nbsp;rovnováze.</h2>
+      </div>
+      <div class="right">
+        <p>Každá služba má svůj klidný rytmus. Hodina, dvě, nebo série — vždy s&nbsp;časem na rozhovor a&nbsp;přesvědčivý plán dál.</p>
+      </div>
+    </div>
+
+    <ul class="svc-list">
+      <li class="svc">
+        <span class="num-big">01</span>
+        <div><div class="name">Vstupní diagnostika</div></div>
+        <div class="desc">Šestidesátiminutové měření, ve kterém přístroj prochází vaše tělo a&nbsp;hledá místa zvýšeného napětí. Výstupem je písemný závěr a&nbsp;plán další péče.</div>
+        <a href="#" class="arr" aria-label="Detail služby">→</a>
+      </li>
+      <li class="svc">
+        <span class="num-big">02</span>
+        <div><div class="name">Terapeutická série</div></div>
+        <div class="desc">5–10 sezení, ve kterých přístroj jemnými signály pomáhá tělu obnovit rovnováhu. Doplněk, ne náhrada klasické medicíny.</div>
+        <a href="#" class="arr" aria-label="Detail služby">→</a>
+      </li>
+      <li class="svc">
+        <span class="num-big">03</span>
+        <div><div class="name">Detox &amp; metabolika</div></div>
+        <div class="desc">Cílený program pro chronickou únavu, oslabenou imunitu a&nbsp;zatížení z&nbsp;prostředí. Spolupráce s&nbsp;nutričním poradcem zdarma.</div>
+        <a href="#" class="arr" aria-label="Detail služby">→</a>
+      </li>
+      <li class="svc">
+        <span class="num-big">04</span>
+        <div><div class="name">Alergie &amp; intolerance</div></div>
+        <div class="desc">Testování více než 600 alergenů a&nbsp;potravinových intolerancí. Hotový výsledek na konci jediné návštěvy, bez krve.</div>
+        <a href="#" class="arr" aria-label="Detail služby">→</a>
+      </li>
+      <li class="svc">
+        <span class="num-big">05</span>
+        <div><div class="name">Konzultace zdarma</div></div>
+        <div class="desc">15&nbsp;minutový online hovor, ve kterém zjistíme, jestli má biorezonance v&nbsp;vašem případě smysl. Bez závazku, bez prodejních triků.</div>
+        <a href="#" class="arr" aria-label="Detail služby">→</a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="about" id="o-mne">
+  <div class="shell">
+    <div class="about-grid">
+      <div class="about-text">
+        <span class="tag-pill"><span class="num">02</span> O&nbsp;biorezonanci · o&nbsp;mně</span>
+        <h2 class="h-section">Klasická lékařka, která <span class="rose">neuměla&nbsp;odpovědět.</span></h2>
+        <div class="body">
+          <p>Před patnácti lety jsem byla doktorka v&nbsp;rušné pražské nemocnici. Tenkrát se mi v&nbsp;ordinaci scházeli lidi, kterým ve výsledcích nic nebylo — a&nbsp;přesto trpěli. Říkala jsem jim, že jsou „v&nbsp;pořádku", a&nbsp;věděla, že to není pravda.</p>
+          <p>Biorezonance pro mě byla zprvu zvědavost, později pokora a&nbsp;dnes přesný nástroj, který doplňuje vše, co jsem se naučila ve škole. Není to alternativa. Je to druhá kapitola.</p>
+          <p>Klinika Květina vznikla v&nbsp;roce 2011 kolem jedné myšlenky — že pacient si zaslouží být v&nbsp;ordinaci slyšen aspoň tak dlouho, jak dlouho je sám se svou bolestí doma. Hodina, dvě, někdy i&nbsp;déle.</p>
+        </div>
+        <div class="about-stats">
+          <div class="card">
+            <div class="big">14 <span class="accent">let</span></div>
+            <div class="lbl">specializované praxe v ČR</div>
+          </div>
+          <div class="card">
+            <div class="big">4&nbsp;200<span class="accent">+</span></div>
+            <div class="lbl">odbavených klientů</div>
+          </div>
+          <div class="card">
+            <div class="big">92 <span class="accent">%</span></div>
+            <div class="lbl">klientů se k nám vrací</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-side">
+        <div class="portrait">
+          <span class="badge">MUDr. Hana Novotná</span>
+          <div class="caption">„Tělo umí mluvit. My máme jenom zpomalit." <span>— rozhovor pro Forbes Zdraví, 2024</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PŘÍSTUP ===== -->
+<section class="pristup">
+  <div class="shell">
+    <div class="pristup-card">
+      <div class="inner">
+        <div>
+          <span class="tag-pill"><span class="num">03</span> Můj přístup</span>
+          <h2>Jemnost není <span style="color:#dde9c2">slabost</span>. Je to&nbsp;přesnost.</h2>
+        </div>
+        <div>
+          <blockquote>"V&nbsp;ordinaci nepospícháme. Když přijdete poprvé, dáme si&nbsp;čaj a&nbsp;já si poslechnu i&nbsp;to, co byste lékaři za běžných okolností <span class="accent">neřekli</span>. Tělo si pamatuje všechno — i&nbsp;to, co jste dávno chtěli zapomenout. Naším úkolem je to laskavě přečíst a&nbsp;ukázat cestu&nbsp;dál."</blockquote>
+          <cite>
+            <span class="av"></span>
+            <span><b>MUDr. Hana Novotná</b><span>vedoucí lékařka · interna, biorezonance</span></span>
+          </cite>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BENEFITY ===== -->
+<section class="benefity" id="benefity">
+  <div class="shell">
+    <div class="ben-head">
+      <div>
+        <span class="tag-pill"><span class="num">04</span> Proč si&nbsp;mě vybrat</span>
+        <h2 class="h-section" style="margin-top:18px">Tři důvody, které <span class="rose">vidíte hned.</span></h2>
+      </div>
+      <div class="right">
+        <p>Tři benefity, na kterých klinika stojí už od&nbsp;roku 2011. Nepřidáváme čtvrtý — radši ty první tři dotahujeme.</p>
+      </div>
+    </div>
+
+    <div class="ben-grid">
+      <article class="ben">
+        <div class="ico">⌖</div>
+        <h3>Hodina ticha, ne <span class="accent">deset&nbsp;minut</span> ve&nbsp;spěchu.</h3>
+        <p>Jedno sezení = jeden klient = jeden přístroj. Žádné překlápění mezi pacienty, žádné překřikování fronty.</p>
+        <div class="pin">i. Vždy 60 minut</div>
+      </article>
+      <article class="ben">
+        <div class="ico">✿</div>
+        <h3>Bez injekcí. Bez chemie. <span class="accent">Bez vedlejších</span> účinků.</h3>
+        <p>Měření přes elektrody, žádné vpichy, žádné léky na předpis. Mezi sezeními se vrátíte k&nbsp;běžnému životu okamžitě.</p>
+        <div class="pin">ii. Bezbolestné</div>
+      </article>
+      <article class="ben">
+        <div class="ico">✦</div>
+        <h3>Doplněk klasické medicíny, ne <span class="accent">místo&nbsp;ní.</span></h3>
+        <p>Pokud potřebujete antibiotika, pošleme vás pro ně. U&nbsp;nás řešíme to, čemu lékaři říkají „funkční potíže".</p>
+        <div class="pin">iii. Spolupracujeme</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REFERENCE ===== -->
+<section class="reference" id="reference">
+  <div class="shell">
+    <div class="ref-head">
+      <div>
+        <span class="tag-pill"><span class="num">05</span> Reference</span>
+        <h2 class="h-section" style="margin-top:18px">312 lidí, kteří <span class="rose">odešli&nbsp;klidnější.</span></h2>
+      </div>
+      <div class="ref-meta">
+        <span><b>★ 4.94 / 5</b></span>
+        <span class="stars">★★★★★</span>
+        <span>na Heuréce &amp; Google Reviews</span>
+      </div>
+    </div>
+
+    <div class="ref-grid">
+      <article class="ref">
+        <div class="top"><span class="av"></span><div class="who"><b>Tereza V., 38</b><span>klientka od 2022 · migrény</span></div></div>
+        <blockquote>"Po deseti letech denních migrén jsem konečně <span class="accent">klidná.</span> Nepotřebuji tabletky každý den."</blockquote>
+        <div class="bottom"><span class="stars">★★★★★</span><span>6 sezení</span></div>
+      </article>
+      <article class="ref dark">
+        <div class="top"><span class="av b"></span><div class="who"><b>Markéta H., 41</b><span>klientka od 2021 · únava</span></div></div>
+        <blockquote>"Konečně někdo, kdo se zeptal <span class="accent">proč</span> — ne jen co mě bolí. To už mi pomohlo samo o&nbsp;sobě."</blockquote>
+        <div class="bottom"><span class="stars">★★★★★</span><span>8 sezení</span></div>
+      </article>
+      <article class="ref">
+        <div class="top"><span class="av c"></span><div class="who"><b>Petr K., 52</b><span>klient od 2023 · alergie</span></div></div>
+        <blockquote>"Na jarní alergii beru léky 20 let. Letos jsem je <span class="accent">vůbec nepotřeboval.</span>"</blockquote>
+        <div class="bottom"><span class="stars">★★★★★</span><span>5 sezení</span></div>
+      </article>
+      <article class="ref">
+        <div class="top"><span class="av d"></span><div class="who"><b>Lucie K., 35</b><span>klientka od 2023 · úzkost</span></div></div>
+        <blockquote>"Tady jsem se konečně <span class="accent">rozdýchala.</span> Doslova. A&nbsp;ne na chvilku."</blockquote>
+        <div class="bottom"><span class="stars">★★★★★</span><span>4 sezení</span></div>
+      </article>
+      <article class="ref">
+        <div class="top"><span class="av e"></span><div class="who"><b>Adam D., 44</b><span>klient od 2020 · trávení</span></div></div>
+        <blockquote>"Můj gastroenterolog mě sem poslal. Po třech letech vyšetření, na kterých nic nebylo. <span class="accent">Tady na něco přišli.</span>"</blockquote>
+        <div class="bottom"><span class="stars">★★★★★</span><span>10 sezení</span></div>
+      </article>
+      <article class="ref">
+        <div class="top"><span class="av f"></span><div class="who"><b>Jana M., 60</b><span>klientka od 2019 · regenerace</span></div></div>
+        <blockquote>"Chodím sem dvakrát do roka jako na <span class="accent">servis auta.</span> Tělo to ocení víc, než si připouštíme."</blockquote>
+        <div class="bottom"><span class="stars">★★★★★</span><span>průběžně</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq" id="faq">
+  <div class="shell">
+    <div class="faq-grid">
+      <div class="faq-side">
+        <span class="tag-pill"><span class="num">06</span> Časté dotazy</span>
+        <h2 class="h-section" style="margin-top:18px">Otázky, které <span class="rose">slýcháme&nbsp;denně.</span></h2>
+        <p class="lede" style="margin-top:20px;font-size:16px">Pokud něco nenajdete, zavolejte +420&nbsp;777&nbsp;234&nbsp;100 — odpovíme hned, ne&nbsp;za 48&nbsp;hodin přes formulář.</p>
+
+        <div class="tabs" role="tablist">
+          <button class="active" type="button">Obecné</button>
+          <button type="button">První návštěva</button>
+          <button type="button">Pojišťovna</button>
+        </div>
+        <div class="search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--muted)"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="search" placeholder="Hledat v dotazech…" />
+        </div>
+        <div class="pic" aria-hidden="true">
+          <div class="annot">Cesta zpátky k&nbsp;sobě začíná otázkou.<span>Klinika Květina · Praha 2</span></div>
+        </div>
+      </div>
+
+      <div class="faq-items">
+        <details class="faq-item" open>
+          <summary><span class="q">Je biorezonance vědecky podložená?</span><span class="ico">＋</span></summary>
+          <div class="a">Biorezonance je doplňková metoda, která pracuje s&nbsp;elektromagnetickými signály těla. Studie v&nbsp;ČR i&nbsp;zahraničí ukazují přínos zejména u&nbsp;funkčních a&nbsp;chronických potíží. Nenahrazuje klasickou medicínu — naopak, <a href="#">spolupracujeme s&nbsp;více než 40 lékaři</a> v&nbsp;Praze.</div>
+        </details>
+        <details class="faq-item">
+          <summary><span class="q">Jak dlouho trvá jedno sezení?</span><span class="ico">＋</span></summary>
+          <div class="a">První návštěva trvá 60 minut a&nbsp;zahrnuje rozhovor, vlastní měření a&nbsp;společný plán další péče. Následná sezení 45 minut.</div>
+        </details>
+        <details class="faq-item">
+          <summary><span class="q">Bolí to? Jsou nějaké vedlejší účinky?</span><span class="ico">＋</span></summary>
+          <div class="a">Vyšetření je naprosto bezbolestné — měření probíhá přes elektrody umístěné na pokožce. Mezi sezeními se vracíte k&nbsp;běžnému životu okamžitě. Vedlejší účinky nejsou popisovány.</div>
+        </details>
+        <details class="faq-item">
+          <summary><span class="q">Kolik sezení budu potřebovat?</span><span class="ico">＋</span></summary>
+          <div class="a">Záleží na obtíži. U&nbsp;akutních problémů často 3–5, u&nbsp;chronických 8–10. Po vstupní diagnostice vám dáme realistický odhad — nikdy „nakupujete kupon" předem.</div>
+        </details>
+        <details class="faq-item">
+          <summary><span class="q">Proplácí to zdravotní pojišťovna?</span><span class="ico">＋</span></summary>
+          <div class="a">Biorezonance není hrazená z&nbsp;veřejného zdravotního pojištění. Některé pojišťovny ji zařazují do bonusových programů — vystavíme vám potřebné potvrzení.</div>
+        </details>
+        <details class="faq-item">
+          <summary><span class="q">Můžu přijít s&nbsp;dětmi?</span><span class="ico">＋</span></summary>
+          <div class="a">Ano, biorezonanci provádíme od&nbsp;3 let věku. U&nbsp;dětí spolupracujeme úzce s&nbsp;dětským lékařem rodiny.</div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="contact" id="kontakt">
+  <div class="shell">
+    <div class="contact-card">
+      <div class="contact-head">
+        <span class="tag-pill"><span class="num">07</span> Kontakt &amp; rezervace</span>
+        <h2 class="h-section">Napište nám. <span class="rose">Nebo&nbsp;rovnou zavolejte.</span></h2>
+        <p style="font-size:15.5px;color:var(--muted);line-height:1.65">Odpovíme do 24&nbsp;hodin, většinou rychleji. Telefon zvedá Lenka — naše recepční, ne robot.</p>
+        <div class="info">
+          <a class="row" href="tel:+420777234100"><span class="ic">📞</span><div><b>+420 777 234 100</b><span>Po–Pá 8:00–18:00 · So po dohodě</span></div></a>
+          <a class="row" href="mailto:ahoj@kvetina-klinika.cz"><span class="ic">✉</span><div><b>ahoj@kvetina-klinika.cz</b><span>odpovídáme do 24 hodin</span></div></a>
+          <div class="row"><span class="ic">⌂</span><div><b>Trojická 14, Praha 2</b><span>3 min od metra Karlovo náměstí</span></div></div>
+        </div>
+      </div>
+
+      <form class="form" onsubmit="event.preventDefault();alert('Děkujeme — ozveme se do 24 hodin.')">
+        <div class="field"><label for="fn">Jméno *</label><input id="fn" required></div>
+        <div class="field"><label for="ln">Příjmení *</label><input id="ln" required></div>
+        <div class="field"><label for="em">E-mail *</label><input id="em" type="email" required></div>
+        <div class="field"><label for="ph">Telefon</label><input id="ph" type="tel" placeholder="+420"></div>
+        <div class="field full"><label for="topic">Co vás trápí?</label>
+          <select id="topic">
+            <option>Nevím přesně, chci si o tom popovídat</option>
+            <option>Únava, mlha, nespavost</option>
+            <option>Alergie a&nbsp;intolerance</option>
+            <option>Trávení, GIT</option>
+            <option>Migrény a&nbsp;bolesti hlavy</option>
+            <option>Chronické bolesti</option>
+            <option>Něco jiného</option>
+          </select>
+        </div>
+        <div class="field full"><label for="msg">Napište nám pár vět</label><textarea id="msg" placeholder="Jak dlouho to trvá, co jste už zkusili, kdy se vám hodí přijít…"></textarea></div>
+        <div class="submit">
+          <p class="note">Odesláním souhlasíte se <a href="#" style="color:var(--rose-deep);font-weight:500">zpracováním osobních údajů</a>. Vaše data nikomu nepředáváme.</p>
+          <button class="btn" type="submit">Odeslat zprávu →</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="shell">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="logo"><span class="mark"></span> Květina <span class="sep">·</span> klinika</div>
+        <p>Klinika biorezonance v&nbsp;Praze 2. Otevřena 2011. Přijímáme dospělé, dorost i&nbsp;děti od&nbsp;3 let.</p>
+        <form class="nl" onsubmit="event.preventDefault();this.querySelector('input').value='';this.querySelector('button').textContent='✓ Hotovo'">
+          <input type="email" placeholder="Váš e-mail pro klidnější dopis 1× měsíčně" />
+          <button>Odebírat</button>
+        </form>
+      </div>
+      <div class="foot-col">
+        <h5>Menu</h5>
+        <ul>
+          <li><a href="#sluzby">Co nabízím</a></li>
+          <li><a href="#o-mne">O&nbsp;biorezonanci</a></li>
+          <li><a href="#benefity">Proč si mě vybrat</a></li>
+          <li><a href="#reference">Reference</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Kontakt</h5>
+        <ul>
+          <li><a href="tel:+420777234100">+420 777 234 100</a></li>
+          <li><a href="mailto:ahoj@kvetina-klinika.cz">ahoj@kvetina-klinika.cz</a></li>
+          <li><a href="#kontakt">Rezervace</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Adresa</h5>
+        <ul>
+          <li>Trojická 14</li>
+          <li>120 00 Praha 2</li>
+          <li>3 min od metra Karlovo&nbsp;n.</li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Otevírací doba</h5>
+        <ul>
+          <li>Po–Pá &nbsp;8:00–18:00</li>
+          <li>So &nbsp;&nbsp;&nbsp;po dohodě</li>
+          <li>Ne &nbsp;&nbsp;&nbsp;zavřeno</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-strip">
+      <span>© 2026 Klinika Květina · IČO 123 456 78 · <a href="#" style="color:rgba(255,255,255,.75);border-bottom:1px solid rgba(255,255,255,.3)">Zpracování osobních údajů</a></span>
+      <div class="socials">
+        <a href="#" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 1.17.05 1.8.25 2.22.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.05.41 2.22.07 1.25.07 1.65.07 4.85s0 3.6-.07 4.85c-.05 1.17-.25 1.8-.41 2.22-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.05.36-2.22.41-1.25.07-1.65.07-4.85.07s-3.6 0-4.85-.07c-1.17-.05-1.8-.25-2.22-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.05-.41-2.22C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.85c.05-1.17.25-1.8.41-2.22.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.05-.36 2.22-.41C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.16 0-3.53 0-4.77.07-.99.05-1.53.21-1.89.35-.47.18-.81.4-1.17.76-.36.36-.58.7-.76 1.17-.14.36-.3.9-.35 1.89C3 8.47 3 8.84 3 12s0 3.53.07 4.77c.05.99.21 1.53.35 1.89.18.47.4.81.76 1.17.36.36.7.58 1.17.76.36.14.9.3 1.89.35C8.47 21 8.84 21 12 21s3.53 0 4.77-.07c.99-.05 1.53-.21 1.89-.35.47-.18.81-.4 1.17-.76.36-.36.58-.7.76-1.17.14-.36.3-.9.35-1.89.07-1.24.07-1.61.07-4.77s0-3.53-.07-4.77c-.05-.99-.21-1.53-.35-1.89a3.16 3.16 0 0 0-.76-1.17 3.16 3.16 0 0 0-1.17-.76c-.36-.14-.9-.3-1.89-.35C15.53 4 15.16 4 12 4zm0 3.06A4.94 4.94 0 1 1 7.06 12 4.94 4.94 0 0 1 12 7.06zm0 8.14A3.2 3.2 0 1 0 8.8 12a3.2 3.2 0 0 0 3.2 3.2zm5.13-8.34a1.15 1.15 0 1 1-1.15-1.15 1.15 1.15 0 0 1 1.15 1.15z"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9V15h-2.4v-3h2.4V9.8c0-2.4 1.4-3.7 3.6-3.7 1 0 2.1.2 2.1.2v2.3h-1.2c-1.2 0-1.5.7-1.5 1.5V12h2.6l-.4 3h-2.2v6.9A10 10 0 0 0 22 12z"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6 1.12 6 0 4.88 0 3.5S1.12 1 2.5 1c1.37 0 2.48 1.12 2.48 2.5zM.22 8h4.56v14H.22V8zm7.34 0h4.37v1.9h.06c.6-1.1 2.1-2.27 4.32-2.27 4.62 0 5.47 3.04 5.47 7v7.37h-4.56V15.4c0-1.69-.03-3.86-2.36-3.86-2.36 0-2.72 1.84-2.72 3.74V22H7.56V8z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

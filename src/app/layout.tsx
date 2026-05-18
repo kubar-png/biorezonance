@@ -15,9 +15,9 @@ const albert = Albert_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Klinika Květina · Biorezonance Praha 2",
+  title: "Vladimíra Nezvalová · Biorezonance Brno",
   description:
-    "Klinika biorezonance v Praze 2. Jemná diagnostika a terapie pro únavu, alergie, migrény a funkční potíže. Od 2011, 4 200+ klientů, ★ 4.94 / 5.",
+    "Biorezonance v Brně — solo praxe Vladimíry Nezvalové. Jemná diagnostika a terapie pro únavu, alergie, migrény a funkční potíže. Hodina ticha, jeden klient, jeden přístroj.",
 };
 
 export default function RootLayout({

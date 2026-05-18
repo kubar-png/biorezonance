@@ -94,8 +94,6 @@ export default function Home() {
               <div className="orbit">
                 <span className="satellite" /><span className="satellite s2" /><span className="satellite s3" />
               </div>
-              <span className="moment">Tady &amp; teď.<span>← váš následující krok</span></span>
-
               <article className="petal p1">
                 <div className="label">i. Začít</div>
                 <h4>Konzultace <span className="accent">na telefonu.</span></h4>

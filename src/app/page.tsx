@@ -39,7 +39,7 @@ const refs = [
   { av: "b", text: ["Krásně si u vás ", "odpočinu, vypnu", ". Muž celou dobu prospal."], note: "klientka, partnerský pár" },
   { av: "c", text: ["Nerozumím, ", "jak to může fungovat", " — ale funguje to."], note: "nový klient, druhé sezení", dark: true },
   { av: "d", text: ["Je to někdy drsné, když se dotkneme ", "citlivých témat", "."], note: "dlouhodobá klientka" },
-  { av: "e", text: ["Pracovna je ", "oáza", ". A ten čaj."], note: "první návštěva" },
+  { av: "e", text: ["Pracovna je ", "oáza, ráj", "."], note: "první návštěva" },
   { av: "f", text: ["Nechápu, proč to ", "nepoužívá klasická medicína", "."], note: "z lékařské rodiny" },
 ];
 
@@ -104,7 +104,7 @@ export default function Home() {
               <article className="petal p2">
                 <div className="label">ii. Co slýchám</div>
                 <h4>&ldquo;Mám to <span className="accent">místo&nbsp;psychoterapie.</span>&rdquo;</h4>
-                <p>Parafráze z opakované zpětné vazby klientů. Hodina ticha s&nbsp;čajem dělá svoje.</p>
+                <p>Parafráze z&nbsp;opakované zpětné vazby napříč léty. Hodina ticha dělá svoje.</p>
               </article>
               <article className="petal p3">
                 <div className="label">iii. Co řeším</div>

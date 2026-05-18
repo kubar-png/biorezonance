@@ -1,26 +1,126 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --cream: #f4f3ef;
+  --cream-2: #efece6;
+  --lavender: #e9e7ef;
+  --lavender-2: #dedceb;
+  --ink: #2c2935;
+  --ink-soft: #3a3744;
+  --slate: #7a7682;
+  --slate-2: #8a8693;
+  --muted: #5f5b66;
+  --line: #d9d6cf;
+
+  --accent-lav: #d8d6e6;
+  --accent-lav-2: #c7c5da;
+  --accent-olive: #d9d8c2;
+  --accent-gray: #b7b4c0;
+  --accent-soft: #ecebe1;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-cream: var(--cream);
+  --color-cream-2: var(--cream-2);
+  --color-lavender: var(--lavender);
+  --color-lavender-2: var(--lavender-2);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-slate: var(--slate);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --font-sans: var(--font-sans);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-feature-settings: "ss01", "cv11";
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  background: var(--ink);
+  color: #f7f6f2;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border-radius: 6px;
+}
+
+.h-display {
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.02;
+}
+
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ink);
+  color: #f6f4ef;
+  border-radius: 999px;
+  padding: 16px 32px;
+  font-weight: 500;
+  font-size: 16px;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+.btn-pill:hover {
+  background: #1c1923;
+  transform: translateY(-1px);
+}
+
+input,
+textarea,
+select,
+button {
+  font: inherit;
+  color: inherit;
+}
+
+.field-line {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #b9b5b0;
+  width: 100%;
+  padding: 12px 2px 10px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+.field-line:focus {
+  border-color: var(--ink);
+}
+.field-label {
+  display: block;
+  color: var(--muted);
+  font-size: 15px;
+  margin-bottom: 2px;
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes floatYrev {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  animation: fadeUp 0.9s cubic-bezier(.2,.7,.2,1) both;
 }

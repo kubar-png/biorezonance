@@ -15,9 +15,9 @@ const albert = Albert_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Vladimíra Nezvalová · Biorezonance Brno",
+  title: "MUDr. Vladimíra Nezvalová · Biorezonance Bicom-Optima 2 · Brno-Bystrc",
   description:
-    "Biorezonance v Brně — solo praxe Vladimíry Nezvalové. Jemná diagnostika a terapie pro únavu, alergie, migrény a funkční potíže. Hodina ticha, jeden klient, jeden přístroj.",
+    "Biorezonance v Brně-Bystrci na přístroji Bicom-Optima 2. Lékařka se sedmnácti lety praxe v chirurgii, urologii a hospicu. Pro fyzické i psychické obtíže, děti od 3 let. Út, čt, pá 9–21.",
 };
 
 export default function RootLayout({

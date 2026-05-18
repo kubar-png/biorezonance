@@ -2,30 +2,57 @@ import ContactForm from "@/components/ContactForm";
 import Newsletter from "@/components/Newsletter";
 
 const services = [
-  { n: "01", name: "Vstupní diagnostika", desc: "Šedesát minut, ve kterých přístroj prochází vaše tělo a hledá místa zvýšeného napětí. Výstupem je písemný závěr a plán další péče." },
-  { n: "02", name: "Terapeutická série", desc: "5–10 sezení, ve kterých přístroj jemnými signály pomáhá tělu obnovit rovnováhu. Doplněk, ne náhrada klasické medicíny." },
-  { n: "03", name: "Detox & metabolika", desc: "Cílený program pro chronickou únavu, oslabenou imunitu a zatížení z prostředí. Součástí je individuální doporučení pro denní rytmus." },
-  { n: "04", name: "Alergie & intolerance", desc: "Testování více než 600 alergenů a potravinových intolerancí. Hotový výsledek na konci jediné návštěvy, bez krve." },
-  { n: "05", name: "Konzultace zdarma", desc: "15 minutový online hovor, ve kterém zjistím, jestli má biorezonance ve vašem případě smysl. Bez závazku, bez prodejních triků." },
+  {
+    n: "01",
+    name: "Biorezonance Bicom-Optima 2",
+    desc: "Hodina až dvě a půl, ve kterých přístroj prochází vaše elektromagnetické pole a hledá místa, kde se rozladilo. Pro fyzické i psychické obtíže — od dětí po seniory. Vlajková služba.",
+    price: "2 500 / 1 500 Kč",
+    note: "dospělí / děti · první návštěva",
+  },
+  {
+    n: "02",
+    name: "Odvykání kouření",
+    desc: "Jediná návštěva — pokud opravdu chcete přestat. Žádný balíček deseti sezení, žádné napodruhé.",
+    price: "1 500 Kč",
+    note: "jednorázová návštěva",
+  },
+  {
+    n: "03",
+    name: "Konzultace",
+    desc: "Hodina, ve které spolu projdeme váš příběh, dosavadní vyšetření a uvážíme, jestli má smysl jít dál. Bez závazku.",
+    price: "1 000 Kč",
+    note: "60 minut · telefonem nebo osobně",
+  },
+  {
+    n: "04",
+    name: "Asyrská bezkontaktní masáž",
+    desc: "Práce v energetickém poli bez doteku. Doplněk pro klienty, kteří chtějí jít hlouběji než s přístrojem.",
+    price: "dle domluvy",
+    note: "doplňková služba",
+  },
 ];
 
-// UKÁZKA — placeholder references. Real ones nahradíme po souhlasu klientek.
+// PARAFRÁZE — doslovné citace ze zpětné vazby klientů, bez jmen.
+// Reálné reference s fotkami doplníme po souhlasu konkrétních klientek.
 const refs = [
-  { av: "", who: "T. V., 38", role: "klientka · migrény", quote: ["Po deseti letech denních migrén jsem konečně ", "klidná.", " Nepotřebuji tabletky každý den."], n: "6 sezení", dark: false },
-  { av: "b", who: "M. H., 41", role: "klientka · únava", quote: ["Konečně někdo, kdo se zeptal ", "proč", " — ne jen co mě bolí. To už mi pomohlo samo o sobě."], n: "8 sezení", dark: true },
-  { av: "c", who: "P. K., 52", role: "klient · alergie", quote: ["Na jarní alergii beru léky 20 let. Letos jsem je ", "vůbec nepotřeboval.", ""], n: "5 sezení", dark: false },
-  { av: "d", who: "L. K., 35", role: "klientka · úzkost", quote: ["Tady jsem se konečně ", "rozdýchala.", " Doslova. A ne na chvilku."], n: "4 sezení", dark: false },
-  { av: "e", who: "A. D., 44", role: "klient · trávení", quote: ["Můj gastroenterolog mě sem poslal. Po třech letech vyšetření, na kterých nic nebylo. ", "Tady na něco přišli.", ""], n: "10 sezení", dark: false },
-  { av: "f", who: "J. M., 60", role: "klientka · regenerace", quote: ["Chodím sem dvakrát do roka jako na ", "servis auta.", " Tělo to ocení víc, než si připouštíme."], n: "průběžně", dark: false },
+  { av: "", text: ["Mám to ", "místo psychoterapie", "."], note: "opakovaně, různí klienti" },
+  { av: "b", text: ["Krásně si u vás ", "odpočinu, vypnu", ". Muž celou dobu prospal."], note: "klientka, partnerský pár" },
+  { av: "c", text: ["Nerozumím, ", "jak to může fungovat", " — ale funguje to."], note: "nový klient, druhé sezení", dark: true },
+  { av: "d", text: ["Je to někdy drsné, když se dotkneme ", "citlivých témat", "."], note: "dlouhodobá klientka" },
+  { av: "e", text: ["Pracovna je ", "oáza", ". A ten čaj."], note: "první návštěva" },
+  { av: "f", text: ["Nechápu, proč to ", "nepoužívá klasická medicína", "."], note: "z lékařské rodiny" },
 ];
 
 const faqs = [
-  { q: "Je biorezonance vědecky podložená?", a: <>Biorezonance je doplňková metoda, která pracuje s elektromagnetickými signály těla. Studie v ČR i zahraničí ukazují přínos zejména u funkčních a chronických potíží. Nenahrazuje klasickou medicínu — naopak, ráda spolupracuji s vaším praktickým lékařem.</> },
-  { q: "Jak dlouho trvá jedno sezení?", a: <>První návštěva trvá 60 minut a zahrnuje rozhovor, vlastní měření a společný plán další péče. Následná sezení 45 minut.</> },
-  { q: "Bolí to? Jsou nějaké vedlejší účinky?", a: <>Vyšetření je naprosto bezbolestné — měření probíhá přes elektrody umístěné na pokožce. Mezi sezeními se vracíte k běžnému životu okamžitě. Vedlejší účinky nejsou popisovány.</> },
-  { q: "Kolik sezení budu potřebovat?", a: <>Záleží na obtíži. U akutních problémů často 3–5, u chronických 8–10. Po vstupní diagnostice vám dám realistický odhad — nikdy „nekupujete kupon" předem.</> },
-  { q: "Proplácí to zdravotní pojišťovna?", a: <>Biorezonance není hrazená z veřejného zdravotního pojištění. Některé pojišťovny ji zařazují do bonusových programů — vystavím vám potřebné potvrzení.</> },
-  { q: "Můžu přijít s dětmi?", a: <>Ano, biorezonanci provádím od 3 let věku. U dětí ráda spolupracuji s vaším dětským lékařem.</> },
+  { q: "Jak dlouho trvá sezení?", a: <>První návštěva 120–150 minut. Kontrolní sezení kolem 90 minut. U dětí první návštěva 60–90 minut, kontrolní hodinka. Akutní ošetření na konkrétní problém (nejčastěji infekce) zhruba hodinu.</> },
+  { q: "Kolikrát budu muset přijít?", a: <>Záleží na tom, co spolu řešíme. Když se něco eliminuje, jsou potřeba zhruba tři sezení. Udržovací harmonizace po 3–6 měsících. Akutní alergie 3× po týdnu. Hubnutí 12× po týdnu. <strong>Odvykání kouření — když opravdu chcete přestat — stačí jednou.</strong></> },
+  { q: "Kolik to stojí?", a: <>První sezení 2 500 Kč (dospělí) / 1 500 Kč (děti). Kontrolní 1 500 Kč / 1 000 Kč. Konzultace 1 000 Kč. Akutní ošetření 1 500 Kč/hod. Příplatek za víkend nebo domácí prostředí 1 000 Kč. Nosné médium (niklová destička, kapky) 200 Kč. Množstevní slevy a barter po domluvě.</> },
+  { q: "Bude to bolet?", a: <>Ne. Můžete cítit brnění nebo mravenčení v drahách, někdy horkost, únavu nebo lehké točení hlavy. Většinou pomůže napít se vody, případně sezení na chvíli přerušíme.</> },
+  { q: "Proč to nehradí pojišťovna?", a: <>To je dotaz na pojišťovnu. V Německu a Švýcarsku je ošetření na bicomu hrazeno ze zdravotního připojištění — v Česku zatím nikoli.</> },
+  { q: "Proč to nepoužívají všichni lékaři?", a: <>Bicom je registrovaný zdravotnický prostředek. Své místo v klasické západní medicíně si ale hledá těžko — ta nehledá holistický přístup. Dnes už ho ale v Česku najdete v ambulancích praktiků, stomatologů nebo internistů.</> },
+  { q: "Zvládnou děti sezení v délce hodiny až dvou?", a: <>Ke každému dítěti přistupuji individuálně. Děti mají nachystaný koberec, hračky, knížky a dobrůtku. Na konci si vyberou malý dárek. Sezení nebývá problém — a děti samy si často říkají o další návštěvu.</> },
+  { q: "Můžu být u sezení s dítětem nebo partnerem?", a: <>U malých dětí je přítomnost jednoho rodiče žádoucí, u starších dětí se domluvíme. Adolescenti většinou absolvují sezení sami. Přítomnost partnera má smysl, pokud obtíže výrazně souvisí s vaším vztahem — jinak ne, brání to uvolnění.</> },
+  { q: "Kdy bicom nelze použít?", a: <>U žen v prvním trimestru těhotenství a u osob s implantovaným kardiostimulátorem nebo defibrilátorem. Jinak je metoda bez kontraindikací.</> },
 ];
 
 export default function Home() {
@@ -40,8 +67,8 @@ export default function Home() {
           <a href="#" className="logo"><span className="mark" /> Vladimíra Nezvalová <span className="sep">·</span> biorezonance</a>
           <ul>
             <li><a href="#sluzby">Co nabízím</a></li>
-            <li><a href="#o-mne">O&nbsp;biorezonanci</a></li>
-            <li><a href="#benefity">Proč si mě vybrat</a></li>
+            <li><a href="#o-mne">O&nbsp;mně</a></li>
+            <li><a href="#benefity">Proč si&nbsp;mě vybrat</a></li>
             <li><a href="#reference">Reference</a></li>
             <li><a href="#faq">FAQ</a></li>
           </ul>
@@ -54,9 +81,9 @@ export default function Home() {
         <div className="shell">
           <div className="hero-grid">
             <div>
-              <span className="eyebrow">Biorezonance · Brno · Vladimíra Nezvalová</span>
-              <h1>Když tělo <span className="rose">šeptá,</span><br />já <span className="sage">poslouchám.</span></h1>
-              <p className="lede">Hodina ticha s&nbsp;přístrojem, který rozumí elektromagnetickým signálům těla. A&nbsp;terapeutka, která má čas přeložit, co bylo slyšet.</p>
+              <span className="eyebrow">Biorezonance · Brno-Bystrc · MUDr. Vladimíra Nezvalová</span>
+              <h1>Vaše obtíže <span className="rose">mají adresu.</span><br />Pomůžu vám&nbsp;ji <span className="sage">najít.</span></h1>
+              <p className="lede">Bicom-Optima 2 a sedmnáct let medicínské praxe — v&nbsp;jedné ordinaci. Hledám epicentrum vašich obtíží, ne jen jejich projevy.</p>
               <div className="ctas">
                 <a href="#kontakt" className="btn">Objednat se →</a>
                 <a href="#o-mne" className="btn-2">↓ Víc o&nbsp;mně</a>
@@ -70,35 +97,35 @@ export default function Home() {
               <span className="moment">Tady &amp; teď.<span>← váš následující krok</span></span>
 
               <article className="petal p1">
-                <div className="label">i. Konzultace</div>
-                <h4>15 min, <span className="accent">zdarma.</span></h4>
-                <p>Online hovor. Bez prodejních triků — řeknu rovnou, jestli to má smysl.</p>
+                <div className="label">i. Začít</div>
+                <h4>Konzultace <span className="accent">na telefonu.</span></h4>
+                <p>Zavolejte nebo napište na WhatsApp +420&nbsp;777&nbsp;874&nbsp;067. Probereme, jestli má smysl jít dál.</p>
               </article>
               <article className="petal p2">
-                <div className="label">ii. Klientka</div>
-                <h4>&ldquo;Po deseti letech <span className="accent">klidná.</span>&rdquo;</h4>
-                <p>T. V., 38. Migrény z denních na měsíční po šesti sezeních.</p>
+                <div className="label">ii. Co slýchám</div>
+                <h4>&ldquo;Mám to <span className="accent">místo&nbsp;psychoterapie.</span>&rdquo;</h4>
+                <p>Parafráze z opakované zpětné vazby klientů. Hodina ticha s&nbsp;čajem dělá svoje.</p>
               </article>
               <article className="petal p3">
                 <div className="label">iii. Co řeším</div>
-                <h4>Únava · alergie · <span className="accent">mlha</span></h4>
-                <p>Funkční potíže, kterým klasická vyšetření říkají „nic vám není". A&nbsp;vy víte své.</p>
+                <h4>Únava · alergie · <span className="accent">hubnutí · kouření</span></h4>
+                <p>Fyzické i&nbsp;psychické obtíže. Od&nbsp;dětí po seniory, akutní i&nbsp;dlouhodobé.</p>
               </article>
               <article className="petal p4">
-                <div className="label">iv. Volejte</div>
-                <h4>+420 [TBD]</h4>
-                <p>Vladimíra zvedá osobně. Když nestihne, ozve se do několika hodin.</p>
+                <div className="label">iv. Kdy</div>
+                <h4>Út · Čt · Pá <span className="accent">9—21</span></h4>
+                <p>Ostatní dny i&nbsp;víkend po domluvě. Akutní stav doma — přístroj je&nbsp;mobilní.</p>
               </article>
             </div>
           </div>
 
           <div className="hero-foot">
             <div className="row">
-              <span><b>Brno</b> · [adresa TBD]</span>
-              <span><b>Solo praxe</b> — žádné překlápění mezi pacienty</span>
-              <span>Certifikovaná terapeutka biorezonance</span>
+              <span><b>MUDr.</b> · promovala 1996</span>
+              <span><b>5. rok</b> s&nbsp;Bicomem · stovky ošetření</span>
+              <span><b>Bicom-Optima 2</b> · nejnovější model</span>
             </div>
-            <span><b>Ordinační dny</b> · [TBD]</span>
+            <span><b>OC Javor</b> · Nám. 28.&nbsp;dubna 2 · Brno-Bystrc</span>
           </div>
         </div>
       </section>
@@ -109,10 +136,10 @@ export default function Home() {
           <div className="services-head">
             <div>
               <span className="tag-pill"><span className="num">01</span> Co nabízím</span>
-              <h2 className="h-section" style={{ marginTop: 18 }}>Pět <span className="rose">jemných cest</span><br />k&nbsp;rovnováze.</h2>
+              <h2 className="h-section" style={{ marginTop: 18 }}>Čtyři způsoby, jak <span className="rose">začít.</span></h2>
             </div>
             <div className="right">
-              <p>Každá služba má svůj klidný rytmus. Hodina, dvě, nebo série — vždy s&nbsp;časem na rozhovor a&nbsp;přesvědčivý plán dál.</p>
+              <p>Vlajkou je biorezonance na Bicom-Optima 2. Ostatní služby ji doplňují — někteří chodí jen na konzultaci, jiní na jednorázové odvykání kouření.</p>
             </div>
           </div>
 
@@ -120,9 +147,12 @@ export default function Home() {
             {services.map((s) => (
               <li key={s.n} className="svc">
                 <span className="num-big">{s.n}</span>
-                <div><div className="name">{s.name}</div></div>
+                <div>
+                  <div className="name">{s.name}</div>
+                  <div style={{ fontSize: 12.5, color: "var(--rose-deep)", fontWeight: 600, marginTop: 4 }}>{s.price} <span style={{ color: "var(--muted)", fontWeight: 400 }}>· {s.note}</span></div>
+                </div>
                 <div className="desc">{s.desc}</div>
-                <a href="#" className="arr" aria-label={`Detail služby ${s.name}`}>→</a>
+                <a href="#kontakt" className="arr" aria-label={`Objednat se na ${s.name}`}>→</a>
               </li>
             ))}
           </ul>
@@ -135,23 +165,23 @@ export default function Home() {
           <div className="about-grid">
             <div className="about-text">
               <span className="tag-pill"><span className="num">02</span> O&nbsp;biorezonanci · o&nbsp;mně</span>
-              <h2 className="h-section">Vladimíra Nezvalová — <span className="rose">terapeutka, která má čas.</span></h2>
+              <h2 className="h-section">Sedmnáct let v&nbsp;klasické medicíně. <span className="rose">Pět&nbsp;s&nbsp;bicomem.</span></h2>
               <div className="body">
-                <p>Léta jsem hledala metodu, která tělu neurčuje, co má cítit, ale ptá se ho. Biorezonance je pro mě přesný a&nbsp;jemný nástroj, který doplňuje vše, co klasická medicína umí&nbsp;sama. Není to alternativa. Je to druhá kapitola.</p>
-                <p>[TBD — krátký osobní příběh: kdy jste začala, co vás k&nbsp;biorezonanci přivedlo, jakou máte praxi a&nbsp;vzdělání. Tady je místo na 2–3 odstavce, které vás představí lidsky, ne jako životopis.]</p>
-                <p>Brněnská praxe stojí na jedné myšlence — klient si zaslouží být v&nbsp;ordinaci slyšen aspoň tak dlouho, jak dlouho je sám se svou bolestí doma. Hodina, dvě, někdy i&nbsp;déle. U&nbsp;mě nikdo nepospíchá.</p>
+                <p>Před patnácti lety jsme v&nbsp;rodině rok a&nbsp;půl řešili obtíž, na kterou neurologie ani urologie nepřišly. Pomohla nám bývalá spolužačka z&nbsp;medicíny — anestezioložka s&nbsp;bicomem. Po třech sezeních obtíž zmizela. Od&nbsp;té doby jsme do&nbsp;bicomu jezdili při každé větší věci.</p>
+                <p>Pět let zpátky jsem si k&nbsp;té zkušenosti dodělala školení a&nbsp;začala bicom dělat sama. Předtím sedmnáct let v&nbsp;klasické medicíně — chirurgie, urologie, hospicová péče. Promovala jsem v&nbsp;roce 1996.</p>
+                <p>Nepřišla jsem o&nbsp;úctu k&nbsp;tomu, co západní medicína umí. Naopak. Tahle praxe stojí na tom, kde se ty dva světy <strong>doplňují</strong> — ne kde se přebíjejí.</p>
               </div>
               <div className="about-stats">
-                <div className="card"><div className="big">[?] <span className="accent">let</span></div><div className="lbl">specializované praxe</div></div>
-                <div className="card"><div className="big">[?]<span className="accent">+</span></div><div className="lbl">odbavených klientů</div></div>
-                <div className="card"><div className="big">1 <span className="accent">na 1</span></div><div className="lbl">vždy jen vy a&nbsp;já</div></div>
+                <div className="card"><div className="big">17 <span className="accent">let</span></div><div className="lbl">v&nbsp;klasické medicíně</div></div>
+                <div className="card"><div className="big">5 <span className="accent">let</span></div><div className="lbl">s&nbsp;Bicom-Optima 2</div></div>
+                <div className="card"><div className="big">1996</div><div className="lbl">promoce z&nbsp;medicíny</div></div>
               </div>
             </div>
 
             <div className="about-side">
               <div className="portrait">
-                <span className="badge">Vladimíra Nezvalová</span>
-                <div className="caption">„Tělo umí mluvit. My ho máme jenom přestat přebíjet." <span>— [TBD — fotka, krátký popisek]</span></div>
+                <span className="badge">MUDr. Vladimíra Nezvalová</span>
+                <div className="caption">„Tělo umí mluvit. My ho máme jenom přestat přebíjet." <span>— místo na fotku · doplníme</span></div>
               </div>
             </div>
           </div>
@@ -165,13 +195,13 @@ export default function Home() {
             <div className="inner">
               <div>
                 <span className="tag-pill"><span className="num">03</span> Můj přístup</span>
-                <h2>Jemnost není <span style={{ color: "#dde9c2" }}>slabost</span>. Je to&nbsp;přesnost.</h2>
+                <h2>Otevřeně. Bez <span style={{ color: "#dde9c2" }}>velkých slibů.</span></h2>
               </div>
               <div>
-                <blockquote>&ldquo;V&nbsp;ordinaci nepospícháme. Když přijdete poprvé, dáme si&nbsp;čaj a&nbsp;já si poslechnu i&nbsp;to, co byste lékaři za běžných okolností <span className="accent">neřekli</span>. Tělo si pamatuje všechno — i&nbsp;to, co jste dávno chtěli zapomenout. Mým úkolem je to laskavě přečíst a&nbsp;ukázat cestu&nbsp;dál.&rdquo;</blockquote>
+                <blockquote>&ldquo;Ke klientům přistupuju otevřeně. Věřím, že jim mohu pomoci nastartovat samoléčící a&nbsp;samoregulační procesy — ale o&nbsp;<span className="accent">výsledku rozhodnou sami</span>. Mou rolí je přijmout své místo v&nbsp;jejich příběhu a&nbsp;správně ho uchopit.&rdquo;</blockquote>
                 <cite>
                   <span className="av" />
-                  <span><b>Vladimíra Nezvalová</b><span>terapeutka biorezonance · Brno</span></span>
+                  <span><b>MUDr. Vladimíra Nezvalová</b><span>biorezonance · Brno-Bystrc</span></span>
                 </cite>
               </div>
             </div>
@@ -185,31 +215,31 @@ export default function Home() {
           <div className="ben-head">
             <div>
               <span className="tag-pill"><span className="num">04</span> Proč si&nbsp;mě vybrat</span>
-              <h2 className="h-section" style={{ marginTop: 18 }}>Tři důvody, které <span className="rose">vidíte hned.</span></h2>
+              <h2 className="h-section" style={{ marginTop: 18 }}>Tři důvody. <span className="rose">Bez&nbsp;čtvrtého.</span></h2>
             </div>
             <div className="right">
-              <p>Tři benefity, na kterých moje praxe stojí. Nepřidávám čtvrtý — radši ty první tři dotahuji.</p>
+              <p>Tři věci, ve kterých je moje praxe jiná. Nepřidávám čtvrtý — radši ty první tři dotahuji.</p>
             </div>
           </div>
 
           <div className="ben-grid">
             <article className="ben">
               <div className="ico">⌖</div>
-              <h3>Hodina ticha, ne <span className="accent">deset&nbsp;minut</span> ve&nbsp;spěchu.</h3>
-              <p>Jedno sezení = jeden klient = jeden přístroj. Žádné překlápění mezi pacienty, žádné překřikování fronty.</p>
-              <div className="pin">i. Vždy 60 minut</div>
+              <h3>Lékařka, která <span className="accent">přidala&nbsp;bicom.</span></h3>
+              <p>Sedmnáct let v&nbsp;chirurgii, urologii a&nbsp;hospicu mi dalo úctu k&nbsp;tomu, co se dá vyšetřit a&nbsp;operovat. Pět let bicomu mi ukázalo, co ne. Dostanete oba pohledy v&nbsp;jedné ordinaci.</p>
+              <div className="pin">i. MUDr. od roku 1996</div>
             </article>
             <article className="ben">
               <div className="ico">✿</div>
-              <h3>Bez injekcí. Bez chemie. <span className="accent">Bez vedlejších</span> účinků.</h3>
-              <p>Měření přes elektrody, žádné vpichy, žádné léky na předpis. Mezi sezeními se vrátíte k&nbsp;běžnému životu okamžitě.</p>
-              <div className="pin">ii. Bezbolestné</div>
+              <h3>Termíny, <span className="accent">kdy můžete vy.</span></h3>
+              <p>Úterý, čtvrtek, pátek od&nbsp;9 do&nbsp;21 hodin. Víkend po domluvě. Když to nejde jinak, ošetření doma — přístroj je&nbsp;mobilní.</p>
+              <div className="pin">ii. Večer i&nbsp;víkend</div>
             </article>
             <article className="ben">
               <div className="ico">✦</div>
-              <h3>Doplněk klasické medicíny, ne <span className="accent">místo&nbsp;ní.</span></h3>
-              <p>Pokud potřebujete antibiotika, pošlu vás pro ně. U&nbsp;mě řešíme to, čemu lékaři říkají „funkční potíže".</p>
-              <div className="pin">iii. Spolupracujeme</div>
+              <h3>Hodina až dvě a&nbsp;půl. Ne <span className="accent">deset&nbsp;minut.</span></h3>
+              <p>První návštěva 120–150 minut. Žádné překlápění mezi pacienty, žádná fronta. Není kam pospíchat.</p>
+              <div className="pin">iii. 1 klient = 1 sezení</div>
             </article>
           </div>
         </div>
@@ -221,10 +251,9 @@ export default function Home() {
           <div className="ref-head">
             <div>
               <span className="tag-pill"><span className="num">05</span> Reference</span>
-              <h2 className="h-section" style={{ marginTop: 18 }}>Klientky &amp; klienti, kteří <span className="rose">odešli&nbsp;klidnější.</span></h2>
-              <p style={{ marginTop: 12, fontSize: 13, color: "var(--muted)", fontStyle: "normal", fontWeight: 600, letterSpacing: ".04em", textTransform: "uppercase" }}>
-                <span style={{ background: "var(--rose)", color: "var(--rose-deep)", padding: "4px 10px", borderRadius: 999 }}>Ukázka</span>
-                &nbsp;Reálné reference doplníme po souhlasu klientek.
+              <h2 className="h-section" style={{ marginTop: 18 }}>Co od&nbsp;klientů <span className="rose">slýchám&nbsp;nejčastěji.</span></h2>
+              <p style={{ marginTop: 12, fontSize: 13, color: "var(--muted)", fontWeight: 500, lineHeight: 1.5, maxWidth: 580 }}>
+                Doslovné parafráze ze&nbsp;zpětné vazby, bez&nbsp;jmen. Konkrétní reference s&nbsp;fotkami doplníme po souhlasu klientek — nechci zveřejnit nikoho bez jeho vědomí.
               </p>
             </div>
           </div>
@@ -232,9 +261,12 @@ export default function Home() {
           <div className="ref-grid">
             {refs.map((r, i) => (
               <article key={i} className={`ref${r.dark ? " dark" : ""}`}>
-                <div className="top"><span className={`av ${r.av}`} /><div className="who"><b>{r.who}</b><span>{r.role}</span></div></div>
-                <blockquote>&ldquo;{r.quote[0]}<span className="accent">{r.quote[1]}</span>{r.quote[2]}&rdquo;</blockquote>
-                <div className="bottom"><span className="stars">★★★★★</span><span>{r.n}</span></div>
+                <div className="top">
+                  <span className={`av ${r.av}`} />
+                  <div className="who"><b>Parafráze · klient</b><span>{r.note}</span></div>
+                </div>
+                <blockquote>&ldquo;{r.text[0]}<span className="accent">{r.text[1]}</span>{r.text[2]}&rdquo;</blockquote>
+                <div className="bottom"><span>ze zpětné vazby</span><span>—</span></div>
               </article>
             ))}
           </div>
@@ -248,7 +280,7 @@ export default function Home() {
             <div className="faq-side">
               <span className="tag-pill"><span className="num">06</span> Časté dotazy</span>
               <h2 className="h-section" style={{ marginTop: 18 }}>Otázky, které <span className="rose">slýchám&nbsp;denně.</span></h2>
-              <p className="lede" style={{ marginTop: 20, fontSize: 16 }}>Pokud něco nenajdete, zavolejte +420&nbsp;[TBD] — odpovím hned, ne&nbsp;za 48&nbsp;hodin přes formulář.</p>
+              <p className="lede" style={{ marginTop: 20, fontSize: 16 }}>Pokud něco nenajdete, napište na WhatsApp +420&nbsp;777&nbsp;874&nbsp;067 — odpovídám hned, ne za&nbsp;48 hodin přes formulář.</p>
 
               <div className="tabs" role="tablist">
                 <button className="active" type="button">Obecné</button>
@@ -260,7 +292,7 @@ export default function Home() {
                 <input type="search" placeholder="Hledat v dotazech…" />
               </div>
               <div className="pic" aria-hidden="true">
-                <div className="annot">Cesta zpátky k&nbsp;sobě začíná otázkou.<span>Vladimíra Nezvalová · Brno</span></div>
+                <div className="annot">Cesta zpátky k&nbsp;sobě začíná otázkou.<span>OC Javor · Brno-Bystrc</span></div>
               </div>
             </div>
 
@@ -282,12 +314,16 @@ export default function Home() {
           <div className="contact-card">
             <div className="contact-head">
               <span className="tag-pill"><span className="num">07</span> Kontakt &amp; rezervace</span>
-              <h2 className="h-section">Napište mi. <span className="rose">Nebo&nbsp;rovnou zavolejte.</span></h2>
-              <p style={{ fontSize: 15.5, color: "var(--muted)", lineHeight: 1.65 }}>Odpovídám do 24&nbsp;hodin, většinou rychleji. Telefon zvedám osobně.</p>
+              <h2 className="h-section">Napište. <span className="rose">Nebo&nbsp;rovnou zavolejte.</span></h2>
+              <p style={{ fontSize: 15.5, color: "var(--muted)", lineHeight: 1.65 }}>Nejrychleji se mi dovoláte přes WhatsApp. Telefon zvedám osobně — pokud nestihnu, ozvu se do několika hodin.</p>
               <div className="info">
-                <a className="row" href="tel:+420000000000"><span className="ic">☎</span><div><b>+420 [TBD]</b><span>Po–Pá [TBD ord. hodiny]</span></div></a>
-                <a className="row" href="mailto:vladimira@nezvalova.cz"><span className="ic">✉</span><div><b>vladimira@nezvalova.cz [TBD]</b><span>odpovídám do 24 hodin</span></div></a>
-                <div className="row"><span className="ic">⌂</span><div><b>[Ulice TBD], Brno</b><span>[orientační bod TBD]</span></div></div>
+                <a className="row" href="tel:+420777874067"><span className="ic">☎</span><div><b>+420 777 874 067</b><span>WhatsApp · Po–Pá osobně</span></div></a>
+                <a className="row" href="mailto:vnbiorezonance@gmail.com"><span className="ic">✉</span><div><b>vnbiorezonance@&nbsp;[doména TBD]</b><span>odpovídám do 24 hodin</span></div></a>
+                <a className="row" href="https://maps.google.com/?q=OC+Javor+Brno+Bystrc" target="_blank" rel="noopener"><span className="ic">⌂</span><div><b>OC Javor · Nám. 28. dubna 2</b><span>635 00 Brno-Bystrc</span></div></a>
+                <div className="row" style={{ background: "rgba(165,190,120,.15)", borderColor: "rgba(165,190,120,.35)" }}>
+                  <span className="ic" style={{ background: "var(--sage)", color: "var(--sage-deep)" }}>⏱</span>
+                  <div><b>Út · Čt · Pá &nbsp;9—21 hod.</b><span>Ostatní dny a&nbsp;víkend po&nbsp;domluvě</span></div>
+                </div>
               </div>
             </div>
 
@@ -301,8 +337,8 @@ export default function Home() {
         <div className="shell">
           <div className="foot-grid">
             <div className="foot-brand">
-              <div className="logo"><span className="mark" /> Vladimíra Nezvalová <span className="sep">·</span> biorezonance</div>
-              <p>Solo praxe biorezonance v&nbsp;Brně. Přijímám dospělé, dorost i&nbsp;děti od&nbsp;3 let.</p>
+              <div className="logo"><span className="mark" /> MUDr. Vladimíra Nezvalová <span className="sep">·</span> biorezonance</div>
+              <p>Solo praxe biorezonance Bicom-Optima 2 v&nbsp;Brně-Bystrci. Přijímám dospělé, dorost i&nbsp;děti od&nbsp;3 let. V&nbsp;indikovaných případech ošetření v&nbsp;domácím prostředí.</p>
               <Newsletter />
             </div>
             <div className="foot-col">
@@ -310,7 +346,7 @@ export default function Home() {
               <ul>
                 <li><a href="#sluzby">Co nabízím</a></li>
                 <li><a href="#o-mne">O&nbsp;biorezonanci</a></li>
-                <li><a href="#benefity">Proč si mě vybrat</a></li>
+                <li><a href="#benefity">Proč si&nbsp;mě vybrat</a></li>
                 <li><a href="#reference">Reference</a></li>
                 <li><a href="#faq">FAQ</a></li>
               </ul>
@@ -318,34 +354,36 @@ export default function Home() {
             <div className="foot-col">
               <h5>Kontakt</h5>
               <ul>
-                <li><a href="tel:+420000000000">+420 [TBD]</a></li>
-                <li><a href="mailto:vladimira@nezvalova.cz">vladimira@nezvalova.cz</a></li>
-                <li><a href="#kontakt">Rezervace</a></li>
+                <li><a href="tel:+420777874067">+420 777 874 067</a></li>
+                <li><a href="https://wa.me/420777874067">WhatsApp</a></li>
+                <li><a href="#kontakt">Formulář</a></li>
               </ul>
             </div>
             <div className="foot-col">
               <h5>Adresa</h5>
               <ul>
-                <li>[Ulice TBD]</li>
-                <li>[PSČ TBD] Brno</li>
-                <li>[orientační bod TBD]</li>
+                <li>OC Javor</li>
+                <li>Nám. 28. dubna 2</li>
+                <li>635 00 Brno-Bystrc</li>
               </ul>
             </div>
             <div className="foot-col">
-              <h5>Otevírací doba</h5>
+              <h5>Otevřeno</h5>
               <ul>
-                <li>Po–Pá &nbsp;[TBD]</li>
-                <li>So &nbsp;&nbsp;&nbsp;[TBD]</li>
-                <li>Ne &nbsp;&nbsp;&nbsp;zavřeno</li>
+                <li>Út · Čt · Pá &nbsp;9—21</li>
+                <li>Ostatní dny dle domluvy</li>
+                <li>Víkend dle domluvy</li>
               </ul>
             </div>
           </div>
 
           <div className="foot-strip">
-            <span>© 2026 Vladimíra Nezvalová · IČO [TBD] · <a href="#">Zpracování osobních údajů</a></span>
+            <span>© 2026 MUDr. Vladimíra Nezvalová · IČO&nbsp;[TBD] · <a href="#">Zpracování osobních údajů</a></span>
             <div className="socials">
-              <a href="#" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 1.17.05 1.8.25 2.22.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.05.41 2.22.07 1.25.07 1.65.07 4.85s0 3.6-.07 4.85c-.05 1.17-.25 1.8-.41 2.22-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.05.36-2.22.41-1.25.07-1.65.07-4.85.07s-3.6 0-4.85-.07c-1.17-.05-1.8-.25-2.22-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.05-.41-2.22C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.85c.05-1.17.25-1.8.41-2.22.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.05-.36 2.22-.41C8.4 2.2 8.8 2.2 12 2.2z" /></svg></a>
-              <a href="#" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9V15h-2.4v-3h2.4V9.8c0-2.4 1.4-3.7 3.6-3.7 1 0 2.1.2 2.1.2v2.3h-1.2c-1.2 0-1.5.7-1.5 1.5V12h2.6l-.4 3h-2.2v6.9A10 10 0 0 0 22 12z" /></svg></a>
+              {/* Sociální sítě zatím nejsou — Vladimíra zvažuje FB časem */}
+              <a href="https://wa.me/420777874067" aria-label="WhatsApp" title="WhatsApp">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+              </a>
             </div>
           </div>
         </div>

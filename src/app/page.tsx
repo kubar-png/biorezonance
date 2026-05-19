@@ -87,6 +87,21 @@ export default function Home() {
           <div className="hero-grid">
             <div>
               <span className="eyebrow">Biorezonance · Brno-Bystrc</span>
+
+              {/* MOBILE-ONLY mini cards under eyebrow */}
+              <div className="hero-mobile-cards">
+                <article className="hero-mini-card">
+                  <div className="label">Začít</div>
+                  <h4>Konzultace <span className="accent">zdarma.</span></h4>
+                  <p>15 min telefonem nebo na WhatsAppu.</p>
+                </article>
+                <article className="hero-mini-card sage">
+                  <div className="label">Otevřeno</div>
+                  <h4>Út · Čt · Pá</h4>
+                  <p>9—21 hod. Víkend po&nbsp;domluvě.</p>
+                </article>
+              </div>
+
               <h1>Vaše obtíže <span className="rose">mají adresu.</span><br />Pomůžu vám&nbsp;ji <span className="sage">najít.</span></h1>
               <p className="lede">Bicom-Optima 2 a sedmnáct let medicínské praxe — v&nbsp;jedné ordinaci. Hledám epicentrum vašich obtíží, ne jen jejich projevy.</p>
               <div className="ctas">

@@ -26,7 +26,7 @@ export default function ContactForm() {
         <input id="em" name="email" type="email" required />
       </div>
       <div className="field">
-        <label htmlFor="ph">Telefon (ideálně WhatsApp) *</label>
+        <label htmlFor="ph">Telefon *</label>
         <input id="ph" name="phone" type="tel" placeholder="+420" required />
       </div>
 

@@ -33,8 +33,8 @@ export default function ContactForm() {
       <div className="field full">
         <label htmlFor="type">Jaký je váš stav?</label>
         <select id="type" name="type" defaultValue="dlouhodobý">
-          <option value="akutní">Akutní — řeším něco, co se nedávno objevilo</option>
-          <option value="dlouhodobý">Dlouhodobý — táhne se to měsíce nebo roky</option>
+          <option value="akutní">Akutní - řeším něco, co se nedávno objevilo</option>
+          <option value="dlouhodobý">Dlouhodobý - táhne se to měsíce nebo roky</option>
           <option value="prevence">Prevence / harmonizace bez konkrétních obtíží</option>
           <option value="koureni">Odvykání kouření</option>
           <option value="hubnuti">Hubnutí</option>
@@ -43,7 +43,7 @@ export default function ContactForm() {
 
       <div className="field full">
         <label htmlFor="topic">Co byste si chtěl/a řešit? *</label>
-        <textarea id="topic" name="topic" required placeholder="Klidně pár vět — jak dlouho to trvá, co jste už zkusil/a, co vás přivedlo na biorezonanci." />
+        <textarea id="topic" name="topic" required placeholder="Klidně pár vět - jak dlouho to trvá, co jste už zkusil/a, co vás přivedlo na biorezonanci." />
       </div>
 
       <div className="field full" style={{ background: "rgba(165,190,120,.12)", padding: "18px 20px", borderRadius: 14, border: "1px solid rgba(165,190,120,.3)" }}>
@@ -56,7 +56,7 @@ export default function ContactForm() {
             <input type="checkbox" name="te" /> Jsem v&nbsp;<strong>prvním trimestru těhotenství</strong>
           </label>
           <p style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 4, lineHeight: 1.5 }}>
-            U&nbsp;obou stavů bicom nepoužíváme — pokud jste zaškrtl/a, ráda probereme jiné možnosti.
+            U&nbsp;obou stavů bicom nepoužíváme - pokud jste zaškrtl/a, ráda probereme jiné možnosti.
           </p>
         </div>
       </div>

@@ -17,7 +17,7 @@ const albert = Albert_Sans({
 export const metadata: Metadata = {
   title: "MUDr. Vladimíra Nezvalová · Biorezonance Bicom-Optima 2 · Brno-Bystrc",
   description:
-    "Biorezonance v Brně-Bystrci na přístroji Bicom-Optima 2. Lékařka se sedmnácti lety praxe v chirurgii, urologii a hospicu. Pro fyzické i psychické obtíže, děti od 3 let. Út, čt, pá 9–21.",
+    "Biorezonance v Brně-Bystrci na přístroji Bicom-Optima 2. Lékařka se sedmnácti lety praxe v chirurgii, urologii a hospicu. Pro fyzické i psychické obtíže, děti od 3 let. Út, čt, pá 9-21.",
 };
 
 export const viewport: Viewport = {

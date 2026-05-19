@@ -227,22 +227,36 @@ export default function Home() {
 
           <div className="ben-grid">
             <article className="ben">
-              <div className="ico">⌖</div>
+              <div className="ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+                </svg>
+              </div>
               <h3>Lékařka, která <span className="accent">přidala&nbsp;bicom.</span></h3>
               <p>Sedmnáct let v&nbsp;chirurgii, urologii a&nbsp;hospicu mi dalo úctu k&nbsp;tomu, co se dá vyšetřit a&nbsp;operovat. Pět let bicomu mi ukázalo, co ne. Dostanete oba pohledy v&nbsp;jedné ordinaci.</p>
-              <div className="pin">i. MUDr. od roku 1996</div>
+              <div className="pin">MUDr. od roku 1996</div>
             </article>
             <article className="ben">
-              <div className="ico">✿</div>
+              <div className="ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 7v5l3 2" />
+                </svg>
+              </div>
               <h3>Termíny, <span className="accent">kdy můžete vy.</span></h3>
               <p>Úterý, čtvrtek, pátek od&nbsp;9 do&nbsp;21 hodin. Víkend po domluvě. Když to nejde jinak, ošetření doma — přístroj je&nbsp;mobilní.</p>
-              <div className="pin">ii. Večer i&nbsp;víkend</div>
+              <div className="pin">Večer i&nbsp;víkend</div>
             </article>
             <article className="ben">
-              <div className="ico">✦</div>
+              <div className="ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l2.5 2.5M16.5 16.5 19 19M5 19l2.5-2.5M16.5 7.5 19 5" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+              </div>
               <h3>Hodina až dvě a&nbsp;půl. Ne <span className="accent">deset&nbsp;minut.</span></h3>
               <p>První návštěva 120–150 minut. Žádné překlápění mezi pacienty, žádná fronta. Není kam pospíchat.</p>
-              <div className="pin">iii. 1 klient = 1 sezení</div>
+              <div className="pin">1 klient = 1 sezení</div>
             </article>
           </div>
         </div>
@@ -320,11 +334,28 @@ export default function Home() {
               <h2 className="h-section">Napište. <span className="rose">Nebo&nbsp;rovnou zavolejte.</span></h2>
               <p style={{ fontSize: 15.5, color: "var(--muted)", lineHeight: 1.65 }}>Nejrychleji se mi dovoláte přes WhatsApp. Telefon zvedám osobně — pokud nestihnu, ozvu se do několika hodin.</p>
               <div className="info">
-                <a className="row" href="tel:+420777874067"><span className="ic">☎</span><div><b>+420 777 874 067</b><span>WhatsApp · Po–Pá osobně</span></div></a>
-                <a className="row" href="mailto:vnbiorezonance@gmail.com"><span className="ic">✉</span><div><b>vnbiorezonance@&nbsp;[doména TBD]</b><span>odpovídám do 24 hodin</span></div></a>
-                <a className="row" href="https://maps.google.com/?q=OC+Javor+Brno+Bystrc" target="_blank" rel="noopener"><span className="ic">⌂</span><div><b>OC Javor · Nám. 28. dubna 2</b><span>635 00 Brno-Bystrc</span></div></a>
+                <a className="row" href="tel:+420777874067">
+                  <span className="ic">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z" /></svg>
+                  </span>
+                  <div><b>+420 777 874 067</b><span>WhatsApp · Po–Pá osobně</span></div>
+                </a>
+                <a className="row" href="mailto:vnbiorezonance@gmail.com">
+                  <span className="ic">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></svg>
+                  </span>
+                  <div><b>vnbiorezonance@&nbsp;[doména TBD]</b><span>odpovídám do 24 hodin</span></div>
+                </a>
+                <a className="row" href="https://maps.google.com/?q=OC+Javor+Brno+Bystrc" target="_blank" rel="noopener">
+                  <span className="ic">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M20 10c0 7-8 12-8 12s-8-5-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
+                  </span>
+                  <div><b>OC Javor · Nám. 28. dubna 2</b><span>635 00 Brno-Bystrc</span></div>
+                </a>
                 <div className="row" style={{ background: "rgba(165,190,120,.15)", borderColor: "rgba(165,190,120,.35)" }}>
-                  <span className="ic" style={{ background: "var(--sage)", color: "var(--sage-deep)" }}>⏱</span>
+                  <span className="ic" style={{ background: "var(--sage)", color: "var(--sage-deep)" }}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8" /><path d="M12 9v4l2 2" /><path d="M9 2h6" /><path d="M12 5V2" /></svg>
+                  </span>
                   <div><b>Út · Čt · Pá &nbsp;9—21 hod.</b><span>Ostatní dny a&nbsp;víkend po&nbsp;domluvě</span></div>
                 </div>
               </div>

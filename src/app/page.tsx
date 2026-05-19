@@ -86,7 +86,7 @@ export default function Home() {
         <div className="shell">
           <div className="hero-grid">
             <div>
-              <span className="eyebrow">Biorezonance · Brno-Bystrc · MUDr. Vladimíra Nezvalová</span>
+              <span className="eyebrow">Biorezonance · Brno-Bystrc</span>
               <h1>Vaše obtíže <span className="rose">mají adresu.</span><br />Pomůžu vám&nbsp;ji <span className="sage">najít.</span></h1>
               <p className="lede">Bicom-Optima 2 a sedmnáct let medicínské praxe — v&nbsp;jedné ordinaci. Hledám epicentrum vašich obtíží, ne jen jejich projevy.</p>
               <div className="ctas">

@@ -237,7 +237,7 @@ export default function Home() {
           <div className="ben-head">
             <div>
               <span className="tag-pill">Proč si&nbsp;mě vybrat</span>
-              <h2 className="h-section" style={{ marginTop: 18 }}>Lékařka. Večer. A&nbsp;<span className="rose">celá hodina.</span></h2>
+              <h2 className="h-section" style={{ marginTop: 18 }}>Klidný a&nbsp;<span className="rose">otevřený přístup.</span></h2>
             </div>
             <div className="right">
               <p>Tři věci, které u&nbsp;běžné ordinace nedostanete. Žádná fronta, žádná desetiminutovka, žádné &bdquo;objednejte se za pět&nbsp;týdnů".</p>

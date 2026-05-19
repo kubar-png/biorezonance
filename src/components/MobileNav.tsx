@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 const links = [
   { href: "#sluzby", label: "Co nabízím" },
-  { href: "#o-mne", label: "O mně" },
+  { href: "#o-mne", label: "O mně" },
   { href: "#benefity", label: "Proč si mě vybrat" },
   { href: "#reference", label: "Reference" },
   { href: "#faq", label: "FAQ" },
@@ -14,11 +14,7 @@ export default function MobileNav() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = open ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
@@ -41,18 +37,9 @@ export default function MobileNav() {
         className="nav-burger"
         onClick={() => setOpen((o) => !o)}
       >
-        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-          {open ? (
-            <>
-              <path d="M5 5l12 12" />
-              <path d="M17 5L5 17" />
-            </>
-          ) : (
-            <>
-              <path d="M3 7h16" />
-              <path d="M3 15h16" />
-            </>
-          )}
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+          <path d="M3 7h16" />
+          <path d="M3 15h16" />
         </svg>
       </button>
 
@@ -62,8 +49,24 @@ export default function MobileNav() {
         aria-label="Hlavní menu"
         aria-hidden={!open}
       >
-        <div className="mobile-drawer-backdrop" onClick={() => setOpen(false)} />
+        <button
+          type="button"
+          className="mobile-drawer-backdrop"
+          aria-label="Zavřít menu"
+          onClick={() => setOpen(false)}
+        />
         <div className="mobile-drawer-panel">
+          <button
+            type="button"
+            className="mobile-drawer-close"
+            aria-label="Zavřít menu"
+            onClick={() => setOpen(false)}
+          >
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+              <path d="M5 5l12 12" />
+              <path d="M17 5L5 17" />
+            </svg>
+          </button>
           <ul>
             {links.map((l) => (
               <li key={l.href}>

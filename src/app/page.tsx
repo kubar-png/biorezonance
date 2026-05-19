@@ -99,6 +99,10 @@ export default function Home() {
               <div className="orbit">
                 <span className="satellite" /><span className="satellite s2" /><span className="satellite s3" />
               </div>
+              <div className="orbit-center-mobile">
+                <div className="device">Bicom-Optima&nbsp;<span className="accent">2</span></div>
+                <span className="small">nejnovější model</span>
+              </div>
               <article className="petal p1">
                 <div className="label">i. Začít</div>
                 <h4>Konzultace <span className="accent">na telefonu.</span></h4>

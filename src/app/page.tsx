@@ -86,7 +86,7 @@ export default function Home() {
               <p className="lede">Bicom-Optima 2 a sedmnáct let medicínské praxe — v&nbsp;jedné ordinaci. Hledám epicentrum vašich obtíží, ne jen jejich projevy.</p>
               <div className="ctas">
                 <a href="#kontakt" className="btn">Objednat se →</a>
-                <a href="#o-mne" className="btn-2">↓ Víc o&nbsp;mně</a>
+                <a href="#o-mne" className="btn-2">Víc o&nbsp;mně →</a>
               </div>
             </div>
 
@@ -133,7 +133,7 @@ export default function Home() {
         <div className="shell">
           <div className="services-head">
             <div>
-              <span className="tag-pill"><span className="num">01</span> Co nabízím</span>
+              <span className="tag-pill">Co nabízím</span>
               <h2 className="h-section" style={{ marginTop: 18 }}>Čtyři způsoby, jak <span className="rose">začít.</span></h2>
             </div>
             <div className="right">
@@ -162,7 +162,7 @@ export default function Home() {
         <div className="shell">
           <div className="about-grid">
             <div className="about-text">
-              <span className="tag-pill"><span className="num">02</span> O&nbsp;biorezonanci · o&nbsp;mně</span>
+              <span className="tag-pill">O&nbsp;biorezonanci · o&nbsp;mně</span>
               <h2 className="h-section">Sedmnáct let v&nbsp;klasické medicíně. <span className="rose">Pět&nbsp;s&nbsp;bicomem.</span></h2>
               <div className="body">
                 <p>Před patnácti lety jsme v&nbsp;rodině rok a&nbsp;půl řešili obtíž, na kterou neurologie ani urologie nepřišly. Pomohla nám bývalá spolužačka z&nbsp;medicíny — anestezioložka s&nbsp;bicomem. Po třech sezeních obtíž zmizela. Od&nbsp;té doby jsme do&nbsp;bicomu jezdili při každé větší věci.</p>
@@ -192,7 +192,7 @@ export default function Home() {
           <div className="pristup-card">
             <div className="inner">
               <div>
-                <span className="tag-pill"><span className="num">03</span> Můj přístup</span>
+                <span className="tag-pill">Můj přístup</span>
                 <h2>Otevřeně. Bez <span style={{ color: "#dde9c2" }}>velkých slibů.</span></h2>
               </div>
               <div>
@@ -212,7 +212,7 @@ export default function Home() {
         <div className="shell">
           <div className="ben-head">
             <div>
-              <span className="tag-pill"><span className="num">04</span> Proč si&nbsp;mě vybrat</span>
+              <span className="tag-pill">Proč si&nbsp;mě vybrat</span>
               <h2 className="h-section" style={{ marginTop: 18 }}>Tři důvody. <span className="rose">Bez&nbsp;čtvrtého.</span></h2>
             </div>
             <div className="right">
@@ -248,7 +248,7 @@ export default function Home() {
         <div className="shell">
           <div className="ref-head">
             <div>
-              <span className="tag-pill"><span className="num">05</span> Reference</span>
+              <span className="tag-pill">Reference</span>
               <h2 className="h-section" style={{ marginTop: 18 }}>Co od&nbsp;klientů <span className="rose">slýchám&nbsp;nejčastěji.</span></h2>
               <p style={{ marginTop: 12, fontSize: 13, color: "var(--muted)", fontWeight: 500, lineHeight: 1.5, maxWidth: 580 }}>
                 Doslovné parafráze ze&nbsp;zpětné vazby, bez&nbsp;jmen. Konkrétní reference s&nbsp;fotkami doplníme po souhlasu klientek — nechci zveřejnit nikoho bez jeho vědomí.
@@ -276,7 +276,7 @@ export default function Home() {
         <div className="shell">
           <div className="faq-grid">
             <div className="faq-side">
-              <span className="tag-pill"><span className="num">06</span> Časté dotazy</span>
+              <span className="tag-pill">Časté dotazy</span>
               <h2 className="h-section" style={{ marginTop: 18 }}>Otázky, které <span className="rose">slýchám&nbsp;denně.</span></h2>
               <p className="lede" style={{ marginTop: 20, fontSize: 16 }}>Pokud něco nenajdete, napište na WhatsApp +420&nbsp;777&nbsp;874&nbsp;067 — odpovídám hned, ne za&nbsp;48 hodin přes formulář.</p>
 
@@ -311,7 +311,7 @@ export default function Home() {
         <div className="shell">
           <div className="contact-card">
             <div className="contact-head">
-              <span className="tag-pill"><span className="num">07</span> Kontakt &amp; rezervace</span>
+              <span className="tag-pill">Kontakt &amp; rezervace</span>
               <h2 className="h-section">Napište. <span className="rose">Nebo&nbsp;rovnou zavolejte.</span></h2>
               <p style={{ fontSize: 15.5, color: "var(--muted)", lineHeight: 1.65 }}>Nejrychleji se mi dovoláte přes WhatsApp. Telefon zvedám osobně — pokud nestihnu, ozvu se do několika hodin.</p>
               <div className="info">

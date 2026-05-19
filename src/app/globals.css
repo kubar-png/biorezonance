@@ -130,6 +130,7 @@ section.hero{position:relative;padding:48px 0 72px}
 .p1{top:60px;left:30px;transform:rotate(-5deg);z-index:2}
 .p2{top:90px;right:30px;transform:rotate(5deg);z-index:2}
 .p3{top:280px;left:50%;transform:translateX(-50%) rotate(-2deg);z-index:3;width:340px;background:rgba(63,85,36,.92);color:#fff;border-color:rgba(255,255,255,.2)}
+.p3:hover{transform:translateX(-50%) rotate(0deg) scale(1.05) !important}
 .p3 .label,.p3 h4 .accent{color:var(--sage)}
 .p3 h4{color:#fff}
 .p3 p{color:rgba(255,255,255,.78)}

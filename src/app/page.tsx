@@ -119,24 +119,19 @@ export default function Home() {
                 <span className="small">nejnovější model</span>
               </div>
               <article className="petal p1">
-                <div className="label">i. Začít</div>
+                <div className="label">Začít</div>
                 <h4>Konzultace <span className="accent">na telefonu.</span></h4>
                 <p>Zavolejte nebo napište na WhatsApp +420&nbsp;777&nbsp;874&nbsp;067. Probereme, jestli má smysl jít dál.</p>
               </article>
               <article className="petal p2">
-                <div className="label">ii. Co slýchám</div>
-                <h4>&ldquo;Mám to <span className="accent">místo&nbsp;psychoterapie.</span>&rdquo;</h4>
-                <p>Parafráze z&nbsp;opakované zpětné vazby napříč léty. Hodina ticha dělá svoje.</p>
-              </article>
-              <article className="petal p3">
-                <div className="label">iii. Co řeším</div>
+                <div className="label">Co řeším</div>
                 <h4>Únava · alergie · <span className="accent">hubnutí · kouření</span></h4>
                 <p>Fyzické i&nbsp;psychické obtíže. Od&nbsp;dětí po seniory, akutní i&nbsp;dlouhodobé.</p>
               </article>
-              <article className="petal p4">
-                <div className="label">iv. Kdy</div>
-                <h4>Út · Čt · Pá <span className="accent">9—21</span></h4>
-                <p>Ostatní dny i&nbsp;víkend po domluvě. Akutní stav doma — přístroj je&nbsp;mobilní.</p>
+              <article className="petal p3">
+                <div className="label">Otevírací doba</div>
+                <h4>Út · Čt · Pá&nbsp;<span className="accent">9—21&nbsp;hod.</span></h4>
+                <p>Ostatní dny a&nbsp;víkend po&nbsp;domluvě. V&nbsp;indikovaných případech ošetření v&nbsp;domácím prostředí — přístroj je&nbsp;mobilní.</p>
               </article>
             </div>
           </div>

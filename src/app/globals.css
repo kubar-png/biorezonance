@@ -127,14 +127,13 @@ section.hero{position:relative;padding:48px 0 72px}
 .petal h4 .accent{color:var(--rose-deep)}
 .petal .label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--rose-deep);font-weight:700;margin-bottom:10px}
 .petal p{font-size:13.5px;line-height:1.55;color:var(--muted)}
-.p1{top:30px;right:140px;transform:rotate(-6deg);z-index:1}
-.p2{top:120px;right:-30px;transform:rotate(8deg);z-index:2}
-.p3{top:310px;right:200px;transform:rotate(-4deg);z-index:3}
-.p4{top:380px;right:0;transform:rotate(6deg);z-index:2;background:rgba(63,85,36,.92);color:#fff;border-color:rgba(255,255,255,.2)}
-.p4 .label,.p4 h4 .accent{color:var(--sage)}
-.p4 h4{color:#fff}
-.p4 p{color:rgba(255,255,255,.78)}
-.p4::before{background:linear-gradient(180deg,rgba(255,255,255,.15),transparent 40%)}
+.p1{top:30px;left:0;transform:rotate(-5deg);z-index:2}
+.p2{top:60px;right:-10px;transform:rotate(5deg);z-index:2}
+.p3{bottom:30px;left:50%;transform:translateX(-50%) rotate(-2deg);z-index:3;width:340px;background:rgba(63,85,36,.92);color:#fff;border-color:rgba(255,255,255,.2)}
+.p3 .label,.p3 h4 .accent{color:var(--sage)}
+.p3 h4{color:#fff}
+.p3 p{color:rgba(255,255,255,.78)}
+.p3::before{background:linear-gradient(180deg,rgba(255,255,255,.15),transparent 40%)}
 /* Hero mobile mini cards (under eyebrow, above heading) */
 .hero-mobile-cards{display:none}
 .orbit-center-mobile{display:none}

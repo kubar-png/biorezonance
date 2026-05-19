@@ -65,7 +65,6 @@ export default function Home() {
       <nav className="top">
         <div className="inner">
           <a href="#" className="logo">
-            <span className="mark" />
             <span className="logo-full">Vladimíra Nezvalová <span className="sep">·</span> biorezonance</span>
             <span className="logo-short">V. Nezvalová <span className="sep">·</span> biorez.</span>
           </a>

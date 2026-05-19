@@ -26,6 +26,7 @@
 *:focus-visible{outline:2px solid var(--rose-deep);outline-offset:3px;border-radius:6px}
 html{scroll-behavior:smooth;scroll-padding-top:96px}
 html,body{overflow-x:hidden;max-width:100vw}
+html{overscroll-behavior-y:none}
 body{background:var(--paper);color:var(--ink);font-family:var(--font-sans),sans-serif;-webkit-font-smoothing:antialiased;line-height:1.55}
 blockquote,p,h1,h2,h3,h4{overflow-wrap:break-word}
 a{color:inherit;text-decoration:none}
@@ -141,10 +142,10 @@ section.hero{position:relative;padding:48px 0 72px}
   /* Hide desktop fan/orbit on mobile */
   .fan{display:none}
 
-  /* Hero = full viewport, content split: top group + bottom group */
-  section.hero{min-height:100dvh;padding:16px 0 24px;display:flex;align-items:stretch}
+  /* Hero = small viewport height (stable, doesn't jump with URL bar) */
+  section.hero{min-height:100svh;padding:16px 0 max(56px,calc(env(safe-area-inset-bottom) + 40px));display:flex;align-items:stretch}
   section.hero .shell{display:flex;flex-direction:column;width:100%}
-  .hero-grid{display:flex;flex-direction:column;width:100%;flex:1;gap:0;min-height:calc(100dvh - 110px)}
+  .hero-grid{display:flex;flex-direction:column;width:100%;flex:1;gap:0;min-height:calc(100svh - 180px)}
   .hero-grid > div:first-child{display:flex;flex-direction:column;flex:1;height:100%}
 
   .hero .eyebrow{margin-bottom:16px}
@@ -162,8 +163,8 @@ section.hero{position:relative;padding:48px 0 72px}
   .hero-mini-card.sage h4{color:#fff}
   .hero-mini-card.sage p{color:rgba(255,255,255,.78)}
 
-  /* Heading group pushed to BOTTOM via margin-top:auto */
-  .hero h1{font-size:34px;line-height:1.05;margin-top:auto;padding-top:32px}
+  /* Heading group: pushed downward with auto, but bounded to keep clear of URL bar */
+  .hero h1{font-size:32px;line-height:1.06;margin-top:auto;padding-top:48px}
   .hero .lede{font-size:14.5px;line-height:1.55;margin-top:14px;max-width:none}
   .hero .ctas{margin-top:22px;gap:10px}
   .hero .btn,.hero .btn-2{padding:14px 22px;font-size:14px}

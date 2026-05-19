@@ -385,7 +385,7 @@ export default function Home() {
         <div className="shell">
           <div className="foot-grid">
             <div className="foot-brand">
-              <div className="logo"><span className="mark" /> MUDr. Vladimíra Nezvalová <span className="sep">·</span> biorezonance</div>
+              <div className="logo">Biorezonance</div>
               <p>Solo praxe biorezonance Bicom-Optima 2 v&nbsp;Brně-Bystrci. Přijímám dospělé, dorost i&nbsp;děti od&nbsp;3 let. V&nbsp;indikovaných případech ošetření v&nbsp;domácím prostředí.</p>
               <Newsletter />
             </div>

@@ -212,10 +212,10 @@ export default function Home() {
           <div className="ben-head">
             <div>
               <span className="tag-pill">Proč si&nbsp;mě vybrat</span>
-              <h2 className="h-section" style={{ marginTop: 18 }}>Tři důvody. <span className="rose">Bez&nbsp;čtvrtého.</span></h2>
+              <h2 className="h-section" style={{ marginTop: 18 }}>Lékařka. Večer. A&nbsp;<span className="rose">celá hodina.</span></h2>
             </div>
             <div className="right">
-              <p>Tři věci, ve kterých je moje praxe jiná. Nepřidávám čtvrtý — radši ty první tři dotahuji.</p>
+              <p>Tři věci, které u&nbsp;běžné ordinace nedostanete. Žádná fronta, žádná desetiminutovka, žádné &bdquo;objednejte se za pět&nbsp;týdnů".</p>
             </div>
           </div>
 
@@ -248,9 +248,9 @@ export default function Home() {
           <div className="ref-head">
             <div>
               <span className="tag-pill">Reference</span>
-              <h2 className="h-section" style={{ marginTop: 18 }}>Co od&nbsp;klientů <span className="rose">slýchám&nbsp;nejčastěji.</span></h2>
-              <p style={{ marginTop: 12, fontSize: 13, color: "var(--muted)", fontWeight: 500, lineHeight: 1.5, maxWidth: 580 }}>
-                Doslovné parafráze ze&nbsp;zpětné vazby, bez&nbsp;jmen. Konkrétní reference s&nbsp;fotkami doplníme po souhlasu klientek — nechci zveřejnit nikoho bez jeho vědomí.
+              <h2 className="h-section" style={{ marginTop: 18 }}>Podívejte se, <span className="rose">co o&nbsp;mně říkají klienti.</span></h2>
+              <p style={{ marginTop: 12, fontSize: 14.5, color: "var(--muted)", lineHeight: 1.6, maxWidth: 580 }}>
+                Reálné reference s&nbsp;fotkami a&nbsp;jmény doplníme s&nbsp;jejich souhlasem — než přijdou, držím anonymitu.
               </p>
             </div>
           </div>

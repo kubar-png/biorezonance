@@ -32,15 +32,14 @@ const services = [
   },
 ];
 
-// PARAFRÁZE — doslovné citace ze zpětné vazby klientů, bez jmen.
-// Reálné reference s fotkami doplníme po souhlasu konkrétních klientek.
+// PLACEHOLDER — reálné reference doplníme po souhlasu klientek.
 const refs = [
-  { av: "", text: ["Mám to ", "místo psychoterapie", "."], note: "opakovaně, různí klienti" },
-  { av: "b", text: ["Krásně si u vás ", "odpočinu, vypnu", ". Muž celou dobu prospal."], note: "klientka, partnerský pár" },
-  { av: "c", text: ["Nerozumím, ", "jak to může fungovat", " — ale funguje to."], note: "nový klient, druhé sezení", dark: true },
-  { av: "d", text: ["Je to někdy drsné, když se dotkneme ", "citlivých témat", "."], note: "dlouhodobá klientka" },
-  { av: "e", text: ["Pracovna je ", "oáza, ráj", "."], note: "první návštěva" },
-  { av: "f", text: ["Nechápu, proč to ", "nepoužívá klasická medicína", "."], note: "z lékařské rodiny" },
+  { av: "", text: ["Lorem ipsum dolor sit amet, ", "consectetur adipiscing elit", "."], note: "placeholder · krátká" },
+  { av: "b", text: ["Sed do eiusmod tempor incididunt ut labore et dolore magna ", "aliqua ut enim", " ad minim veniam, quis nostrud exercitation."], note: "placeholder · střední" },
+  { av: "c", text: ["Ullamco laboris nisi ut aliquip ex ea commodo ", "consequat", "."], note: "placeholder · krátká", dark: true },
+  { av: "d", text: ["Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat ", "cupidatat non proident", ", sunt in culpa qui officia deserunt mollit anim id est laborum."], note: "placeholder · delší" },
+  { av: "e", text: ["At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas ", "molestias excepturi", " sint occaecati cupiditate."], note: "placeholder · delší" },
+  { av: "f", text: ["Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo ", "minus id quod maxime placeat", "."], note: "placeholder · střední" },
 ];
 
 const faqs = [

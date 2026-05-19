@@ -1,5 +1,6 @@
 import ContactForm from "@/components/ContactForm";
 import Newsletter from "@/components/Newsletter";
+import MobileNav from "@/components/MobileNav";
 
 const services = [
   {
@@ -63,7 +64,11 @@ export default function Home() {
       {/* NAV */}
       <nav className="top">
         <div className="inner">
-          <a href="#" className="logo"><span className="mark" /> Vladimíra Nezvalová <span className="sep">·</span> biorezonance</a>
+          <a href="#" className="logo">
+            <span className="mark" />
+            <span className="logo-full">Vladimíra Nezvalová <span className="sep">·</span> biorezonance</span>
+            <span className="logo-short">V. Nezvalová <span className="sep">·</span> biorez.</span>
+          </a>
           <ul>
             <li><a href="#sluzby">Co nabízím</a></li>
             <li><a href="#o-mne">O&nbsp;mně</a></li>
@@ -72,6 +77,7 @@ export default function Home() {
             <li><a href="#faq">FAQ</a></li>
           </ul>
           <a href="#kontakt" className="pill-cta">Objednat se →</a>
+          <MobileNav />
         </div>
       </nav>
 

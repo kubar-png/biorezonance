@@ -294,7 +294,7 @@ export default function Home() {
               <article key={i} className={`ref${r.dark ? " dark" : ""}`}>
                 <div className="top">
                   <span className={`av ${r.av}`} />
-                  <div className="who"><b>Parafráze · klient</b><span>{r.note}</span></div>
+                  <div className="who"><b>Jana Nováková</b><span>{r.note}</span></div>
                 </div>
                 <blockquote>&ldquo;{r.text[0]}<span className="accent">{r.text[1]}</span>{r.text[2]}&rdquo;</blockquote>
                 <div className="bottom"><span>ze zpětné vazby</span><span>—</span></div>

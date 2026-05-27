@@ -1,30 +1,55 @@
 "use client";
 
-import { useActionState } from "react";
-import { useFormStatus } from "react-dom";
-import { sendContact, type ContactState } from "@/app/actions";
+import { useState } from "react";
 
-const initialState: ContactState = { status: "idle" };
-
-function SubmitButton({ sent }: { sent: boolean }) {
-  const { pending } = useFormStatus();
-  return (
-    <button className="btn" type="submit" disabled={pending || sent}>
-      {sent
-        ? "✓ Děkuji, ozvu se do 24 hodin"
-        : pending
-          ? "Odesílám…"
-          : "Odeslat poptávku →"}
-    </button>
-  );
-}
+type Status =
+  | { kind: "idle" }
+  | { kind: "sending" }
+  | { kind: "ok" }
+  | { kind: "error"; message: string };
 
 export default function ContactForm() {
-  const [state, formAction] = useActionState(sendContact, initialState);
-  const sent = state.status === "ok";
+  const [status, setStatus] = useState<Status>({ kind: "idle" });
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (status.kind === "sending" || status.kind === "ok") return;
+
+    setStatus({ kind: "sending" });
+    const fd = new FormData(e.currentTarget);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        body: fd,
+      });
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok && data.ok) {
+        setStatus({ kind: "ok" });
+        return;
+      }
+
+      setStatus({
+        kind: "error",
+        message:
+          data.message ??
+          "Odeslání se nepodařilo. Zkuste to prosím znovu, nebo napište přímo na vladimira@vnbiorezonance.cz.",
+      });
+    } catch {
+      setStatus({
+        kind: "error",
+        message:
+          "Nastala chyba spojení. Napište mi prosím přímo na vladimira@vnbiorezonance.cz nebo na WhatsApp.",
+      });
+    }
+  }
+
+  const sent = status.kind === "ok";
+  const sending = status.kind === "sending";
 
   return (
-    <form className="form" action={formAction}>
+    <form className="form" onSubmit={onSubmit}>
       <div className="field">
         <label htmlFor="fn">Jméno a&nbsp;příjmení *</label>
         <input id="fn" name="name" autoComplete="name" required />
@@ -73,9 +98,9 @@ export default function ContactForm() {
         </div>
       </div>
 
-      {state.status === "error" && (
+      {status.kind === "error" && (
         <div className="field full" role="alert" style={{ background: "rgba(161,79,66,.08)", border: "1px solid rgba(161,79,66,.3)", borderRadius: 14, padding: "16px 18px", fontSize: 14.5, color: "var(--rose-deep)", lineHeight: 1.55 }}>
-          {state.message}
+          {status.message}
         </div>
       )}
 
@@ -83,7 +108,9 @@ export default function ContactForm() {
         <p className="note">
           Odesláním souhlasíte se <a href="/zpracovani-osobnich-udaju">zpracováním osobních údajů</a>. Data nikomu nepředávám, slouží jen k&nbsp;naší komunikaci.
         </p>
-        <SubmitButton sent={sent} />
+        <button className="btn" type="submit" disabled={sending || sent}>
+          {sent ? "✓ Děkuji, ozvu se do 24 hodin" : sending ? "Odesílám…" : "Odeslat poptávku →"}
+        </button>
       </div>
     </form>
   );

@@ -1,14 +1,10 @@
-"use server";
-
+import { NextResponse } from "next/server";
 import { Resend } from "resend";
+
+export const dynamic = "force-dynamic";
 
 const TO_EMAIL = "vladimira@vnbiorezonance.cz";
 const FROM_EMAIL = "formular@vnbiorezonance.cz";
-
-export type ContactState =
-  | { status: "idle" }
-  | { status: "ok" }
-  | { status: "error"; message: string };
 
 function escape(value: string) {
   return value
@@ -19,33 +15,46 @@ function escape(value: string) {
     .replace(/'/g, "&#39;");
 }
 
-export async function sendContact(
-  _prev: ContactState,
-  formData: FormData,
-): Promise<ContactState> {
+export async function POST(req: Request) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
-    return {
-      status: "error",
-      message:
-        "Odeslání se nepodařilo - chybí konfigurace e-mailu. Napište mi prosím přímo na vladimira@vnbiorezonance.cz nebo WhatsApp +420 777 874 067.",
-    };
+    return NextResponse.json(
+      {
+        ok: false,
+        message:
+          "Odeslání se nepodařilo - chybí konfigurace e-mailu. Napište mi prosím přímo na vladimira@vnbiorezonance.cz nebo WhatsApp +420 777 874 067.",
+      },
+      { status: 500 },
+    );
   }
 
-  const name = String(formData.get("name") ?? "").trim();
-  const dob = String(formData.get("dob") ?? "").trim();
-  const email = String(formData.get("email") ?? "").trim();
-  const phone = String(formData.get("phone") ?? "").trim();
-  const type = String(formData.get("type") ?? "").trim();
-  const topic = String(formData.get("topic") ?? "").trim();
-  const ks = formData.get("ks") === "on";
-  const te = formData.get("te") === "on";
+  let body: Record<string, unknown>;
+  try {
+    const contentType = req.headers.get("content-type") ?? "";
+    if (contentType.includes("application/json")) {
+      body = await req.json();
+    } else {
+      const fd = await req.formData();
+      body = Object.fromEntries(fd.entries());
+    }
+  } catch {
+    return NextResponse.json({ ok: false, message: "Neplatný formát požadavku." }, { status: 400 });
+  }
+
+  const name = String(body.name ?? "").trim();
+  const dob = String(body.dob ?? "").trim();
+  const email = String(body.email ?? "").trim();
+  const phone = String(body.phone ?? "").trim();
+  const type = String(body.type ?? "").trim();
+  const topic = String(body.topic ?? "").trim();
+  const ks = body.ks === "on" || body.ks === true || body.ks === "true";
+  const te = body.te === "on" || body.te === true || body.te === "true";
 
   if (!name || !email || !phone || !topic) {
-    return {
-      status: "error",
-      message: "Vyplňte prosím všechna povinná pole.",
-    };
+    return NextResponse.json(
+      { ok: false, message: "Vyplňte prosím všechna povinná pole." },
+      { status: 400 },
+    );
   }
 
   const flags: string[] = [];
@@ -104,7 +113,7 @@ export async function sendContact(
 
   try {
     const resend = new Resend(apiKey);
-    const { error } = await resend.emails.send({
+    const result = await resend.emails.send({
       from: `Biorezonance formulář <${FROM_EMAIL}>`,
       to: TO_EMAIL,
       replyTo: email,
@@ -113,22 +122,27 @@ export async function sendContact(
       text,
     });
 
-    if (error) {
-      console.error("Resend error:", error);
-      return {
-        status: "error",
-        message:
-          "Odeslání se nepodařilo. Zkuste to prosím znovu, nebo napište přímo na vladimira@vnbiorezonance.cz.",
-      };
+    if (result.error) {
+      console.error("[/api/contact] resend error:", result.error);
+      return NextResponse.json(
+        {
+          ok: false,
+          message:
+            "Odeslání se nepodařilo. Zkuste to prosím znovu, nebo napište přímo na vladimira@vnbiorezonance.cz.",
+        },
+        { status: 502 },
+      );
     }
 
-    return { status: "ok" };
+    return NextResponse.json({ ok: true, id: result.data?.id });
   } catch (err) {
-    console.error("Contact form exception:", err);
-    return {
-      status: "error",
-      message:
-        "Nastala chyba spojení. Napište mi prosím přímo na vladimira@vnbiorezonance.cz nebo na WhatsApp.",
-    };
+    console.error("[/api/contact] exception:", err);
+    return NextResponse.json(
+      {
+        ok: false,
+        message: "Nastala chyba spojení. Napište mi prosím přímo na vladimira@vnbiorezonance.cz nebo na WhatsApp.",
+      },
+      { status: 500 },
+    );
   }
 }

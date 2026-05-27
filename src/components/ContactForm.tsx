@@ -1,18 +1,30 @@
 "use client";
 
-import { useState } from "react";
+import { useActionState } from "react";
+import { useFormStatus } from "react-dom";
+import { sendContact, type ContactState } from "@/app/actions";
+
+const initialState: ContactState = { status: "idle" };
+
+function SubmitButton({ sent }: { sent: boolean }) {
+  const { pending } = useFormStatus();
+  return (
+    <button className="btn" type="submit" disabled={pending || sent}>
+      {sent
+        ? "✓ Děkuji, ozvu se do 24 hodin"
+        : pending
+          ? "Odesílám…"
+          : "Odeslat poptávku →"}
+    </button>
+  );
+}
 
 export default function ContactForm() {
-  const [sent, setSent] = useState(false);
+  const [state, formAction] = useActionState(sendContact, initialState);
+  const sent = state.status === "ok";
 
   return (
-    <form
-      className="form"
-      onSubmit={(e) => {
-        e.preventDefault();
-        setSent(true);
-      }}
-    >
+    <form className="form" action={formAction}>
       <div className="field">
         <label htmlFor="fn">Jméno a&nbsp;příjmení *</label>
         <input id="fn" name="name" autoComplete="name" required />
@@ -61,13 +73,17 @@ export default function ContactForm() {
         </div>
       </div>
 
+      {state.status === "error" && (
+        <div className="field full" role="alert" style={{ background: "rgba(161,79,66,.08)", border: "1px solid rgba(161,79,66,.3)", borderRadius: 14, padding: "16px 18px", fontSize: 14.5, color: "var(--rose-deep)", lineHeight: 1.55 }}>
+          {state.message}
+        </div>
+      )}
+
       <div className="submit">
         <p className="note">
-          Odesláním souhlasíte se <a href="#">zpracováním osobních údajů</a>. Data nikomu nepředávám, slouží jen k&nbsp;naší komunikaci.
+          Odesláním souhlasíte se <a href="/zpracovani-osobnich-udaju">zpracováním osobních údajů</a>. Data nikomu nepředávám, slouží jen k&nbsp;naší komunikaci.
         </p>
-        <button className="btn" type="submit" disabled={sent}>
-          {sent ? "✓ Děkuji, ozvu se do 24 hodin" : "Odeslat poptávku →"}
-        </button>
+        <SubmitButton sent={sent} />
       </div>
     </form>
   );

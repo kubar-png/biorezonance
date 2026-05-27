@@ -343,11 +343,11 @@ export default function Home() {
                   </span>
                   <div><b>+420 777 874 067</b><span>WhatsApp · Po-Pá osobně</span></div>
                 </a>
-                <a className="row" href="mailto:vnbiorezonance@gmail.com">
+                <a className="row" href="mailto:vladimira@vnbiorezonance.cz">
                   <span className="ic">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></svg>
                   </span>
-                  <div><b>vnbiorezonance@&nbsp;[doména TBD]</b><span>odpovídám do 24 hodin</span></div>
+                  <div><b>vladimira@vnbiorezonance.cz</b><span>odpovídám do 24 hodin</span></div>
                 </a>
                 <a className="row" href="https://maps.google.com/?q=OC+Javor+Brno+Bystrc" target="_blank" rel="noopener">
                   <span className="ic">
@@ -415,7 +415,7 @@ export default function Home() {
           </div>
 
           <div className="foot-strip">
-            <span>© 2026 MUDr. Vladimíra Nezvalová · IČO&nbsp;[TBD] · <a href="#">Zpracování osobních údajů</a></span>
+            <span>© 2026 MUDr. Vladimíra Nezvalová · <a href="/zpracovani-osobnich-udaju">Zpracování osobních údajů</a></span>
             <div className="socials">
               {/* Sociální sítě zatím nejsou - Vladimíra zvažuje FB časem */}
               <a href="https://wa.me/420777874067" aria-label="WhatsApp" title="WhatsApp">

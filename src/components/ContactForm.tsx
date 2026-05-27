@@ -15,19 +15,19 @@ export default function ContactForm() {
     >
       <div className="field">
         <label htmlFor="fn">Jméno a&nbsp;příjmení *</label>
-        <input id="fn" name="name" required />
+        <input id="fn" name="name" autoComplete="name" required />
       </div>
       <div className="field">
         <label htmlFor="dob">Datum narození *</label>
-        <input id="dob" name="dob" type="date" required />
+        <input id="dob" name="dob" type="date" autoComplete="bday" required />
       </div>
       <div className="field">
         <label htmlFor="em">E-mail *</label>
-        <input id="em" name="email" type="email" required />
+        <input id="em" name="email" type="email" autoComplete="email" inputMode="email" required />
       </div>
       <div className="field">
         <label htmlFor="ph">Telefon *</label>
-        <input id="ph" name="phone" type="tel" placeholder="+420" required />
+        <input id="ph" name="phone" type="tel" autoComplete="tel" inputMode="tel" placeholder="+420" required />
       </div>
 
       <div className="field full">
@@ -48,15 +48,15 @@ export default function ContactForm() {
 
       <div className="field full" style={{ background: "rgba(165,190,120,.12)", padding: "18px 20px", borderRadius: 14, border: "1px solid rgba(165,190,120,.3)" }}>
         <span style={{ fontSize: 12, letterSpacing: ".04em", color: "var(--sage-deep)", fontWeight: 700, textTransform: "uppercase" }}>Kontraindikace · prosím zkontrolujte</span>
-        <div style={{ marginTop: 12, display: "flex", flexDirection: "column", gap: 10, fontSize: 14 }}>
-          <label style={{ display: "flex", alignItems: "center", gap: 10, cursor: "pointer" }}>
-            <input type="checkbox" name="ks" /> Mám implantovaný <strong>kardiostimulátor nebo defibrilátor</strong>
+        <div style={{ marginTop: 12, display: "flex", flexDirection: "column", gap: 6, fontSize: 15 }}>
+          <label style={{ display: "flex", alignItems: "center", gap: 12, cursor: "pointer", padding: "10px 4px", minHeight: 44, lineHeight: 1.45 }}>
+            <input type="checkbox" name="ks" style={{ width: 22, height: 22, flexShrink: 0, accentColor: "var(--sage-deep)" }} /> <span>Mám implantovaný <strong>kardiostimulátor nebo defibrilátor</strong></span>
           </label>
-          <label style={{ display: "flex", alignItems: "center", gap: 10, cursor: "pointer" }}>
-            <input type="checkbox" name="te" /> Jsem v&nbsp;<strong>prvním trimestru těhotenství</strong>
+          <label style={{ display: "flex", alignItems: "center", gap: 12, cursor: "pointer", padding: "10px 4px", minHeight: 44, lineHeight: 1.45 }}>
+            <input type="checkbox" name="te" style={{ width: 22, height: 22, flexShrink: 0, accentColor: "var(--sage-deep)" }} /> <span>Jsem v&nbsp;<strong>prvním trimestru těhotenství</strong></span>
           </label>
           <p style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 4, lineHeight: 1.5 }}>
-            U&nbsp;obou stavů bicom nepoužíváme - pokud jste zaškrtl/a, ráda probereme jiné možnosti.
+            U&nbsp;obou stavů Bicom nepoužíváme - pokud jste zaškrtl/a, ráda probereme jiné možnosti.
           </p>
         </div>
       </div>

@@ -1,6 +1,8 @@
 import ContactForm from "@/components/ContactForm";
 import Newsletter from "@/components/Newsletter";
 import MobileNav from "@/components/MobileNav";
+import FaqSection from "@/components/FaqSection";
+import ServiceLink from "@/components/ServiceLink";
 
 const services = [
   {
@@ -9,6 +11,7 @@ const services = [
     desc: "Hodina až dvě a půl, ve kterých přístroj prochází vaše elektromagnetické pole a hledá místa, kde se rozladilo. Pro fyzické i psychické obtíže - od dětí po seniory. Vlajková služba.",
     price: "2 500 / 1 500 Kč",
     note: "dospělí / děti · první návštěva",
+    typeValue: "dlouhodobý",
   },
   {
     n: "02",
@@ -16,6 +19,7 @@ const services = [
     desc: "Jediná návštěva - pokud opravdu chcete přestat. Žádný balíček deseti sezení, žádné napodruhé.",
     price: "1 500 Kč",
     note: "jednorázová návštěva",
+    typeValue: "koureni",
   },
   {
     n: "03",
@@ -23,6 +27,7 @@ const services = [
     desc: "Hodina, ve které spolu projdeme váš příběh, dosavadní vyšetření a uvážíme, jestli má smysl jít dál. Bez závazku.",
     price: "1 000 Kč",
     note: "60 minut · telefonem nebo osobně",
+    typeValue: "dlouhodobý",
   },
   {
     n: "04",
@@ -30,29 +35,45 @@ const services = [
     desc: "Práce v energetickém poli bez doteku. Doplněk pro klienty, kteří chtějí jít hlouběji než s přístrojem.",
     price: "dle domluvy",
     note: "doplňková služba",
+    typeValue: "prevence",
   },
 ];
 
-// PLACEHOLDER - reálné reference doplníme po souhlasu klientek.
-const refs = [
-  { av: "", text: ["Lorem ipsum dolor sit amet, ", "consectetur adipiscing elit", "."], note: "placeholder · krátká" },
-  { av: "b", text: ["Sed do eiusmod tempor incididunt ut labore et dolore magna ", "aliqua ut enim", " ad minim veniam, quis nostrud exercitation."], note: "placeholder · střední" },
-  { av: "c", text: ["Ullamco laboris nisi ut aliquip ex ea commodo ", "consequat", "."], note: "placeholder · krátká", dark: true },
-  { av: "d", text: ["Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat ", "cupidatat non proident", ", sunt in culpa qui officia deserunt mollit anim id est laborum."], note: "placeholder · delší" },
-  { av: "e", text: ["At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas ", "molestias excepturi", " sint occaecati cupiditate."], note: "placeholder · delší" },
-  { av: "f", text: ["Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo ", "minus id quod maxime placeat", "."], note: "placeholder · střední" },
-];
-
-const faqs = [
-  { q: "Jak dlouho trvá sezení?", a: <>První návštěva 120-150 minut. Kontrolní sezení kolem 90 minut. U dětí první návštěva 60-90 minut, kontrolní hodinka. Akutní ošetření na konkrétní problém (nejčastěji infekce) zhruba hodinu.</> },
-  { q: "Kolikrát budu muset přijít?", a: <>Záleží na tom, co spolu řešíme. Když se něco eliminuje, jsou potřeba zhruba tři sezení. Udržovací harmonizace po 3-6 měsících. Akutní alergie 3× po týdnu. Hubnutí 12× po týdnu. <strong>Odvykání kouření - když opravdu chcete přestat - stačí jednou.</strong></> },
-  { q: "Kolik to stojí?", a: <>První sezení 2 500 Kč (dospělí) / 1 500 Kč (děti). Kontrolní 1 500 Kč / 1 000 Kč. Konzultace 1 000 Kč. Akutní ošetření 1 500 Kč/hod. Příplatek za víkend nebo domácí prostředí 1 000 Kč. Nosné médium (niklová destička, kapky) 200 Kč. Množstevní slevy a barter po domluvě.</> },
-  { q: "Bude to bolet?", a: <>Ne. Můžete cítit brnění nebo mravenčení v drahách, někdy horkost, únavu nebo lehké točení hlavy. Většinou pomůže napít se vody, případně sezení na chvíli přerušíme.</> },
-  { q: "Proč to nehradí pojišťovna?", a: <>To je dotaz na pojišťovnu. V Německu a Švýcarsku je ošetření na bicomu hrazeno ze zdravotního připojištění - v Česku zatím nikoli.</> },
-  { q: "Proč to nepoužívají všichni lékaři?", a: <>Bicom je registrovaný zdravotnický prostředek. Své místo v klasické západní medicíně si ale hledá těžko - ta nehledá holistický přístup. Dnes už ho ale v Česku najdete v ambulancích praktiků, stomatologů nebo internistů.</> },
-  { q: "Zvládnou děti sezení v délce hodiny až dvou?", a: <>Ke každému dítěti přistupuji individuálně. Děti mají nachystaný koberec, hračky, knížky a dobrůtku. Na konci si vyberou malý dárek. Sezení nebývá problém - a děti samy si často říkají o další návštěvu.</> },
-  { q: "Můžu být u sezení s dítětem nebo partnerem?", a: <>U malých dětí je přítomnost jednoho rodiče žádoucí, u starších dětí se domluvíme. Adolescenti většinou absolvují sezení sami. Přítomnost partnera má smysl, pokud obtíže výrazně souvisí s vaším vztahem - jinak ne, brání to uvolnění.</> },
-  { q: "Kdy bicom nelze použít?", a: <>U žen v prvním trimestru těhotenství a u osob s implantovaným kardiostimulátorem nebo defibrilátorem. Jinak je metoda bez kontraindikací.</> },
+const refs: { av: string; name: string; note: string; text: [string, string, string]; dark?: boolean }[] = [
+  {
+    av: "",
+    name: "Petra Valentová",
+    note: "34 let · alergie u syna",
+    text: [
+      "K Vlaďce jsem začala chodit se synem kvůli potravinovým alergiím. ",
+      "Alergie se podařilo odstranit",
+      " a zlepšil se i jeho nervový systém. Velmi oceňuji hravou formu terapie, díky které se syn cítí uvolněně. Vlaďka je zkušená a empatická terapeutka, kterou mohu doporučit.",
+    ],
+  },
+  {
+    av: "b",
+    name: "Michaela Hentschker",
+    note: "53 let · bolesti hlavy a kloubů",
+    text: [
+      "Přišla jsem s bolestmi hlavy a kloubů. ",
+      "Biorezonance moje potíže značně zmírnila",
+      ". K Vlaďce docházím pravidelně a díky ní jsem získala podstatně lepší životní kvalitu. Vlaďka je empatická, přátelská a má v oblasti fungování lidského těla obrovský přehled.",
+    ],
+  },
+  {
+    av: "c",
+    name: "Iris H.",
+    note: "20 let · zažívací a psychické potíže",
+    dark: true,
+    text: [
+      "Už před 15 lety jsem měla svou první velmi pozitivní zkušenost s biorezonancí. Dnes mi ",
+      "pomáhá Vlaďka zmírnit moje zažívací potíže",
+      " a také psychické problémy. Věnuje svým klientům maximálně a pracuje pečlivě, soustředěně a empaticky.",
+    ],
+  },
+  { av: "d", name: "", note: "placeholder · delší", text: ["Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat ", "cupidatat non proident", ", sunt in culpa qui officia deserunt mollit anim id est laborum."] },
+  { av: "e", name: "", note: "placeholder · delší", text: ["At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas ", "molestias excepturi", " sint occaecati cupiditate."] },
+  { av: "f", name: "", note: "placeholder · střední", text: ["Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo ", "minus id quod maxime placeat", "."] },
 ];
 
 export default function Home() {
@@ -101,8 +122,8 @@ export default function Home() {
                 </article>
               </div>
 
-              <h1>Vaše obtíže <span className="rose">mají adresu.</span><br />Pomůžu vám&nbsp;ji <span className="sage">najít.</span></h1>
-              <p className="lede">Bicom-Optima 2 a sedmnáct let medicínské praxe - v&nbsp;jedné ordinaci. Hledám epicentrum vašich obtíží, ne jen jejich projevy.</p>
+              <h1>Vaše obtíže <span className="rose">mají příčinu.</span><br />Sedmnáct let v&nbsp;ordinaci mi&nbsp;pomáhá <span className="sage">ji najít.</span></h1>
+              <p className="lede">Bicom-Optima 2, sedmnáct let v&nbsp;západní medicíně a&nbsp;pět let v&nbsp;biorezonanci. Hledám příčinu vašich obtíží, ne jen jejich projevy.</p>
               <div className="ctas">
                 <a href="#kontakt" className="btn">Objednat se →</a>
                 <a href="#o-mne" className="btn-2">Víc o&nbsp;mně →</a>
@@ -137,8 +158,8 @@ export default function Home() {
 
           <div className="hero-foot">
             <div className="row">
-              <span><b>MUDr.</b> · promovala 1996</span>
-              <span><b>5. rok</b> s&nbsp;Bicomem · stovky ošetření</span>
+              <span><b>17 let</b> v&nbsp;západní medicíně</span>
+              <span><b>5 let</b> v&nbsp;biorezonanci</span>
               <span><b>Bicom-Optima 2</b> · nejnovější model</span>
             </div>
             <span><b>OC Javor</b> · Nám. 28.&nbsp;dubna 2 · Brno-Bystrc</span>
@@ -162,13 +183,14 @@ export default function Home() {
           <ul className="svc-list">
             {services.map((s) => (
               <li key={s.n} className="svc">
+                <ServiceLink name={s.name} typeValue={s.typeValue} />
                 <span className="num-big">{s.n}</span>
                 <div>
                   <div className="name">{s.name}</div>
                   <div style={{ fontSize: 12.5, color: "var(--rose-deep)", fontWeight: 600, marginTop: 4 }}>{s.price} <span style={{ color: "var(--muted)", fontWeight: 400 }}>· {s.note}</span></div>
                 </div>
                 <div className="desc">{s.desc}</div>
-                <a href="#kontakt" className="arr" aria-label={`Objednat se na ${s.name}`}>→</a>
+                <span className="arr" aria-hidden="true">→</span>
               </li>
             ))}
           </ul>
@@ -181,10 +203,10 @@ export default function Home() {
           <div className="about-grid">
             <div className="about-text">
               <span className="tag-pill">O&nbsp;biorezonanci · o&nbsp;mně</span>
-              <h2 className="h-section">Sedmnáct let v&nbsp;klasické medicíně. <span className="rose">Pět&nbsp;s&nbsp;bicomem.</span></h2>
+              <h2 className="h-section">Sedmnáct let v&nbsp;klasické medicíně. <span className="rose">Pět&nbsp;s&nbsp;Bicomem.</span></h2>
               <div className="body">
-                <p>Před patnácti lety jsme v&nbsp;rodině rok a&nbsp;půl řešili obtíž, na kterou neurologie ani urologie nepřišly. Pomohla nám bývalá spolužačka z&nbsp;medicíny - anestezioložka s&nbsp;bicomem. Po třech sezeních obtíž zmizela. Od&nbsp;té doby jsme do&nbsp;bicomu jezdili při každé větší věci.</p>
-                <p>Pět let zpátky jsem si k&nbsp;té zkušenosti dodělala školení a&nbsp;začala bicom dělat sama. Předtím sedmnáct let v&nbsp;klasické medicíně - chirurgie, urologie, hospicová péče. Promovala jsem v&nbsp;roce 1996.</p>
+                <p>Před patnácti lety jsme v&nbsp;rodině rok a&nbsp;půl řešili obtíž, na kterou neurologie ani urologie nepřišly. Pomohla nám bývalá spolužačka z&nbsp;medicíny - anestezioložka s&nbsp;Bicomem. Po třech sezeních obtíž zmizela. Od&nbsp;té doby jsme na&nbsp;biorezonanci jezdili při každé větší věci.</p>
+                <p>Pět let zpátky jsem si k&nbsp;té zkušenosti dodělala školení a&nbsp;začala biorezonanci dělat sama. Předtím sedmnáct let v&nbsp;klasické medicíně - chirurgie, urologie, hospicová péče. Promovala jsem v&nbsp;roce 1996.</p>
                 <p>Nepřišla jsem o&nbsp;úctu k&nbsp;tomu, co západní medicína umí. Naopak. Tahle praxe stojí na tom, kde se ty dva světy <strong>doplňují</strong> - ne kde se přebíjejí.</p>
               </div>
               <div className="about-stats">
@@ -197,7 +219,7 @@ export default function Home() {
             <div className="about-side">
               <div className="portrait">
                 <span className="badge">MUDr. Vladimíra Nezvalová</span>
-                <div className="caption">„Tělo umí mluvit. My ho máme jenom přestat přebíjet." <span>- místo na fotku · doplníme</span></div>
+                <div className="caption">„Tělo umí mluvit. My ho máme jenom přestat přebíjet." <span>- Vladimíra Nezvalová</span></div>
               </div>
             </div>
           </div>
@@ -245,8 +267,8 @@ export default function Home() {
                   <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
                 </svg>
               </div>
-              <h3>Lékařka, která <span className="accent">přidala&nbsp;bicom.</span></h3>
-              <p>Sedmnáct let v&nbsp;chirurgii, urologii a&nbsp;hospicu mi dalo úctu k&nbsp;tomu, co se dá vyšetřit a&nbsp;operovat. Pět let bicomu mi ukázalo, co ne. Dostanete oba pohledy v&nbsp;jedné ordinaci.</p>
+              <h3>Lékařka, která <span className="accent">přidala&nbsp;Bicom.</span></h3>
+              <p>Sedmnáct let v&nbsp;chirurgii, urologii a&nbsp;hospicu mi dalo úctu k&nbsp;tomu, co se dá vyšetřit a&nbsp;operovat. Pět let Bicomu mi ukázalo, co ne. Dostanete oba pohledy od&nbsp;jedné lékařky.</p>
               <div className="pin">MUDr. od roku 1996</div>
             </article>
             <article className="ben">
@@ -256,8 +278,8 @@ export default function Home() {
                   <path d="M12 7v5l3 2" />
                 </svg>
               </div>
-              <h3>Termíny, <span className="accent">kdy můžete vy.</span></h3>
-              <p>Úterý, čtvrtek, pátek od&nbsp;9 do&nbsp;21 hodin. Víkend po domluvě. Když to nejde jinak, ošetření doma - přístroj je&nbsp;mobilní.</p>
+              <h3>Termíny, <span className="accent">které vám vyhovují.</span></h3>
+              <p>Úterý, čtvrtek, pátek od&nbsp;9 do&nbsp;21 hodin. Víkend po domluvě. Pokud to vyžaduje zdravotní stav, ošetřím vás i&nbsp;doma - přístroj je&nbsp;mobilní.</p>
               <div className="pin">Večer i&nbsp;víkend</div>
             </article>
             <article className="ben">
@@ -267,8 +289,8 @@ export default function Home() {
                   <circle cx="12" cy="12" r="3" />
                 </svg>
               </div>
-              <h3>Hodina až dvě a&nbsp;půl. Ne <span className="accent">deset&nbsp;minut.</span></h3>
-              <p>První návštěva 120-150 minut. Žádné překlápění mezi pacienty, žádná fronta. Není kam pospíchat.</p>
+              <h3>Zasloužený <span className="accent">lidský&nbsp;přístup.</span></h3>
+              <p>První návštěva 120-150 minut. Žádné čekání v&nbsp;čekárně, fronty nebo termíny za&nbsp;půl roku.</p>
               <div className="pin">1 klient = 1 sezení</div>
             </article>
           </div>
@@ -283,17 +305,17 @@ export default function Home() {
               <span className="tag-pill">Reference</span>
               <h2 className="h-section" style={{ marginTop: 18 }}>Podívejte se, <span className="rose">co o&nbsp;mně říkají klienti.</span></h2>
               <p style={{ marginTop: 12, fontSize: 14.5, color: "var(--muted)", lineHeight: 1.6, maxWidth: 580 }}>
-                Reálné reference s&nbsp;fotkami a&nbsp;jmény doplníme s&nbsp;jejich souhlasem - než přijdou, držím anonymitu.
+                V&nbsp;ordinaci platí mlčenlivost. Reference zveřejňuji jen&nbsp;se souhlasem klientů - jinak zůstávají anonymní.
               </p>
             </div>
           </div>
 
           <div className="ref-grid">
-            {refs.map((r, i) => (
+            {refs.filter((r) => r.name).map((r, i) => (
               <article key={i} className={`ref${r.dark ? " dark" : ""}`}>
                 <div className="top">
                   <span className={`av ${r.av}`} />
-                  <div className="who"><b>Jana Nováková</b><span>{r.note}</span></div>
+                  <div className="who"><b>{r.name}</b><span>{r.note}</span></div>
                 </div>
                 <blockquote>&ldquo;{r.text[0]}<span className="accent">{r.text[1]}</span>{r.text[2]}&rdquo;</blockquote>
                 <div className="bottom"><span>ze zpětné vazby</span><span>-</span></div>
@@ -304,39 +326,7 @@ export default function Home() {
       </section>
 
       {/* FAQ */}
-      <section className="faq" id="faq">
-        <div className="shell">
-          <div className="faq-grid">
-            <div className="faq-side">
-              <span className="tag-pill">Časté dotazy</span>
-              <h2 className="h-section" style={{ marginTop: 18 }}>Otázky, které <span className="rose">slýchám&nbsp;denně.</span></h2>
-              <p className="lede" style={{ marginTop: 20, fontSize: 16 }}>Pokud něco nenajdete, napište na WhatsApp +420&nbsp;777&nbsp;874&nbsp;067 - odpovídám hned, ne za&nbsp;48 hodin přes formulář.</p>
-
-              <div className="tabs" role="tablist">
-                <button className="active" type="button">Obecné</button>
-                <button type="button">První návštěva</button>
-                <button type="button">Pojišťovna</button>
-              </div>
-              <div className="search">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: "var(--muted)" }}><circle cx="11" cy="11" r="7" /><path d="m21 21-4.3-4.3" /></svg>
-                <input type="search" placeholder="Hledat v dotazech…" />
-              </div>
-              <div className="pic" aria-hidden="true">
-                <div className="annot">Cesta zpátky k&nbsp;sobě začíná otázkou.<span>OC Javor · Brno-Bystrc</span></div>
-              </div>
-            </div>
-
-            <div className="faq-items">
-              {faqs.map((f, i) => (
-                <details key={i} className="faq-item" open={i === 0}>
-                  <summary><span className="q">{f.q}</span><span className="ico">＋</span></summary>
-                  <div className="a">{f.a}</div>
-                </details>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <FaqSection />
 
       {/* CONTACT */}
       <section className="contact" id="kontakt">
@@ -345,7 +335,7 @@ export default function Home() {
             <div className="contact-head">
               <span className="tag-pill">Kontakt &amp; rezervace</span>
               <h2 className="h-section">Napište. <span className="rose">Nebo&nbsp;rovnou zavolejte.</span></h2>
-              <p style={{ fontSize: 15.5, color: "var(--muted)", lineHeight: 1.65 }}>Nejrychleji se mi dovoláte přes WhatsApp. Telefon zvedám osobně - pokud nestihnu, ozvu se do několika hodin.</p>
+              <p style={{ fontSize: 15.5, color: "var(--muted)", lineHeight: 1.65 }}>Nejrychleji se mi dovoláte přes WhatsApp. Telefon zvedám osobně. Když nemůžu mluvit (např. během sezení), ozvu se hned, jakmile to bude možné.</p>
               <div className="info">
                 <a className="row" href="tel:+420777874067">
                   <span className="ic">
@@ -385,7 +375,7 @@ export default function Home() {
           <div className="foot-grid">
             <div className="foot-brand">
               <div className="logo">Biorezonance</div>
-              <p>Solo praxe biorezonance Bicom-Optima 2 v&nbsp;Brně-Bystrci. Přijímám dospělé, dorost i&nbsp;děti od&nbsp;3 let. V&nbsp;indikovaných případech ošetření v&nbsp;domácím prostředí.</p>
+              <p>Praxe biorezonance Bicom-Optima 2 v&nbsp;Brně-Bystrci. Přijímám dospělé, dorost i&nbsp;děti od&nbsp;3 let. V&nbsp;indikovaných případech ošetření v&nbsp;domácím prostředí.</p>
               <Newsletter />
             </div>
             <div className="foot-col">

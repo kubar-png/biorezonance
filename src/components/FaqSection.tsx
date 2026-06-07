@@ -13,12 +13,12 @@ type Faq = {
 const faqs: Faq[] = [
   { q: "Jak dlouho trvá sezení?", cat: "prvni", a: <>První návštěva 120-150 minut. Kontrolní sezení kolem 90 minut. U dětí první návštěva 60-90 minut, kontrolní hodinka. Akutní ošetření na konkrétní problém (nejčastěji infekce) zhruba hodinu.</> },
   { q: "Kolikrát budu muset přijít?", cat: "obecne", a: <>Záleží na tom, co spolu řešíme. Když se něco eliminuje, jsou potřeba zhruba tři sezení. Udržovací harmonizace po 3-6 měsících. Akutní alergie 3× po týdnu. Hubnutí 12× po týdnu. <strong>Odvykání kouření - když opravdu chcete přestat - stačí jednou.</strong></> },
-  { q: "Kolik to stojí?", cat: "pojistovna", a: <>První sezení 2 500 Kč (dospělí) / 1 500 Kč (děti). Kontrolní 1 500 Kč / 1 000 Kč. Konzultace 1 500 Kč. Akutní ošetření 1 500 Kč/hod. Příplatek za víkend nebo domácí prostředí 1 000 Kč. Nosné médium (niklová destička, kapky) 200 Kč. Množstevní slevy a barter po domluvě.</> },
+  { q: "Kolik to stojí?", cat: "pojistovna", a: <>První sezení 2 500 Kč (dospělí) / 1 500 Kč (děti). Kontrolní 2 000 Kč / 1 000 Kč. Konzultace 1 500 Kč. Akutní ošetření 1 500 Kč/hod. Příplatek za víkend nebo domácí prostředí 1 500 Kč. Nosné médium (niklová destička, kapky) 200 Kč. Množstevní slevy a barter po domluvě. Pokud přijdete po více než roce od poslední návštěvy, počítá se jako první sezení.</> },
   { q: "Bude to bolet?", cat: "prvni", a: <>Ne. Můžete cítit brnění nebo mravenčení v drahách, někdy horkost, únavu nebo lehké točení hlavy. Většinou pomůže napít se vody, případně sezení na chvíli přerušíme.</> },
-  { q: "Proč to nehradí pojišťovna?", cat: "pojistovna", a: <>To je dotaz na pojišťovnu. V Německu a Švýcarsku je ošetření na Bicomu hrazeno ze zdravotního připojištění - v Česku zatím nikoli.</> },
-  { q: "Proč to nepoužívají všichni lékaři?", cat: "obecne", a: <>Bicom je registrovaný zdravotnický prostředek. Své místo v klasické západní medicíně si ale hledá těžko - ta nehledá holistický přístup. Dnes už ho ale v Česku najdete v ambulancích praktiků, stomatologů nebo internistů.</> },
+  { q: "Proč to nehradí pojišťovna?", cat: "pojistovna", a: <>To je dotaz na pojišťovnu. V Německu a Švýcarsku je ošetření na Bicomu hrazeno ze zdravotního připojištění - v České republice zatím nikoli.</> },
+  { q: "Proč to nepoužívají všichni lékaři?", cat: "obecne", a: <>Bicom je registrovaný zdravotnický prostředek. Své místo v klasické západní medicíně si ale hledá těžko - ta nehledá holistický přístup. Dnes už ho ale v České republice najdete v ambulancích praktiků, stomatologů nebo internistů.</> },
   { q: "Zvládnou děti sezení v délce hodiny až dvou?", cat: "prvni", a: <>Ke každému dítěti přistupuji individuálně. Děti mají nachystaný koberec, hračky, knížky a dobrůtku. Na konci si vyberou malý dárek. Sezení nebývá problém - a děti samy si často říkají o další návštěvu.</> },
-  { q: "Můžu být u sezení s dítětem nebo partnerem?", cat: "prvni", a: <>U malých dětí je přítomnost jednoho rodiče žádoucí, u starších dětí se domluvíme. Adolescenti většinou absolvují sezení sami. Přítomnost partnera má smysl, pokud obtíže výrazně souvisí s vaším vztahem - jinak ne, brání to uvolnění.</> },
+  { q: "Můžu být u sezení s dítětem nebo partnerem?", cat: "prvni", a: <>U malých dětí je přítomnost jednoho rodiče žádoucí, u starších dětí se domluvíme. Adolescenti většinou absolvují sezení sami. Přítomnost partnera má smysl, pokud obtíže výrazně souvisí s vaším vztahem - jinak ne, brání to uvolnění se.</> },
   { q: "Kdy Bicom nelze použít?", cat: "obecne", a: <>U žen v prvním trimestru těhotenství a u osob s implantovaným kardiostimulátorem nebo defibrilátorem. Jinak je metoda bez kontraindikací.</> },
 ];
 
@@ -77,7 +77,7 @@ export default function FaqSection() {
                 aria-label="Hledat v dotazech"
               />
             </div>
-            <div className="pic" aria-hidden="true">
+            <div className="pic has-photo" aria-hidden="true">
               <div className="annot">Cesta zpátky k&nbsp;sobě začíná otázkou.<span>OC Javor · Brno-Bystrc</span></div>
             </div>
           </div>

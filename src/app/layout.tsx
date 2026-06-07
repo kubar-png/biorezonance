@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     template: "%s · MUDr. Nezvalová · Biorezonance Brno",
   },
   description:
-    "Biorezonance v Brně-Bystrci. Lékařka MUDr. Nezvalová, 17 let v západní medicíně, Bicom-Optima 2. Alergie, odvykání kouření, akutní obtíže. Děti od 3 let. Út, čt, pá 9-21.",
+    "Biorezonance v Brně-Bystrci. Lékařka MUDr. Nezvalová, 17 let v západní medicíně, Bicom-Optima 2. Alergie, odvykání kouření, akutní obtíže. Děti od narození. Út, čt, pá 9-21.",
   keywords: [
     "biorezonance Brno",
     "biorezonance Brno-Bystrc",
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Biorezonance Brno-Bystrc · MUDr. Vladimíra Nezvalová",
     description:
-      "Bicom-Optima 2, 17 let v západní medicíně a 5 let v biorezonanci. Alergie, odvykání kouření, akutní obtíže. Děti od 3 let.",
+      "Bicom-Optima 2, 17 let v západní medicíně a 5 let v biorezonanci. Alergie, odvykání kouření, akutní obtíže. Děti od narození.",
   },
   robots: {
     index: true,
@@ -85,7 +85,7 @@ const jsonLd = [
     "@id": `${SITE_URL}/#business`,
     name: "Biorezonance MUDr. Vladimíra Nezvalová",
     description:
-      "Ordinace biorezonance v Brně-Bystrci. Bicom-Optima 2, lékařka se 17 lety praxe v západní medicíně a 5 lety v biorezonanci. Alergie, odvykání kouření, akutní i chronické obtíže, dospělí i děti od 3 let.",
+      "Ordinace biorezonance v Brně-Bystrci. Bicom-Optima 2, lékařka se 17 lety praxe v západní medicíně a 5 lety v biorezonanci. Alergie, odvykání kouření, akutní i chronické obtíže, dospělí i děti od narození.",
     url: SITE_URL,
     telephone: "+420777874067",
     priceRange: "1 000-2 500 Kč",
@@ -132,12 +132,12 @@ const jsonLd = [
     mainEntity: [
       { "@type": "Question", name: "Jak dlouho trvá sezení?", acceptedAnswer: { "@type": "Answer", text: "První návštěva 120-150 minut. Kontrolní sezení kolem 90 minut. U dětí první návštěva 60-90 minut, kontrolní hodinka. Akutní ošetření zhruba hodinu." } },
       { "@type": "Question", name: "Kolikrát budu muset přijít?", acceptedAnswer: { "@type": "Answer", text: "Záleží na tom, co spolu řešíme. Eliminace zhruba 3 sezení. Udržovací harmonizace po 3-6 měsících. Akutní alergie 3× po týdnu. Hubnutí 12× po týdnu. Odvykání kouření stačí jednou." } },
-      { "@type": "Question", name: "Kolik to stojí?", acceptedAnswer: { "@type": "Answer", text: "První sezení 2 500 Kč (dospělí) / 1 500 Kč (děti). Kontrolní 1 500 Kč / 1 000 Kč. Konzultace 1 500 Kč. Akutní ošetření 1 500 Kč/hod." } },
+      { "@type": "Question", name: "Kolik to stojí?", acceptedAnswer: { "@type": "Answer", text: "První sezení 2 500 Kč (dospělí) / 1 500 Kč (děti). Kontrolní 2 000 Kč / 1 000 Kč. Konzultace 1 500 Kč. Akutní ošetření 1 500 Kč/hod. Pokud přijdete po více než roce od poslední návštěvy, počítá se jako první sezení." } },
       { "@type": "Question", name: "Bude to bolet?", acceptedAnswer: { "@type": "Answer", text: "Ne. Můžete cítit brnění nebo mravenčení v drahách, někdy horkost, únavu nebo lehké točení hlavy." } },
-      { "@type": "Question", name: "Proč to nehradí pojišťovna?", acceptedAnswer: { "@type": "Answer", text: "To je dotaz na pojišťovnu. V Německu a Švýcarsku je ošetření na Bicomu hrazeno ze zdravotního připojištění - v Česku zatím nikoli." } },
-      { "@type": "Question", name: "Proč to nepoužívají všichni lékaři?", acceptedAnswer: { "@type": "Answer", text: "Bicom je registrovaný zdravotnický prostředek. Své místo v klasické západní medicíně si ale hledá těžko - ta nehledá holistický přístup. Dnes už ho ale v Česku najdete v ambulancích praktiků, stomatologů nebo internistů." } },
+      { "@type": "Question", name: "Proč to nehradí pojišťovna?", acceptedAnswer: { "@type": "Answer", text: "To je dotaz na pojišťovnu. V Německu a Švýcarsku je ošetření na Bicomu hrazeno ze zdravotního připojištění - v České republice zatím nikoli." } },
+      { "@type": "Question", name: "Proč to nepoužívají všichni lékaři?", acceptedAnswer: { "@type": "Answer", text: "Bicom je registrovaný zdravotnický prostředek. Své místo v klasické západní medicíně si ale hledá těžko - ta nehledá holistický přístup. Dnes už ho ale v České republice najdete v ambulancích praktiků, stomatologů nebo internistů." } },
       { "@type": "Question", name: "Zvládnou děti sezení v délce hodiny až dvou?", acceptedAnswer: { "@type": "Answer", text: "Ke každému dítěti přistupuji individuálně. Děti mají nachystaný koberec, hračky, knížky a dobrůtku. Na konci si vyberou malý dárek. Sezení nebývá problém - a děti samy si často říkají o další návštěvu." } },
-      { "@type": "Question", name: "Můžu být u sezení s dítětem nebo partnerem?", acceptedAnswer: { "@type": "Answer", text: "U malých dětí je přítomnost jednoho rodiče žádoucí, u starších dětí se domluvíme. Adolescenti většinou absolvují sezení sami. Přítomnost partnera má smysl, pokud obtíže výrazně souvisí s vaším vztahem - jinak ne, brání to uvolnění." } },
+      { "@type": "Question", name: "Můžu být u sezení s dítětem nebo partnerem?", acceptedAnswer: { "@type": "Answer", text: "U malých dětí je přítomnost jednoho rodiče žádoucí, u starších dětí se domluvíme. Adolescenti většinou absolvují sezení sami. Přítomnost partnera má smysl, pokud obtíže výrazně souvisí s vaším vztahem - jinak ne, brání to uvolnění se." } },
       { "@type": "Question", name: "Kdy Bicom nelze použít?", acceptedAnswer: { "@type": "Answer", text: "U žen v prvním trimestru těhotenství a u osob s implantovaným kardiostimulátorem nebo defibrilátorem. Jinak je metoda bez kontraindikací." } },
     ],
   },

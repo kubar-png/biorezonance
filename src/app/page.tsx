@@ -8,7 +8,7 @@ const services = [
   {
     n: "01",
     name: "Biorezonance Bicom-Optima 2",
-    desc: "Hodina až dvě a půl, ve kterých přístroj prochází vaše elektromagnetické pole a hledá místa, kde se rozladilo. Pro fyzické i psychické obtíže - od dětí po seniory. Vlajková služba.",
+    desc: "Hodina až dvě a půl, ve kterých přístroj prochází vaše elektromagnetické pole a hledá místa, kde se rozladilo. Pro fyzické i psychické obtíže - od novorozenců po seniory.",
     price: "2 500 / 1 500 Kč",
     note: "dospělí / děti · první návštěva",
     typeValue: "dlouhodobý",
@@ -16,7 +16,7 @@ const services = [
   {
     n: "02",
     name: "Odvykání kouření",
-    desc: "Jediná návštěva - pokud opravdu chcete přestat. Žádný balíček deseti sezení, žádné napodruhé.",
+    desc: "Stačí přijít jednou - pokud opravdu chcete přestat. Žádný balíček deseti sezení, žádné napodruhé.",
     price: "1 500 Kč",
     note: "jednorázová návštěva",
     typeValue: "koureni",
@@ -106,7 +106,7 @@ export default function Home() {
         <div className="shell">
           <div className="hero-grid">
             <div>
-              <span className="eyebrow">Biorezonance · Brno-Bystrc</span>
+              <span className="eyebrow">Víc než biorezonance · Brno-Bystrc</span>
 
               {/* MOBILE-ONLY mini cards under eyebrow */}
               <div className="hero-mobile-cards">
@@ -123,7 +123,7 @@ export default function Home() {
               </div>
 
               <h1>Vaše obtíže <span className="rose">mají příčinu.</span><br />Sedmnáct let v&nbsp;ordinaci mi&nbsp;pomáhá <span className="sage">ji najít.</span></h1>
-              <p className="lede">Bicom-Optima 2, sedmnáct let v&nbsp;západní medicíně a&nbsp;pět let v&nbsp;biorezonanci. Hledám příčinu vašich obtíží, ne jen jejich projevy.</p>
+              <p className="lede">Moje praxe - sedmnáct let v&nbsp;západní medicíně a&nbsp;pět let s&nbsp;biorezonančním přístrojem. Hledám příčinu vašich obtíží, ne jen jejich projevy.</p>
               <div className="ctas">
                 <a href="#kontakt" className="btn">Objednat se →</a>
                 <a href="#o-mne" className="btn-2">Víc o&nbsp;mně →</a>
@@ -145,7 +145,7 @@ export default function Home() {
               </article>
               <article className="petal p2">
                 <div className="label">Co řeším</div>
-                <h4>Únava · alergie · <span className="accent">hubnutí · kouření</span></h4>
+                <h4>Únava · alergie · <span className="accent">hubnutí · závislosti</span></h4>
                 <p>Fyzické i&nbsp;psychické obtíže. Od&nbsp;dětí po seniory, akutní i&nbsp;dlouhodobé.</p>
               </article>
               <article className="petal p3">
@@ -205,7 +205,7 @@ export default function Home() {
               <span className="tag-pill">O&nbsp;biorezonanci · o&nbsp;mně</span>
               <h2 className="h-section">Sedmnáct let v&nbsp;klasické medicíně. <span className="rose">Pět&nbsp;s&nbsp;Bicomem.</span></h2>
               <div className="body">
-                <p>Před patnácti lety jsme v&nbsp;rodině rok a&nbsp;půl řešili obtíž, na kterou neurologie ani urologie nepřišly. Pomohla nám bývalá spolužačka z&nbsp;medicíny - anestezioložka s&nbsp;Bicomem. Po třech sezeních obtíž zmizela. Od&nbsp;té doby jsme na&nbsp;biorezonanci jezdili při každé větší věci.</p>
+                <p>Před patnácti lety jsme v&nbsp;rodině rok a&nbsp;půl řešili zdravotní problém, jehož příčinu se nedařilo objasnit a&nbsp;vyléčit ani neurologům, ani urologům. Pomohla nám bývalá spolužačka z&nbsp;medicíny - anestezioložka s&nbsp;Bicomem. Po třech sezeních obtíž zmizela. Od&nbsp;té doby jsme na&nbsp;biorezonanci jezdili při všech větších fyzických obtížích.</p>
                 <p>Pět let zpátky jsem si k&nbsp;té zkušenosti dodělala školení a&nbsp;začala biorezonanci dělat sama. Předtím sedmnáct let v&nbsp;klasické medicíně - chirurgie, urologie, hospicová péče. Promovala jsem v&nbsp;roce 1996.</p>
                 <p>Nepřišla jsem o&nbsp;úctu k&nbsp;tomu, co západní medicína umí. Naopak. Tahle praxe stojí na tom, kde se ty dva světy <strong>doplňují</strong> - ne kde se přebíjejí.</p>
               </div>
@@ -217,9 +217,9 @@ export default function Home() {
             </div>
 
             <div className="about-side">
-              <div className="portrait">
+              <div className="portrait has-photo">
                 <span className="badge">MUDr. Vladimíra Nezvalová</span>
-                <div className="caption">„Tělo umí mluvit. My ho máme jenom přestat přebíjet." <span>- Vladimíra Nezvalová</span></div>
+                <div className="caption">„Tělo umí mluvit prostřednictvím frekvencí. Stačí mu naslouchat." <span>- Vladimíra Nezvalová</span></div>
               </div>
             </div>
           </div>
@@ -268,7 +268,7 @@ export default function Home() {
                 </svg>
               </div>
               <h3>Lékařka, která <span className="accent">přidala&nbsp;Bicom.</span></h3>
-              <p>Sedmnáct let v&nbsp;chirurgii, urologii a&nbsp;hospicu mi dalo úctu k&nbsp;tomu, co se dá vyšetřit a&nbsp;operovat. Pět let Bicomu mi ukázalo, co ne. Dostanete oba pohledy od&nbsp;jedné lékařky.</p>
+              <p>Sedmnáct let v&nbsp;chirurgii, urologii a&nbsp;hospicové péči mi dalo úctu k&nbsp;tomu, co se dá vyšetřit a&nbsp;operovat. Pět let Bicomu mi ukázalo, co ne. Dostanete oba pohledy od&nbsp;jedné lékařky.</p>
               <div className="pin">MUDr. od roku 1996</div>
             </article>
             <article className="ben">
@@ -375,7 +375,7 @@ export default function Home() {
           <div className="foot-grid">
             <div className="foot-brand">
               <div className="logo">Biorezonance</div>
-              <p>Praxe biorezonance Bicom-Optima 2 v&nbsp;Brně-Bystrci. Přijímám dospělé, dorost i&nbsp;děti od&nbsp;3 let. V&nbsp;indikovaných případech ošetření v&nbsp;domácím prostředí.</p>
+              <p>Praxe biorezonance Bicom-Optima 2 v&nbsp;Brně-Bystrci. Přijímám dospělé, dorost i&nbsp;děti od&nbsp;narození. V&nbsp;indikovaných případech ošetření v&nbsp;domácím prostředí.</p>
               <Newsletter />
             </div>
             <div className="foot-col">

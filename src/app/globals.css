@@ -468,3 +468,14 @@ footer .shell{padding:80px 56px 32px;position:relative;z-index:2}
   .legal-body h2{font-size:20px}
   .legal-body p,.legal-body ul li{font-size:15px}
 }
+
+/* real photos dropped into the existing placeholders */
+.portrait.has-photo{background-image:url(/portret-vladimira.jpg);background-size:cover;background-position:50% 28%;background-repeat:no-repeat}
+.portrait.has-photo::after{background:linear-gradient(to top,rgba(20,18,12,.64) 0%,rgba(20,18,12,.14) 34%,rgba(20,18,12,0) 56%)}
+.portrait.has-photo .caption{color:#fff;text-shadow:0 2px 16px rgba(0,0,0,.55)}
+.portrait.has-photo .caption span{color:rgba(255,255,255,.82)}
+
+.faq-side .pic.has-photo{background-image:url(/ordinace.jpg);background-size:cover;background-position:50% 45%;background-repeat:no-repeat}
+.faq-side .pic.has-photo::after{background:linear-gradient(to top,rgba(20,18,12,.6) 0%,rgba(20,18,12,.1) 32%,rgba(20,18,12,0) 52%)}
+.faq-side .pic.has-photo .annot{color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.5)}
+.faq-side .pic.has-photo .annot span{color:rgba(255,255,255,.82)}

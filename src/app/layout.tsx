@@ -55,13 +55,13 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: "Biorezonance Brno-Bystrc · MUDr. Vladimíra Nezvalová",
     description:
-      "Bicom-Optima 2, 17 let v západní medicíně a 5 let v biorezonanci - v jedné ordinaci v Brně-Bystrci. Hledám příčinu vašich obtíží, ne jen jejich projevy.",
+      "Bicom-Optima 2, 17 let v západní medicíně a 5 let s biorezonancí - v jedné ordinaci v Brně-Bystrci. Hledám příčinu vašich obtíží, nejen jejich projevy.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Biorezonance Brno-Bystrc · MUDr. Vladimíra Nezvalová",
     description:
-      "Bicom-Optima 2, 17 let v západní medicíně a 5 let v biorezonanci. Alergie, odvykání kouření, akutní obtíže. Děti od narození.",
+      "Bicom-Optima 2, 17 let v západní medicíně a 5 let s biorezonancí. Alergie, odvykání kouření, akutní obtíže. Děti od narození.",
   },
   robots: {
     index: true,
@@ -85,7 +85,7 @@ const jsonLd = [
     "@id": `${SITE_URL}/#business`,
     name: "Biorezonance MUDr. Vladimíra Nezvalová",
     description:
-      "Ordinace biorezonance v Brně-Bystrci. Bicom-Optima 2, lékařka se 17 lety praxe v západní medicíně a 5 lety v biorezonanci. Alergie, odvykání kouření, akutní i chronické obtíže, dospělí i děti od narození.",
+      "Ordinace biorezonance v Brně-Bystrci. Bicom-Optima 2, lékařka se 17 lety praxe v západní medicíně a 5 lety s biorezonancí. Alergie, odvykání kouření, akutní i chronické obtíže, dospělí i děti od narození.",
     url: SITE_URL,
     telephone: "+420777874067",
     priceRange: "1 000-2 500 Kč",
@@ -130,9 +130,9 @@ const jsonLd = [
     "@context": "https://schema.org",
     "@type": "FAQPage",
     mainEntity: [
-      { "@type": "Question", name: "Jak dlouho trvá sezení?", acceptedAnswer: { "@type": "Answer", text: "První návštěva 120-150 minut. Kontrolní sezení kolem 90 minut. U dětí první návštěva 60-90 minut, kontrolní hodinka. Akutní ošetření zhruba hodinu." } },
-      { "@type": "Question", name: "Kolikrát budu muset přijít?", acceptedAnswer: { "@type": "Answer", text: "Záleží na tom, co spolu řešíme. Eliminace zhruba 3 sezení. Udržovací harmonizace po 3-6 měsících. Akutní alergie 3× po týdnu. Hubnutí 12× po týdnu. Odvykání kouření stačí jednou." } },
-      { "@type": "Question", name: "Kolik to stojí?", acceptedAnswer: { "@type": "Answer", text: "První sezení 2 500 Kč (dospělí) / 1 500 Kč (děti). Kontrolní 2 000 Kč / 1 000 Kč. Konzultace 1 500 Kč. Akutní ošetření 1 500 Kč/hod. Pokud přijdete po více než roce od poslední návštěvy, počítá se jako první sezení." } },
+      { "@type": "Question", name: "Jak dlouho trvá sezení?", acceptedAnswer: { "@type": "Answer", text: "První návštěva 120-150 minut. Kontrolní sezení kolem 90 minut. U dětí první návštěva 60-90 minut, kontrolní hodinku. Akutní ošetření zhruba hodinu." } },
+      { "@type": "Question", name: "Kolikrát budu muset přijít?", acceptedAnswer: { "@type": "Answer", text: "Záleží na tom, co spolu řešíme. Když se eliminují zátěže, zhruba 3 sezení. Udržovací harmonizace po 3-6 měsících. Akutní alergie 3× po týdnu. Hubnutí 12× po týdnu. Odvykání kouření stačí jednou." } },
+      { "@type": "Question", name: "Kolik to stojí?", acceptedAnswer: { "@type": "Answer", text: "První sezení 2 500 Kč (dospělí) / 1 500 Kč (děti). Kontrolní 2 000 Kč / 1 000 Kč. Konzultace 1 000 Kč. Akutní ošetření 1 500 Kč/hod. Pokud přijdete po více než roce od poslední návštěvy, počítá se jako první sezení." } },
       { "@type": "Question", name: "Bude to bolet?", acceptedAnswer: { "@type": "Answer", text: "Ne. Můžete cítit brnění nebo mravenčení v drahách, někdy horkost, únavu nebo lehké točení hlavy." } },
       { "@type": "Question", name: "Proč to nehradí pojišťovna?", acceptedAnswer: { "@type": "Answer", text: "To je dotaz na pojišťovnu. V Německu a Švýcarsku je ošetření na Bicomu hrazeno ze zdravotního připojištění - v České republice zatím nikoli." } },
       { "@type": "Question", name: "Proč to nepoužívají všichni lékaři?", acceptedAnswer: { "@type": "Answer", text: "Bicom je registrovaný zdravotnický prostředek. Své místo v klasické západní medicíně si ale hledá těžko - ta nehledá holistický přístup. Dnes už ho ale v České republice najdete v ambulancích praktiků, stomatologů nebo internistů." } },

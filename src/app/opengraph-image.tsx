@@ -131,8 +131,8 @@ export default async function OpengraphImage() {
             maxWidth: 820,
           }}
         >
-          Bicom-Optima 2, sedmnáct let v západní medicíně a pět let v
-          biorezonanci. Hledám příčinu vašich obtíží, ne jen jejich projevy.
+          Bicom-Optima 2, sedmnáct let v západní medicíně a pět let s
+          biorezonancí. Hledám příčinu vašich obtíží, nejen jejich projevy.
         </p>
 
         {/* CARDS — two separate cards with a real gap */}

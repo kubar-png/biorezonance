@@ -1,5 +1,4 @@
 import ContactForm from "@/components/ContactForm";
-import Newsletter from "@/components/Newsletter";
 import MobileNav from "@/components/MobileNav";
 import FaqSection from "@/components/FaqSection";
 import ServiceLink from "@/components/ServiceLink";
@@ -86,8 +85,8 @@ export default function Home() {
       <nav className="top">
         <div className="inner">
           <a href="#" className="logo">
-            <span className="logo-full">Vladimíra Nezvalová <span className="sep">·</span> biorezonance</span>
-            <span className="logo-short">V. Nezvalová <span className="sep">·</span> biorez.</span>
+            <span className="logo-full">Více než biorezonance</span>
+            <span className="logo-short">Více než biorezonance</span>
           </a>
           <ul>
             <li><a href="#sluzby">Co nabízím</a></li>
@@ -111,9 +110,9 @@ export default function Home() {
               {/* MOBILE-ONLY mini cards under eyebrow */}
               <div className="hero-mobile-cards">
                 <article className="hero-mini-card">
-                  <div className="label">Začít</div>
-                  <h4>Konzultace <span className="accent">zdarma.</span></h4>
-                  <p>15 min telefonem nebo na WhatsAppu.</p>
+                  <div className="label">Co řeším</div>
+                  <h4>Únava · alergie · <span className="accent">hubnutí</span></h4>
+                  <p>Fyzické i&nbsp;psychické obtíže. Od&nbsp;dětí po&nbsp;seniory.</p>
                 </article>
                 <article className="hero-mini-card sage">
                   <div className="label">Otevřeno</div>
@@ -123,7 +122,7 @@ export default function Home() {
               </div>
 
               <h1>Vaše obtíže <span className="rose">mají příčinu.</span><br />Sedmnáct let v&nbsp;ordinaci mi&nbsp;pomáhá <span className="sage">ji najít.</span></h1>
-              <p className="lede">Moje praxe - sedmnáct let v&nbsp;západní medicíně a&nbsp;pět let s&nbsp;biorezonančním přístrojem. Hledám příčinu vašich obtíží, ne jen jejich projevy.</p>
+              <p className="lede">Hledám příčinu vašich obtíží, nejen jejich projevy.</p>
               <div className="ctas">
                 <a href="#kontakt" className="btn">Objednat se →</a>
                 <a href="#o-mne" className="btn-2">Víc o&nbsp;mně →</a>
@@ -140,7 +139,7 @@ export default function Home() {
               </div>
               <article className="petal p1">
                 <div className="label">Začít</div>
-                <h4>Konzultace <span className="accent">na telefonu.</span></h4>
+                <h4>Nezávazně <span className="accent">na telefonu.</span></h4>
                 <p>Zavolejte nebo napište na WhatsApp +420&nbsp;777&nbsp;874&nbsp;067. Probereme, jestli má smysl jít dál.</p>
               </article>
               <article className="petal p2">
@@ -159,7 +158,7 @@ export default function Home() {
           <div className="hero-foot">
             <div className="row">
               <span><b>17 let</b> v&nbsp;západní medicíně</span>
-              <span><b>5 let</b> v&nbsp;biorezonanci</span>
+              <span><b>5 let</b> s&nbsp;biorezonancí</span>
               <span><b>Bicom-Optima 2</b> · nejnovější model</span>
             </div>
             <span><b>OC Javor</b> · Nám. 28.&nbsp;dubna 2 · Brno-Bystrc</span>
@@ -176,7 +175,7 @@ export default function Home() {
               <h2 className="h-section" style={{ marginTop: 18 }}>Čtyři způsoby, jak <span className="rose">začít.</span></h2>
             </div>
             <div className="right">
-              <p>Vlajkou je biorezonance na Bicom-Optima 2. Ostatní služby ji doplňují - někteří chodí jen na konzultaci, jiní na jednorázové odvykání kouření.</p>
+              <p>Biorezonance na&nbsp;přístroji Bicom-Optima&nbsp;2 je hlavní nabídkou. Ostatní služby jsou doplňkové. Můžete přijít jen na&nbsp;konzultaci nebo na&nbsp;jednorázové odvykání závislosti na&nbsp;nikotinu.</p>
             </div>
           </div>
 
@@ -205,14 +204,14 @@ export default function Home() {
               <span className="tag-pill">O&nbsp;biorezonanci · o&nbsp;mně</span>
               <h2 className="h-section">Sedmnáct let v&nbsp;klasické medicíně. <span className="rose">Pět&nbsp;s&nbsp;Bicomem.</span></h2>
               <div className="body">
-                <p>Před patnácti lety jsme v&nbsp;rodině rok a&nbsp;půl řešili zdravotní problém, jehož příčinu se nedařilo objasnit a&nbsp;vyléčit ani neurologům, ani urologům. Pomohla nám bývalá spolužačka z&nbsp;medicíny - anestezioložka s&nbsp;Bicomem. Po třech sezeních obtíž zmizela. Od&nbsp;té doby jsme na&nbsp;biorezonanci jezdili při všech větších fyzických obtížích.</p>
+                <p>Před patnácti lety jsme v&nbsp;rodině rok a&nbsp;půl řešili zdravotní problém, jehož příčinu se nedařilo objasnit a&nbsp;vyřešit ani neurologům, ani urologům. Pomohla nám bývalá spolužačka z&nbsp;medicíny - anestezioložka s&nbsp;Bicomem. Po třech sezeních obtíž zmizela. Od&nbsp;té doby jsme na&nbsp;biorezonanci jezdili při všech větších fyzických obtížích.</p>
                 <p>Pět let zpátky jsem si k&nbsp;té zkušenosti dodělala školení a&nbsp;začala biorezonanci dělat sama. Předtím sedmnáct let v&nbsp;klasické medicíně - chirurgie, urologie, hospicová péče. Promovala jsem v&nbsp;roce 1996.</p>
-                <p>Nepřišla jsem o&nbsp;úctu k&nbsp;tomu, co západní medicína umí. Naopak. Tahle praxe stojí na tom, kde se ty dva světy <strong>doplňují</strong> - ne kde se přebíjejí.</p>
+                <p>Nepřišla jsem o&nbsp;úctu k&nbsp;tomu, co západní medicína umí. Naopak. Moje praxe stojí na tom, kde se ty dva světy <strong>doplňují</strong> - ne kde se přebíjejí.</p>
               </div>
               <div className="about-stats">
                 <div className="card"><div className="big">17 <span className="accent">let</span></div><div className="lbl">v&nbsp;klasické medicíně</div></div>
                 <div className="card"><div className="big">5 <span className="accent">let</span></div><div className="lbl">s&nbsp;Bicom-Optima 2</div></div>
-                <div className="card"><div className="big">1996</div><div className="lbl">promoce z&nbsp;medicíny</div></div>
+                <div className="card"><div className="big">1996</div><div className="lbl">Promoce na&nbsp;lékařské fakultě</div></div>
               </div>
             </div>
 
@@ -256,7 +255,7 @@ export default function Home() {
               <h2 className="h-section" style={{ marginTop: 18 }}>Klidný a&nbsp;<span className="rose">otevřený přístup.</span></h2>
             </div>
             <div className="right">
-              <p>Tři věci, které u&nbsp;běžné ordinace nedostanete. Žádná fronta, žádná desetiminutovka, žádné &bdquo;objednejte se za pět&nbsp;týdnů".</p>
+              <p>Tři věci, které u&nbsp;běžné ordinace nedostanete. Žádná fronta, žádná desetiminutovka, žádné &bdquo;termín za tři&nbsp;měsíce".</p>
             </div>
           </div>
 
@@ -269,7 +268,7 @@ export default function Home() {
               </div>
               <h3>Lékařka, která <span className="accent">přidala&nbsp;Bicom.</span></h3>
               <p>Sedmnáct let v&nbsp;chirurgii, urologii a&nbsp;hospicové péči mi dalo úctu k&nbsp;tomu, co se dá vyšetřit a&nbsp;operovat. Pět let Bicomu mi ukázalo, co ne. Dostanete oba pohledy od&nbsp;jedné lékařky.</p>
-              <div className="pin">MUDr. od roku 1996</div>
+              <div className="pin"><span style={{ textTransform: "none" }}>MUDr.</span> od roku 1996</div>
             </article>
             <article className="ben">
               <div className="ico">
@@ -279,7 +278,7 @@ export default function Home() {
                 </svg>
               </div>
               <h3>Termíny, <span className="accent">které vám vyhovují.</span></h3>
-              <p>Úterý, čtvrtek, pátek od&nbsp;9 do&nbsp;21 hodin. Víkend po domluvě. Pokud to vyžaduje zdravotní stav, ošetřím vás i&nbsp;doma - přístroj je&nbsp;mobilní.</p>
+              <p>Úterý, čtvrtek, pátek od&nbsp;9 do&nbsp;21 hodin. Víkend po domluvě. Pokud to vyžaduje zdravotní stav, je možné ošetření v&nbsp;domácím prostředí, přístroj je&nbsp;mobilní.</p>
               <div className="pin">Večer i&nbsp;víkend</div>
             </article>
             <article className="ben">
@@ -305,7 +304,7 @@ export default function Home() {
               <span className="tag-pill">Reference</span>
               <h2 className="h-section" style={{ marginTop: 18 }}>Podívejte se, <span className="rose">co o&nbsp;mně říkají klienti.</span></h2>
               <p style={{ marginTop: 12, fontSize: 14.5, color: "var(--muted)", lineHeight: 1.6, maxWidth: 580 }}>
-                V&nbsp;ordinaci platí mlčenlivost. Reference zveřejňuji jen&nbsp;se souhlasem klientů - jinak zůstávají anonymní.
+                Reference zveřejňuji se&nbsp;souhlasem klientek.
               </p>
             </div>
           </div>
@@ -374,9 +373,8 @@ export default function Home() {
         <div className="shell">
           <div className="foot-grid">
             <div className="foot-brand">
-              <div className="logo">Biorezonance</div>
-              <p>Praxe biorezonance Bicom-Optima 2 v&nbsp;Brně-Bystrci. Přijímám dospělé, dorost i&nbsp;děti od&nbsp;narození. V&nbsp;indikovaných případech ošetření v&nbsp;domácím prostředí.</p>
-              <Newsletter />
+              <div className="logo">Více než biorezonance</div>
+              <p>Praxe biorezonance Bicom-Optima&nbsp;2 v&nbsp;Brně-Bystrci. Přijímám dospělé, dorost i&nbsp;děti od&nbsp;narození. V&nbsp;indikovaných případech ošetření v&nbsp;domácím prostředí.</p>
             </div>
             <div className="foot-col">
               <h5>Menu</h5>

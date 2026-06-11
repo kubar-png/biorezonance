@@ -93,7 +93,7 @@ export default function ContactForm() {
             <input type="checkbox" name="te" style={{ width: 22, height: 22, flexShrink: 0, accentColor: "var(--sage-deep)" }} /> <span>Jsem v&nbsp;<strong>prvním trimestru těhotenství</strong></span>
           </label>
           <p style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 4, lineHeight: 1.5 }}>
-            U&nbsp;obou stavů Bicom nepoužíváme - pokud jste zaškrtl/a, ráda probereme jiné možnosti.
+            U&nbsp;obou stavů Bicom nepoužíváme - pokud jste zaškrtl/a, můžeme probrat jiné možnosti.
           </p>
         </div>
       </div>

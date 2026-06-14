@@ -216,7 +216,7 @@ export default function Home() {
 
             <div className="about-side">
               <div className="portrait has-photo">
-                <span className="badge">MUDr. Vladimíra Nezvalová</span>
+                <span className="badge"><span style={{ textTransform: "none" }}>MUDr.</span> Vladimíra Nezvalová</span>
                 <div className="caption">„Tělo umí mluvit prostřednictvím frekvencí. Stačí mu naslouchat." <span>- Vladimíra Nezvalová</span></div>
               </div>
             </div>

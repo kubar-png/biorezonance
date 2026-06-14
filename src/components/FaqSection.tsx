@@ -32,7 +32,7 @@ const tabs: { id: Cat | "vse"; label: string }[] = [
 const slides: { src: string; pos: string; title: React.ReactNode; sub: string }[] = [
   { src: "/ordinace.jpg", pos: "50% 45%", title: <>Cesta zpátky k&nbsp;sobě začíná otázkou.</>, sub: "OC Javor · Brno-Bystrc" },
   { src: "/mereni.jpg", pos: "50% 38%", title: <>V&nbsp;klidu, vsedě, s&nbsp;elektrodami v&nbsp;dlaních.</>, sub: "Průběh sezení" },
-  { src: "/pristroj-bicom.jpg", pos: "50% 50%", title: <>Bicom-Optima&nbsp;2 · nejnovější model.</>, sub: "Přístroj, na&nbsp;kterém pracuji" },
+  { src: "/pristroj-bicom.jpg", pos: "50% 50%", title: <>Bicom-Optima&nbsp;2</>, sub: "Přístroj, na kterém pracuji" },
 ];
 
 export default function FaqSection() {

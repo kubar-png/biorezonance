@@ -115,7 +115,6 @@ export default function Home() {
                   <p>Fyzické i&nbsp;psychické obtíže. Od&nbsp;dětí po&nbsp;seniory.</p>
                 </article>
                 <article className="hero-mini-card sage">
-                  <div className="label">Otevřeno</div>
                   <h4>Út · Čt · Pá</h4>
                   <p>9-21 hod. Víkend po&nbsp;domluvě.</p>
                 </article>

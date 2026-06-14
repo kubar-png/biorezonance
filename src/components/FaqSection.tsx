@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 type Cat = "obecne" | "prvni" | "pojistovna";
 
@@ -29,9 +29,21 @@ const tabs: { id: Cat | "vse"; label: string }[] = [
   { id: "pojistovna", label: "Pojišťovna" },
 ];
 
+const slides: { src: string; pos: string; title: React.ReactNode; sub: string }[] = [
+  { src: "/ordinace.jpg", pos: "50% 45%", title: <>Cesta zpátky k&nbsp;sobě začíná otázkou.</>, sub: "OC Javor · Brno-Bystrc" },
+  { src: "/mereni.jpg", pos: "50% 38%", title: <>V&nbsp;klidu, vsedě, s&nbsp;elektrodami v&nbsp;dlaních.</>, sub: "Průběh sezení" },
+  { src: "/pristroj-bicom.jpg", pos: "50% 50%", title: <>Bicom-Optima&nbsp;2 · nejnovější model.</>, sub: "Přístroj, na&nbsp;kterém pracuji" },
+];
+
 export default function FaqSection() {
   const [active, setActive] = useState<Cat | "vse">("vse");
   const [query, setQuery] = useState("");
+  const [slide, setSlide] = useState(0);
+
+  useEffect(() => {
+    const id = setTimeout(() => setSlide((s) => (s + 1) % slides.length), 5000);
+    return () => clearTimeout(id);
+  }, [slide]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -77,8 +89,26 @@ export default function FaqSection() {
                 aria-label="Hledat v dotazech"
               />
             </div>
-            <div className="pic has-photo" aria-hidden="true">
-              <div className="annot">Cesta zpátky k&nbsp;sobě začíná otázkou.<span>OC Javor · Brno-Bystrc</span></div>
+            <div className="pic has-photo">
+              {slides.map((s, i) => (
+                <div
+                  key={s.src}
+                  className={`slide${i === slide ? " on" : ""}`}
+                  style={{ backgroundImage: `url(${s.src})`, backgroundPosition: s.pos }}
+                />
+              ))}
+              <div className="annot">{slides[slide].title}<span>{slides[slide].sub}</span></div>
+              <div className="dots">
+                {slides.map((s, i) => (
+                  <button
+                    key={s.src}
+                    type="button"
+                    className={i === slide ? "on" : ""}
+                    onClick={() => setSlide(i)}
+                    aria-label={`Fotka ${i + 1} z ${slides.length}`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
 

@@ -255,7 +255,7 @@ section.about{padding:96px 0;position:relative}
   .about-stats .card{padding:14px 12px}
   .about-stats .big{font-size:24px}
   .about-stats .lbl{font-size:12.5px;line-height:1.4}
-  .portrait .caption{font-size:18px}
+  .portrait .caption{display:none}
 }
 
 /* pristup */
@@ -479,3 +479,9 @@ footer .shell{padding:80px 56px 32px;position:relative;z-index:2}
 .faq-side .pic.has-photo::after{background:linear-gradient(to top,rgba(20,18,12,.6) 0%,rgba(20,18,12,.1) 32%,rgba(20,18,12,0) 52%)}
 .faq-side .pic.has-photo .annot{color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.5)}
 .faq-side .pic.has-photo .annot span{color:rgba(255,255,255,.82)}
+.faq-side .pic .slide{position:absolute;inset:0;z-index:0;background-size:cover;background-repeat:no-repeat;opacity:0;transition:opacity 1s ease}
+.faq-side .pic .slide.on{opacity:1}
+.faq-side .pic .dots{position:absolute;right:22px;bottom:24px;z-index:3;display:flex;align-items:center;gap:7px}
+.faq-side .pic .dots button{width:7px;height:7px;padding:0;border:0;border-radius:999px;background:rgba(255,255,255,.5);box-shadow:0 1px 5px rgba(0,0,0,.3);cursor:pointer;transition:width .35s ease,background .35s ease}
+.faq-side .pic .dots button:hover{background:rgba(255,255,255,.85)}
+.faq-side .pic .dots button.on{width:22px;background:#fff}

@@ -202,8 +202,8 @@ section.hero{padding:48px 0 72px}
 
 /* services */
 section.services{padding:96px 0;position:relative}
-.services-head{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:64px}
-.services-head .right p{font-size:16px;color:var(--muted);max-width:440px;margin-left:auto;text-align:right}
+.services-head{display:grid;grid-template-columns:1fr 1.25fr;gap:48px;align-items:end;margin-bottom:64px}
+.services-head .right p{font-size:16px;color:var(--muted);max-width:720px;margin-left:auto;text-align:right}
 .svc-list{display:flex;flex-direction:column;gap:18px;list-style:none}
 .svc{display:grid;grid-template-columns:120px 1.3fr 1fr auto;gap:32px;align-items:center;padding:32px;border-radius:22px;background:rgba(255,255,255,.55);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.55);transition:transform .3s,background .3s;cursor:pointer;position:relative;overflow:hidden}
 .svc-link{position:absolute;inset:0;z-index:3;border-radius:22px;text-indent:-9999px;overflow:hidden}

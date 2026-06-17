@@ -330,7 +330,6 @@ export default function Home() {
         <div className="shell">
           <div className="contact-card">
             <div className="contact-head">
-              <span className="tag-pill">Kontakt &amp; rezervace</span>
               <h2 className="h-section">Napište. <span className="rose">Nebo&nbsp;rovnou zavolejte.</span></h2>
               <p style={{ fontSize: 15.5, color: "var(--muted)", lineHeight: 1.65 }}>Nejrychleji se mi dovoláte přes WhatsApp. Telefon zvedám osobně. Když nemůžu mluvit (např. během sezení), ozvu se hned, jakmile to bude možné.</p>
               <div className="info">

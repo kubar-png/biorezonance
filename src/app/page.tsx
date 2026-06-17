@@ -147,7 +147,6 @@ export default function Home() {
                 <p>Fyzické i&nbsp;psychické obtíže. Od&nbsp;dětí po seniory, akutní i&nbsp;dlouhodobé.</p>
               </article>
               <article className="petal p3">
-                <div className="label">Otevírací doba</div>
                 <h4>Út · Čt · Pá&nbsp;<span className="accent">9-21&nbsp;hod.</span></h4>
                 <p>Ostatní dny a&nbsp;víkend po&nbsp;domluvě. V&nbsp;indikovaných případech ošetření v&nbsp;domácím prostředí - přístroj je&nbsp;mobilní.</p>
               </article>

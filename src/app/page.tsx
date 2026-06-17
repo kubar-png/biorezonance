@@ -421,7 +421,10 @@ export default function Home() {
 
           <div className="foot-sign">
             <a href="https://studiojakub.cz" target="_blank" rel="noopener">
-              naladil studiojakub.cz
+              <span className="sig-mark" aria-hidden="true">
+                <svg viewBox="0 0 128 128"><rect width="128" height="128" fill="#E63946" /><polygon points="96.23,32.88 70.21,63.13 103.56,85.03 66.75,69.64 56.22,108.12 59.49,68.36 19.64,70.23 58.46,61.06 44.36,23.73 65.09,57.82" fill="#F1F0EC" /></svg>
+              </span>
+              <span className="sig-txt">naladil studiojakub.cz</span>
               <svg width="9" height="9" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 3h5v5M9 3L3 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </a>
           </div>

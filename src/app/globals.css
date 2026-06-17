@@ -315,9 +315,9 @@ section.reference{padding:96px 0;position:relative}
 .ref{background:rgba(255,255,255,.62);backdrop-filter:blur(22px);border:1px solid rgba(255,255,255,.6);border-radius:24px;padding:28px;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:18px;min-height:340px}
 .ref::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.4),transparent 35%);pointer-events:none;border-radius:24px}
 .ref .top{display:flex;align-items:center;gap:14px;position:relative;z-index:2}
-.ref .av{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--sage-deep));border:2px solid #fff;flex-shrink:0}
-.ref .av.b{background:linear-gradient(135deg,var(--sage),var(--rose-deep))}
-.ref .av.c{background:linear-gradient(135deg,#ead8c2,var(--sage-deep))}
+.ref .av{width:48px;height:48px;border-radius:50%;background:url(/ref-petra.jpg) 50% 50%/cover no-repeat;border:2px solid #fff;flex-shrink:0}
+.ref .av.b{background:url(/ref-michaela.jpg) 50% 50%/cover no-repeat}
+.ref .av.c{background:url(/ref-iris.jpg) 50% 50%/cover no-repeat}
 .ref .av.d{background:linear-gradient(135deg,var(--rose-2),var(--ink))}
 .ref .av.e{background:linear-gradient(135deg,var(--sage-2),var(--rose-deep))}
 .ref .av.f{background:linear-gradient(135deg,var(--rose),#7a3f37)}

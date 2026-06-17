@@ -418,6 +418,13 @@ export default function Home() {
               </a>
             </div>
           </div>
+
+          <div className="foot-sign">
+            <a href="https://studiojakub.cz" target="_blank" rel="noopener">
+              naladil studiojakub.cz
+              <svg width="9" height="9" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 3h5v5M9 3L3 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            </a>
+          </div>
         </div>
       </footer>
     </>

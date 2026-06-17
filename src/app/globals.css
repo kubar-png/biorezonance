@@ -429,6 +429,10 @@ footer .shell{padding:80px 56px 32px;position:relative;z-index:2}
 .foot-strip .socials{display:flex;gap:8px}
 .foot-strip .socials a{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;color:#fff;transition:background .2s;border-bottom:1px solid rgba(255,255,255,.18)}
 .foot-strip .socials a:hover{background:rgba(255,255,255,.22)}
+.foot-sign{margin-top:20px;padding-top:18px;border-top:1px solid rgba(255,255,255,.08);text-align:center}
+.foot-sign a{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-style:italic;letter-spacing:.01em;color:rgba(255,255,255,.5);border-bottom:1px dotted rgba(255,255,255,.28);padding-bottom:1px;transition:color .2s,border-color .2s}
+.foot-sign a:hover{color:rgba(255,255,255,.85);border-bottom-color:rgba(255,255,255,.6)}
+.foot-sign a svg{opacity:.7}
 @media (max-width:900px){
   .foot-grid{grid-template-columns:1fr 1fr;gap:32px 20px}
   .foot-brand{grid-column:1 / -1;padding-right:0}

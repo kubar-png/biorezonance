@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Albert_Sans } from "next/font/google";
+import { Playfair_Display, Albert_Sans, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -12,6 +12,13 @@ const albert = Albert_Sans({
   variable: "--font-sans",
   subsets: ["latin", "latin-ext"],
   weight: ["300", "400", "500", "600", "700"],
+});
+
+// studiojakub.cz brand/heading font — used only for the footer studio signature.
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-bricolage",
+  subsets: ["latin", "latin-ext"],
+  weight: ["700"],
 });
 
 const SITE_URL =
@@ -147,7 +154,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="cs" className={`${playfair.variable} ${albert.variable}`}>
+    <html lang="cs" className={`${playfair.variable} ${albert.variable} ${bricolage.variable}`}>
       <body>
         {children}
         <script

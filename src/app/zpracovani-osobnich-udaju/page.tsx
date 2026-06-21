@@ -28,6 +28,7 @@ export default function PrivacyPage() {
             <h2>1. Kdo údaje zpracovává</h2>
             <p><strong>MUDr. Vladimíra Nezvalová</strong> - lékařka, biorezonanční terapeutka.</p>
             <ul>
+              <li>IČO: 29665043</li>
               <li>Adresa ordinace: OC Javor, Náměstí 28. dubna 2, 635 00 Brno-Bystrc</li>
               <li>E-mail: <a href="mailto:vladimira@vnbiorezonance.cz">vladimira@vnbiorezonance.cz</a></li>
               <li>Telefon: <a href="tel:+420777874067">+420 777 874 067</a></li>

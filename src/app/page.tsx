@@ -30,7 +30,7 @@ const services = [
   },
   {
     n: "04",
-    name: "Asyrská bezkontaktní masáž",
+    name: "Základní Asyrská masáž",
     desc: "Práce v energetickém poli bez doteku. Doplněk pro klienty, kteří chtějí jít hlouběji než s přístrojem.",
     price: "dle domluvy",
     note: "doplňková služba",
@@ -410,7 +410,7 @@ export default function Home() {
           </div>
 
           <div className="foot-strip">
-            <span>© 2026 MUDr. Vladimíra Nezvalová · <a href="/zpracovani-osobnich-udaju">Zpracování osobních údajů</a></span>
+            <span>© 2026 MUDr. Vladimíra Nezvalová · IČO 29665043 · <a href="/zpracovani-osobnich-udaju">Zpracování osobních údajů</a></span>
             <div className="socials">
               {/* Sociální sítě zatím nejsou - Vladimíra zvažuje FB časem */}
               <a href="https://wa.me/420777874067" aria-label="WhatsApp" title="WhatsApp">

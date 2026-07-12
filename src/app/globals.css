@@ -344,9 +344,10 @@ section.reference{padding:96px 0;position:relative}
 section.faq{padding:96px 0;position:relative}
 .faq-intro{margin-bottom:48px}
 .faq-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
-.faq-side .tabs{display:flex;flex-wrap:wrap;gap:8px;padding:5px;background:rgba(255,255,255,.6);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.6);border-radius:999px;width:fit-content;max-width:100%}
-.faq-side .tabs button{background:transparent;border:0;padding:12px 18px;min-height:44px;border-radius:999px;font:inherit;font-size:13.5px;color:var(--muted);cursor:pointer;transition:background .2s,color .2s}
-.faq-side .tabs button.active{background:var(--ink);color:#fff}
+.faq-side .tabs{display:flex;flex-wrap:wrap;gap:8px;width:fit-content;max-width:100%}
+.faq-side .tabs button{background:rgba(255,255,255,.6);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.6);padding:11px 16px;min-height:44px;border-radius:999px;font:inherit;font-size:13.5px;color:var(--muted);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.faq-side .tabs button:hover:not(.active){background:rgba(255,255,255,.85)}
+.faq-side .tabs button.active{background:var(--rose-deep);color:#fff;border-color:var(--rose-deep)}
 .faq-side .search{margin-top:24px;display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.6);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.6);padding:12px 18px;border-radius:14px}
 .faq-side .search input{flex:1;border:0;background:transparent;font:inherit;font-size:16px;min-height:32px;outline:none;color:var(--ink)}
 .faq-side .pic{margin-top:32px;border-radius:24px;overflow:hidden;aspect-ratio:1/1.05;background:linear-gradient(160deg,var(--sage) 0%,#dee6c2 35%,#f0d9cc 60%,var(--rose) 100%);position:relative;border:1px solid rgba(255,255,255,.6);box-shadow:var(--shadow-2)}
@@ -376,6 +377,7 @@ section.faq{padding:96px 0;position:relative}
 /* contact */
 section.contact{padding:96px 0 64px;position:relative}
 .contact-card{background:rgba(255,255,255,.68);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.6);border-radius:36px;padding:64px;box-shadow:var(--shadow-3);display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:start}
+.contact-card>*{min-width:0}
 .contact-head{display:flex;flex-direction:column;gap:24px}
 .contact-head .h-section{margin-top:8px}
 .contact-head .info{margin-top:14px;display:flex;flex-direction:column;gap:14px;font-size:14.5px;color:var(--ink)}
@@ -383,13 +385,14 @@ section.contact{padding:96px 0 64px;position:relative}
 .contact-head .info .row:hover{background:rgba(255,255,255,.8)}
 .contact-head .info .row .ic{width:38px;height:38px;border-radius:12px;background:var(--rose);color:var(--rose-deep);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .contact-head .info .row .ic svg{width:18px;height:18px}
-.contact-head .info .row b{display:block;font-weight:600}
+.contact-head .info .row>div{min-width:0}
+.contact-head .info .row b{display:block;font-weight:600;overflow-wrap:anywhere}
 .contact-head .info .row span{font-size:12.5px;color:var(--muted);display:block;margin-top:2px}
 .form{display:grid;grid-template-columns:1fr 1fr;gap:24px 20px}
-.field{display:flex;flex-direction:column;gap:6px}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
 .field.full{grid-column:1 / -1}
 .field label{font-size:12px;letter-spacing:.04em;color:var(--muted);font-weight:500}
-.field input,.field textarea,.field select{background:rgba(255,255,255,.55);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.65);border-radius:12px;padding:14px 16px;font:inherit;font-size:16px;min-height:48px;color:var(--ink);outline:none;transition:border-color .2s,background .2s;font-family:inherit}
+.field input,.field textarea,.field select{width:100%;min-width:0;background:rgba(255,255,255,.55);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.65);border-radius:12px;padding:14px 16px;font:inherit;font-size:16px;min-height:48px;color:var(--ink);outline:none;transition:border-color .2s,background .2s;font-family:inherit}
 .field input:focus,.field textarea:focus,.field select:focus{border-color:var(--rose-deep);background:rgba(255,255,255,.85)}
 .field textarea{min-height:120px;resize:vertical}
 .form .submit{grid-column:1 / -1;display:flex;justify-content:space-between;align-items:center;gap:24px;margin-top:8px;flex-wrap:wrap}

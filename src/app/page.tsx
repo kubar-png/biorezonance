@@ -22,19 +22,27 @@ const services = [
   },
   {
     n: "03",
+    name: "Zaměřeno na emoce",
+    desc: "Rozbor a následná harmonizace vašeho emočního nastavení. Než se emoce změní v nemoce.",
+    price: "1 000 Kč",
+    note: "60 minut",
+    typeValue: "prevence",
+  },
+  {
+    n: "04",
+    name: "Základní Asyrská masáž",
+    desc: "Práce v energetickém poli. Doplněk pro klienty, kteří chtějí jít hlouběji než s přístrojem.",
+    price: "1 000 Kč",
+    note: "60 minut · doplňková služba",
+    typeValue: "prevence",
+  },
+  {
+    n: "05",
     name: "Konzultace",
     desc: "Hodina, ve které spolu projdeme váš příběh, dosavadní vyšetření a uvážíme, jestli má smysl jít dál. Bez závazku.",
     price: "1 000 Kč",
     note: "60 minut · telefonem nebo osobně",
     typeValue: "dlouhodobý",
-  },
-  {
-    n: "04",
-    name: "Základní Asyrská masáž",
-    desc: "Práce v energetickém poli bez doteku. Doplněk pro klienty, kteří chtějí jít hlouběji než s přístrojem.",
-    price: "dle domluvy",
-    note: "doplňková služba",
-    typeValue: "prevence",
   },
 ];
 
@@ -170,7 +178,7 @@ export default function Home() {
           <div className="services-head">
             <div>
               <span className="tag-pill">Co nabízím</span>
-              <h2 className="h-section" style={{ marginTop: 18 }}>Čtyři způsoby, jak <span className="rose">začít.</span></h2>
+              <h2 className="h-section" style={{ marginTop: 18 }}>Pět způsobů, jak <span className="rose">začít.</span></h2>
             </div>
             <div className="right">
               <p>Biorezonance na&nbsp;přístroji Bicom-Optima&nbsp;2 je hlavní nabídkou. Ostatní služby jsou doplňkové. Můžete přijít jen na&nbsp;konzultaci nebo na&nbsp;jednorázové odvykání závislosti na&nbsp;nikotinu.</p>

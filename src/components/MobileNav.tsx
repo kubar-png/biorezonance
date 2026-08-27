@@ -89,7 +89,7 @@ export default function MobileNav() {
             </a>
             <div className="mobile-drawer-foot">
               <a href="tel:+420777874067">+420 777 874 067</a>
-              <span>Út · Čt · Pá &nbsp;9-21 hod.</span>
+              <span>Po-Pá · ráno i&nbsp;podvečer</span>
             </div>
           </div>
         </div>

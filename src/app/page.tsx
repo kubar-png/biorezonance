@@ -123,8 +123,8 @@ export default function Home() {
                   <p>Fyzické i&nbsp;psychické obtíže. Od&nbsp;dětí po&nbsp;seniory.</p>
                 </article>
                 <article className="hero-mini-card sage">
-                  <h4>Út · Čt · Pá</h4>
-                  <p>9-21 hod. Víkend po&nbsp;domluvě.</p>
+                  <h4>Po-Pá</h4>
+                  <p>Ráno i&nbsp;podvečer. Jednou měsíčně i&nbsp;víkend.</p>
                 </article>
               </div>
 
@@ -155,8 +155,8 @@ export default function Home() {
                 <p>Fyzické i&nbsp;psychické obtíže. Od&nbsp;dětí po seniory, akutní i&nbsp;dlouhodobé.</p>
               </article>
               <article className="petal p3">
-                <h4>Út · Čt · Pá&nbsp;<span className="accent">9-21&nbsp;hod.</span></h4>
-                <p>Ostatní dny a&nbsp;víkend po&nbsp;domluvě. V&nbsp;indikovaných případech ošetření v&nbsp;domácím prostředí - přístroj je&nbsp;mobilní.</p>
+                <h4>Po-Pá&nbsp;<span className="accent">ráno i&nbsp;podvečer.</span></h4>
+                <p>Jednou měsíčně také pracovní víkend. V&nbsp;indikovaných případech ošetření v&nbsp;domácím prostředí - přístroj je&nbsp;mobilní.</p>
               </article>
             </div>
           </div>
@@ -284,8 +284,8 @@ export default function Home() {
                 </svg>
               </div>
               <h3>Termíny, <span className="accent">které vám vyhovují.</span></h3>
-              <p>Úterý, čtvrtek, pátek od&nbsp;9 do&nbsp;21 hodin. Víkend po domluvě. Pokud to vyžaduje zdravotní stav, je možné ošetření v&nbsp;domácím prostředí, přístroj je&nbsp;mobilní.</p>
-              <div className="pin">Večer i&nbsp;víkend</div>
+              <p>Od&nbsp;pondělí do&nbsp;pátku, ranní i&nbsp;podvečerní termíny. Jeden pracovní víkend v&nbsp;měsíci. Pokud to vyžaduje zdravotní stav, je možné ošetření v&nbsp;domácím prostředí, přístroj je&nbsp;mobilní.</p>
+              <div className="pin">Podvečer i&nbsp;víkend</div>
             </article>
             <article className="ben">
               <div className="ico">
@@ -363,7 +363,7 @@ export default function Home() {
                   <span className="ic" style={{ background: "var(--sage)", color: "var(--sage-deep)" }}>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8" /><path d="M12 9v4l2 2" /><path d="M9 2h6" /><path d="M12 5V2" /></svg>
                   </span>
-                  <div><b>Út · Čt · Pá &nbsp;9-21 hod.</b><span>Ostatní dny a&nbsp;víkend po&nbsp;domluvě</span></div>
+                  <div><b>Po-Pá · ráno i&nbsp;podvečer</b><span>Jeden pracovní víkend v&nbsp;měsíci</span></div>
                 </div>
               </div>
             </div>
@@ -410,9 +410,8 @@ export default function Home() {
             <div className="foot-col">
               <h5>Otevřeno</h5>
               <ul>
-                <li>Út · Čt · Pá &nbsp;9-21</li>
-                <li>Ostatní dny dle domluvy</li>
-                <li>Víkend dle domluvy</li>
+                <li>Po-Pá · ranní i&nbsp;podvečerní termíny</li>
+                <li>Jeden pracovní víkend v&nbsp;měsíci</li>
               </ul>
             </div>
           </div>

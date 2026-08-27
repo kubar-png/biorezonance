@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     template: "%s · MUDr. Nezvalová · Biorezonance Brno",
   },
   description:
-    "Biorezonance v Brně-Bystrci. Lékařka MUDr. Nezvalová, 17 let v západní medicíně, Bicom-Optima 2. Alergie, odvykání kouření, akutní obtíže. Děti od narození. Út, čt, pá 9-21.",
+    "Biorezonance v Brně-Bystrci. Lékařka MUDr. Nezvalová, 17 let v západní medicíně, Bicom-Optima 2. Alergie, odvykání kouření, akutní obtíže. Děti od narození. Po-pá, ranní i podvečerní termíny.",
   keywords: [
     "biorezonance Brno",
     "biorezonance Brno-Bystrc",
@@ -107,7 +107,7 @@ const jsonLd = [
     },
     geo: { "@type": "GeoCoordinates", latitude: 49.2235, longitude: 16.5161 },
     openingHoursSpecification: [
-      { "@type": "OpeningHoursSpecification", dayOfWeek: ["Tuesday", "Thursday", "Friday"], opens: "09:00", closes: "21:00" },
+      { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "09:00", closes: "21:00" },
     ],
     medicalSpecialty: ["AlternativeMedicine", "PreventiveMedicine"],
     areaServed: { "@type": "City", name: "Brno" },

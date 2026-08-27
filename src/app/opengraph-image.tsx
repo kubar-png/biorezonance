@@ -185,8 +185,8 @@ export default async function OpengraphImage() {
                 flexWrap: "wrap",
               }}
             >
-              <span>Út · Čt · Pá</span>
-              <span style={{ color: SAGE }}>9–21 h</span>
+              <span>Po-Pá</span>
+              <span style={{ color: SAGE }}>ráno i podvečer</span>
             </div>
             <span
               style={{
@@ -197,7 +197,7 @@ export default async function OpengraphImage() {
                 letterSpacing: "0.005em",
               }}
             >
-              Víkend po domluvě
+              Jeden pracovní víkend v měsíci
             </span>
           </div>
 

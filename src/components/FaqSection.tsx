@@ -20,6 +20,7 @@ const faqs: Faq[] = [
   { q: "Zvládnou děti sezení v délce hodiny až dvou?", cat: "prvni", a: <>Ke každému dítěti přistupuji individuálně. Děti mají nachystaný koberec, hračky, knížky a dobrůtku. Na konci si vyberou malý dárek. Sezení nebývá problém - a děti samy si často říkají o další návštěvu.</> },
   { q: "Můžu být u sezení s dítětem nebo partnerem?", cat: "prvni", a: <>U malých dětí je přítomnost jednoho rodiče žádoucí, u starších dětí se domluvíme. Adolescenti většinou absolvují sezení sami. Přítomnost partnera má smysl, pokud obtíže výrazně souvisí s vaším vztahem - jinak ne, brání to uvolnění se.</> },
   { q: "Kdy Bicom nelze použít?", cat: "obecne", a: <>U žen v prvním trimestru těhotenství a u osob s implantovaným kardiostimulátorem nebo defibrilátorem. Jinak je metoda bez kontraindikací.</> },
+  { q: "Odkud jsou ty krásné dekorativní předměty na pracovně - svícny, lapače slunce, skleničky apod.?", cat: "obecne", a: <>Pocházejí z&nbsp;RestartujSe - centra osobního rozvoje v&nbsp;Brně. Víc najdete na <a href="https://restartujse.cz/" target="_blank" rel="noopener">restartujse.cz</a>.</> },
 ];
 
 const tabs: { id: Cat | "vse"; label: string }[] = [

@@ -2,6 +2,7 @@ import ContactForm from "@/components/ContactForm";
 import MobileNav from "@/components/MobileNav";
 import FaqSection from "@/components/FaqSection";
 import ServiceLink from "@/components/ServiceLink";
+import Reveal from "@/components/Reveal";
 
 const services = [
   {
@@ -88,6 +89,7 @@ export default function Home() {
     <>
       <div className="wash"><div className="l l1" /><div className="l l2" /><div className="l l3" /></div>
       <div className="grain" />
+      <Reveal />
 
       {/* NAV */}
       <nav className="top">

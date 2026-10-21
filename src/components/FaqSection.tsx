@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 type Cat = "obecne" | "prvni" | "pojistovna";
 
@@ -35,6 +35,44 @@ const slides: { src: string; pos: string; title: React.ReactNode; sub: string }[
   { src: "/mereni.jpg", pos: "50% 38%", title: <>V&nbsp;klidu, vsedě, s&nbsp;elektrodami v&nbsp;dlaních.</>, sub: "Průběh sezení" },
   { src: "/pristroj-bicom.jpg", pos: "50% 50%", title: <>Bicom-Optima&nbsp;2</>, sub: "Přístroj, na kterém pracuji" },
 ];
+
+const COLLAPSE_MS = 400;
+
+// <details> zavírá obsah okamžitě - open drží do konce animace, vizuál řídí `expanded`
+function FaqItem({ faq, defaultOpen }: { faq: Faq; defaultOpen: boolean }) {
+  const [open, setOpen] = useState(defaultOpen);
+  const [expanded, setExpanded] = useState(defaultOpen);
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => () => { if (timer.current) clearTimeout(timer.current); }, []);
+
+  const toggle = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (timer.current) clearTimeout(timer.current);
+    if (!expanded) {
+      setOpen(true);
+      requestAnimationFrame(() => requestAnimationFrame(() => setExpanded(true)));
+      return;
+    }
+    setExpanded(false);
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    timer.current = setTimeout(() => setOpen(false), reduced ? 0 : COLLAPSE_MS);
+  };
+
+  return (
+    <details
+      className={`faq-item${expanded ? " is-open" : ""}`}
+      open={open}
+      onToggle={(e) => {
+        // otevřeno prohlížečem (hledání na stránce)
+        if (e.currentTarget.open && !open) { setOpen(true); setExpanded(true); }
+      }}
+    >
+      <summary onClick={toggle}><span className="q">{faq.q}</span><span className="ico">＋</span></summary>
+      <div className="a-wrap"><div className="a-clip"><div className="a">{faq.a}</div></div></div>
+    </details>
+  );
+}
 
 export default function FaqSection() {
   const [active, setActive] = useState<Cat | "vse">("vse");
@@ -120,10 +158,7 @@ export default function FaqSection() {
               </div>
             ) : (
               filtered.map((f, i) => (
-                <details key={`${active}-${query}-${f.q}`} className="faq-item" open={i === 0}>
-                  <summary><span className="q">{f.q}</span><span className="ico">＋</span></summary>
-                  <div className="a">{f.a}</div>
-                </details>
+                <FaqItem key={`${active}-${query}-${f.q}`} faq={f} defaultOpen={i === 0} />
               ))
             )}
           </div>
